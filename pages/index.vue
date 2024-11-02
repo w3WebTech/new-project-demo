@@ -16,6 +16,6 @@
 
 <script setup lang="ts">
 
-import VenturaLogo from '~/components/VenturaLogo.vue'
-import BottomSheet from '~/components/BottomSheet.vue'
+// import VenturaLogo from '~/components/VenturaLogo.vue'
+// import BottomSheet from '~/components/BottomSheet.vue'
 </script>
