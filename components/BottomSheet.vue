@@ -47,25 +47,25 @@
   </div>
 </template>
 
-<script setup lang="ts">
- import { ref, onMounted } from 'vue';
+// <script setup lang="ts">
+//  import { ref, onMounted } from 'vue';
 
 // const isVisible = ref(false);
 // const phoneNumber = ref('');  // Initialize with an empty string
-const whatsAppEnabled = ref(true);
+// const whatsAppEnabled = ref(true);
 
-const toggleWhatsApp = () => {
-  whatsAppEnabled.value = !whatsAppEnabled.value;
-};
+// const toggleWhatsApp = () => {
+//   whatsAppEnabled.value = !whatsAppEnabled.value;
+// };
 
-const handleContinue = () => {
-  // Handle continue action
-  console.log('Continue with:', { phoneNumber: phoneNumber.value, whatsAppEnabled: whatsAppEnabled.value });
-};
+// const handleContinue = () => {
+//   // Handle continue action
+//   console.log('Continue with:', { phoneNumber: phoneNumber.value, whatsAppEnabled: whatsAppEnabled.value });
+// };
 
-onMounted(() => {
-  setTimeout(() => {
-    isVisible.value = true;  // Corrected typo
-  }, 1000);
-});
-</script>
+// onMounted(() => {
+//   setTimeout(() => {
+//     isVisible.value = true;  // Corrected typo
+//   }, 1000);
+// });
+// </script>
