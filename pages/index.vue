@@ -14,8 +14,8 @@
   </div>
 </template>
 
-<script setup lang="ts">
+// <script setup lang="ts">
 
 // import VenturaLogo from '~/components/VenturaLogo.vue'
 // import BottomSheet from '~/components/BottomSheet.vue'
-</script>
+// </script>
