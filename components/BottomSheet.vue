@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+// import { ref, onMounted } from 'vue';
 
 const isVisible = ref(false);
 const phoneNumber = ref('');  // Initialize with an empty string
