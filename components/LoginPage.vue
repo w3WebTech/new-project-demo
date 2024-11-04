@@ -201,10 +201,10 @@
     </div> -->
       </div>
 
-      <h2 class="text-gray-600 text-3xl font-bold mb-4">
+      <h2 class="text-gray-600 text-3xl font-bold mb-4 pl-1">
         Ready to get started?
       </h2>
-      <p class="text-gray-600 mb-8">
+      <p class="text-gray-600 mb-8 pl-1">
         Enter your number to help us set up your investment account.
       </p>
 
@@ -215,7 +215,7 @@
         <input
           type="tel"
           v-model="phoneNumber"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1E1B4B] focus:border-[#1E1B4B] block w-full p-2.5"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:border-[#1E1B4B] block w-full p-2.5"
           placeholder="Enter phone number"
           required
         />
