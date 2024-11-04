@@ -3,7 +3,7 @@
   <OnboardingSlider />
 </template>
 
-<script setup>
+<script lang="ts">
 import OnboardingSlider from '@/components/OnboardingSlider.vue';
 
 export default {
