@@ -156,7 +156,7 @@ const resendOtp = () => {
 };
 
 const verifyOtp = () => {
-  debugger
+
   const otp = otpDigits.value.join('');
   console.log('Verifying OTP:', otp);
   // TODO: Add API call to verify OTP
