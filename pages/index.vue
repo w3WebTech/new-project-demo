@@ -4,11 +4,11 @@
 </template>
 
 <script lang="ts">
-import OnboardingSlider from '@/components/OnboardingSlider.vue';
+import OnBoardingSlider from '@/components/OnBoardingSlider.vue';
 
 export default {
   components: {
-    OnboardingSlider
+    OnBoardingSlider
   }
 }
 
