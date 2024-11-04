@@ -22,7 +22,7 @@
 
           <button 
             @click="handleTruecallerLogin"
-            class="w-full bg-[#1E88E5] text-white py-3 rounded-full font-medium mb-4 flex items-center justify-center"
+            class="w-full bg-[#1E1B4B] text-white py-3 rounded-full font-medium mb-4 flex items-center justify-center"
           >
             USE {{ phoneNumber }}
           </button>

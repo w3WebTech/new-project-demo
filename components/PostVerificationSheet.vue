@@ -21,7 +21,7 @@
  <div class="flex flex-col  mt-10 mx-1 ">
           <h2 class="text-2xl font-bold mb-4">Add your email</h2>
           <p class="text-gray-600 mb-6">This is where we'll send you important updates and insights on the market.</p>
-          <input v-model="email" type="email" placeholder="Enter email" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 mb-6">
+          <input v-model="email" type="email" placeholder="Enter email" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-[#1E1B4B] mb-6">
           <button 
           @click="handleDone(email)"
               :disabled="!email"
