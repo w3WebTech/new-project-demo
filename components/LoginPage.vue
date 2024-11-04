@@ -3,7 +3,7 @@
     <div>
       <!-- Content -->
       <div class="p-8 rounded-2xl shadow-2xl overflow-hidden bg-white">
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-2 py-4 ">
           <img
             src="public/images/venturalogo.jpeg"
             alt="Google"
@@ -71,7 +71,7 @@
     <div>
       <!-- Content -->
       <div class="p-8 rounded-2xl shadow-2xl overflow-hidden bg-white">
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-2 py-3">
           <img
             src="public/images/venturalogo.jpeg"
             alt="Google"
@@ -138,7 +138,7 @@
   <div v-else-if="EmailHandling" class="my-10 mx-20">
     <div class="bg-white rounded-t-2xl p-10 shadow-2xl">
       <div class="flex flex-col mt-10 mx-1">
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-2 py-3">
           <img
             src="public/images/venturalogo.jpeg"
             alt="Google"
@@ -189,8 +189,8 @@
     </div>
   </div>
   <div class="my-10 mx-20" v-else>
-    <div class="bg-white rounded-t-2xl p-10 shadow-2xl">
-      <div class="grid grid-cols-2">
+    <div class="bg-white rounded-2xl p-10 shadow-2xl">
+      <div class="grid grid-cols-2 py-3">
         <img
           src="public/images/venturalogo.jpeg"
           alt="Google"
