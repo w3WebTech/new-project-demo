@@ -91,7 +91,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import TruecallerVerification from './TruecallerVerification.vue';
+
+import TruecallerVerification from '@/components/TruecallerVerification.vue';
 const showPostVerification = ref(false);
 const isVisible = ref(false);
 const showTruecaller = ref(false);
