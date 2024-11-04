@@ -4,5 +4,12 @@
 </template>
 
 <script setup>
-import OnboardingSlider from '~/components/OnboardingSlider.vue'
+import OnboardingSlider from '@/components/OnboardingSlider.vue';
+
+export default {
+  components: {
+    OnboardingSlider
+  }
+}
+
 </script>
