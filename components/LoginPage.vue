@@ -189,7 +189,7 @@
     </div>
   </div>
   <div class="md:my-10 md:mx-20" v-else>
-    <div class="bg-white rounded-2xl md:p-10 sm:py-14 sm:px-5 md:shadow-2xl">
+    <div class="bg-white rounded-2xl md:p-10 sm:py-14 sm:px-5 md:shadow-2xl hover:shake transition-transform duration-300 ease-in-out">
       <div class="grid grid-cols-2 py-3">
         <img
           src="public/images/venturalogo.jpeg"
@@ -201,7 +201,7 @@
     </div> -->
       </div>
 
-      <h2 class="text-[#1e1742d8] text-3xl font-bold mb-4 pl-1">
+      <h2 class="text-[#1e1742d8] text-3xl font-bold mb-4 pl-1 ">
         Ready to get started?
       </h2>
       <p class="text-gray-600 mb-8 pl-1">
@@ -492,7 +492,7 @@ const focusNextInput = (index: number) => {
 };
 
 const startTimer = () => {
-    debugger
+    
   timer.value = 60;
   timerInterval = setInterval(() => {
     if (timer.value > 0) {
@@ -503,7 +503,7 @@ const startTimer = () => {
   }, 1000);
 };
 const startTimer1 = () => {
-    debugger
+    
   timer1.value = 60;
   timerInterval = setInterval(() => {
     if (timer1.value > 0) {
@@ -606,3 +606,18 @@ onMounted(() => {
   }, 1000);
 });
 </script>
+<style scoped lang="scss">
+@keyframes shake {
+  0% { transform: translate(1px, 0); }
+  25% { transform: translate(-1px, 0); }
+  50% { transform: translate(1px, 0); }
+  75% { transform: translate(-1px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (min-width: 768px) { /* md breakpoint in Tailwind CSS */
+  .hover\:shake:hover {
+    animation: shake 0.5s ease-in-out;
+  }
+}
+</style>
