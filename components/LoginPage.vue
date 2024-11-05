@@ -1,8 +1,8 @@
 <template>
-  <div v-if="showTruecaller" class="my-10 mx-20">
+  <div v-if="showTruecaller" class="md:my-10 sm:my-20 md:mx-20">
     <div>
       <!-- Content -->
-      <div class="p-8 rounded-2xl shadow-2xl overflow-hidden bg-white">
+      <div class="p-8 rounded-2xl md:shadow-2xl overflow-hidden bg-white">
         <div class="grid grid-cols-2 py-4 ">
           <img
             src="public/images/venturalogo.jpeg"
@@ -13,7 +13,7 @@
       <div v-for="i in 36" :key="i" class="border border-[rgba(72,52,129,0.1)]"></div>
     </div> -->
         </div>
-        <h1 class="text-gray-600 text-2xl font-bold mb-4 pl-1">
+        <h1 class="text-gray-600 text-2xl font-bold mb-4 pl-1 ">
           Enter OTP here
         </h1>
         <p class="text-gray-600 mb-8 pl-1">
@@ -32,7 +32,7 @@
               @keydown.delete="handleBackspace($event, index)"
               @keydown.left="focusPrevInput(index)"
               @keydown.right="focusNextInput(index)"
-              class="w-[50px] h-[50px] border-2 border-gray-200 rounded-lg text-center text-xl font-semibold focus:border-[#1E1B4B] focus:outline-none"
+              class="md:w-[50px] md:h-[50px] sm:w-[40px] sm:h-[40px]  border-2 border-gray-200 rounded-lg text-center text-xl font-semibold focus:border-[#1E1B4B] focus:outline-none"
               :ref="(el) => (inputRefs[index] = el)"
             />
           </template>
@@ -67,10 +67,10 @@
       </div>
     </div>
   </div>
-  <div v-else-if="showEmailOtp" class="my-10 mx-20">
+  <div v-else-if="showEmailOtp" class="md:my-10 sm:my-20  md:mx-20">
     <div>
       <!-- Content -->
-      <div class="p-8 rounded-2xl shadow-2xl overflow-hidden bg-white">
+      <div class="p-8 rounded-2xl md:shadow-2xl overflow-hidden bg-white">
         <div class="grid grid-cols-2 py-3">
           <img
             src="public/images/venturalogo.jpeg"
@@ -100,7 +100,7 @@
               @keydown.delete="handleBackspace1($event, index)"
               @keydown.left="focusPrevInput1(index)"
               @keydown.right="focusNextInput1(index)"
-              class="w-[50px] h-[50px] border-2 border-gray-200 rounded-lg text-center text-xl font-semibold focus:border-[#1E1B4B] focus:outline-none"
+              class="md:w-[50px] md:h-[50px] sm:w-[40px] sm:h-[40px]  border-2 border-gray-200 rounded-lg text-center text-xl font-semibold focus:border-[#1E1B4B] focus:outline-none"
               :ref="(el) => (inputRefs1[index] = el)"
             />
           </template>
@@ -135,8 +135,8 @@
       </div>
     </div>
   </div>
-  <div v-else-if="EmailHandling" class="my-10 mx-20">
-    <div class="bg-white rounded-t-2xl p-10 shadow-2xl">
+  <div v-else-if="EmailHandling" class="md:my-10 md:mx-20">
+    <div class="bg-white rounded-t-2xl p-10 md:shadow-2xl">
       <div class="flex flex-col mt-10 mx-1">
         <div class="grid grid-cols-2 py-3">
           <img
@@ -188,8 +188,8 @@
       </div>
     </div>
   </div>
-  <div class="my-10 mx-20" v-else>
-    <div class="bg-white rounded-2xl p-10 shadow-2xl">
+  <div class="md:my-10 md:mx-20" v-else>
+    <div class="bg-white rounded-2xl p-10 md:shadow-2xl">
       <div class="grid grid-cols-2 py-3">
         <img
           src="public/images/venturalogo.jpeg"
@@ -535,7 +535,7 @@ const verifyOtp = () => {
 };
 const verifyOtpforEmail = () =>{
      const otp = otpDigits.value.join("");
- router.push('/StepDetails');
+ router.push('/SecondStep');
 }
 const closeSheet = () => {
   openVerifygoogle.value = false;

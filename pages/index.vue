@@ -1,7 +1,8 @@
 
 <template>
 <div class="md:hidden">
- <OnBoardingSlider />
+ <!-- <OnBoardingSlider /> -->
+ <LoginPage/>
 </div>
 <div class="sm:hidden overflow-hidden">
    <div class="grid grid-cols-2">
