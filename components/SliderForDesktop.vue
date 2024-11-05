@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-[#FF7F50] relative overflow-hidden">
+  <div class="min-h-screen bg-orange-500 relative overflow-hidden">
     
     <!-- Slides Container -->
     <div class="px-6 pt-20 pb-32">

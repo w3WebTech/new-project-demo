@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-orange-500 bg-opacity-50 z-40"
+      class="fixed inset-0 bg-orange-500  z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div
-      class="fixed h-[90%] bottom-0 left-0 right-0 bg-white z-50 transition-transform transform rounded-xl"
+      class="fixed h-[90%] bottom-0 left-0 right-0 bg-white z-50 transition-transform transform rounded-t-xl"
       :class="{ 'translate-y-0': isOpen, 'translate-y-full': !isOpen }"
     >
       <div class="md:w-[40%] md:flex md:mx-auto">
@@ -30,13 +30,13 @@
 
             <div class="rounded-lg px-2">
               <div class="flex flex-col">
-                <div class="flex items-center align-center space-x-4">
+                <div class="flex items-center align-center space-x-10">
                   <div class="bg-green-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="green"
-                      class="h-6 w-6"
+                      class="h-5 w-5"
                     >
                       <path
                         fill-rule="evenodd"
@@ -56,13 +56,13 @@
                   </div>
                 </div>
                
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-green-200 rounded-full p-3">
                              <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="green"
-                      class="h-6 w-6"
+                      class="h-5 w-5"
                     >
                       <path
                         fill-rule="evenodd"
@@ -80,8 +80,8 @@
                     </div>
                   </div>
                 </div>
-                 <div class="font-bold text-2xl py-4 px-1">Next Up...</div>
-                <div class="flex items-center space-x-4">
+                 <div class="font-bold text-2xl py-3 px-1">Next Up...</div>
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +107,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +133,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +160,7 @@
                 </div>
 
                 <button
-                  class="bg-[#1E1B4B] text-white font-bold py-3 mb-3 px-2 md:w-[30%] sm:w-[90%] fixed bottom-0 rounded-lg mt-8"
+                  class="bg-[#1E1B4B] animate-bounce text-white font-bold py-3 mb-3 px-2 md:w-[30%] sm:w-[90%] fixed bottom-0 rounded-lg mt-8"
                   @click="nextStep"
                 >
                   Continue

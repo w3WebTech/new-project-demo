@@ -1,9 +1,9 @@
 <template>
-  <div v-if="showTruecaller" class="md:my-10 sm:my-20 md:mx-20">
+  <div v-if="showTruecaller" class="md:my-16 sm:my-20 md:mx-20">
     <div>
       <!-- Content -->
       <div class="p-8 rounded-2xl md:shadow-2xl overflow-hidden bg-white">
-        <div class="grid grid-cols-2 py-4 ">
+        <div class="grid grid-cols-2 py-4">
           <img
             src="public/images/venturalogo.jpeg"
             alt="Google"
@@ -13,7 +13,7 @@
       <div v-for="i in 36" :key="i" class="border border-[rgba(72,52,129,0.1)]"></div>
     </div> -->
         </div>
-        <h1 class="text-gray-600 text-2xl font-bold mb-4 pl-1 ">
+        <h1 class="text-gray-600 text-2xl font-bold mb-4 pl-1">
           Enter OTP here
         </h1>
         <p class="text-gray-600 mb-8 pl-1">
@@ -32,7 +32,7 @@
               @keydown.delete="handleBackspace($event, index)"
               @keydown.left="focusPrevInput(index)"
               @keydown.right="focusNextInput(index)"
-              class="md:w-[50px] md:h-[50px] sm:w-[40px] sm:h-[40px]  border-2 border-gray-200 rounded-lg text-center text-xl font-semibold focus:border-[#1E1B4B] focus:outline-none"
+              class="md:w-[50px] md:h-[50px] sm:w-[40px] sm:h-[40px] border-2 border-gray-200 rounded-lg text-center text-xl font-semibold focus:border-[#1E1B4B] focus:outline-none"
               :ref="(el) => (inputRefs[index] = el)"
             />
           </template>
@@ -55,10 +55,10 @@
         <button
           @click="verifyOtp"
           :disabled="!isOtpComplete"
-          class="w-full py-4 rounded-lg font-medium transition-colors"
+          class="w-full py-4 rounded-lg font-medium transition-colors  "
           :class="
             isOtpComplete
-              ? 'bg-[#1E1B4B] text-white'
+              ? 'bg-[#1E1B4B] text-white  animate-bounce'
               : 'bg-gray-200 text-gray-500'
           "
         >
@@ -67,7 +67,7 @@
       </div>
     </div>
   </div>
-  <div v-else-if="showEmailOtp" class="md:my-10 sm:my-20  md:mx-20">
+  <div v-else-if="showEmailOtp" class="md:my-16 sm:my-20 md:mx-20">
     <div>
       <!-- Content -->
       <div class="p-8 rounded-2xl md:shadow-2xl overflow-hidden bg-white">
@@ -86,7 +86,7 @@
         </h1>
         <p class="text-gray-600 mb-8 pl-1">
           We have sent an OTP to your email id <br />
-         ******@gmail.com
+          ******@gmail.com
         </p>
 
         <!-- OTP Input -->
@@ -100,7 +100,7 @@
               @keydown.delete="handleBackspace1($event, index)"
               @keydown.left="focusPrevInput1(index)"
               @keydown.right="focusNextInput1(index)"
-              class="md:w-[50px] md:h-[50px] sm:w-[40px] sm:h-[40px]  border-2 border-gray-200 rounded-lg text-center text-xl font-semibold focus:border-[#1E1B4B] focus:outline-none"
+              class="md:w-[50px] md:h-[50px] sm:w-[40px] sm:h-[40px] border-2 border-gray-200 rounded-lg text-center text-xl font-semibold focus:border-[#1E1B4B] focus:outline-none"
               :ref="(el) => (inputRefs1[index] = el)"
             />
           </template>
@@ -108,11 +108,11 @@
 
         <!-- Timer -->
         <div class="flex justify-between items-center mb-12">
-          <p class="text-gray-600">{{ formatTime(timer) }}</p>
+          <p class="text-gray-600">{{ formatTime(timer1) }}</p>
           <button
-            @click="resendOtp"
-            :disabled="timer > 0"
-            :class="timer > 0 ? 'text-gray-400' : 'text-red-500'"
+            @click="resendOtp1"
+            :disabled="timer1 > 0"
+            :class="timer1 > 0 ? 'text-gray-400' : 'text-red-500'"
             class="font-medium"
           >
             Resend OTP
@@ -126,7 +126,7 @@
           class="w-full py-4 rounded-lg font-medium transition-colors"
           :class="
             isOtpComplete1
-              ? 'bg-[#1E1B4B] text-white'
+              ? 'bg-[#1E1B4B] text-white animate-bounce'
               : 'bg-gray-200 text-gray-500'
           "
         >
@@ -136,7 +136,7 @@
     </div>
   </div>
   <div v-else-if="EmailHandling" class="md:my-10 md:mx-20">
-    <div class="bg-white rounded-t-2xl p-10 md:shadow-2xl">
+    <div class="bg-white rounded-t-2xl md:p-10 sm:py-10 sm:px-4 md:shadow-2xl">
       <div class="flex flex-col mt-10 mx-1">
         <div class="grid grid-cols-2 py-3">
           <img
@@ -164,10 +164,10 @@
         <button
           @click="handleDone(email)"
           :disabled="!email"
-          class="w-full py-3 rounded-lg font-medium transition-colors"
+          class="w-full py-3 rounded-lg font-medium transition-colors mt-5"
           :class="
             isValidEmail(email)
-              ? 'bg-[#1E1B4B] text-white'
+              ? 'bg-[#1E1B4B] text-white animate-bounce'
               : 'bg-gray-200 text-gray-500'
           "
         >
@@ -189,7 +189,7 @@
     </div>
   </div>
   <div class="md:my-10 md:mx-20" v-else>
-    <div class="bg-white rounded-2xl p-10 md:shadow-2xl">
+    <div class="bg-white rounded-2xl md:p-10 sm:py-14 sm:px-5 md:shadow-2xl">
       <div class="grid grid-cols-2 py-3">
         <img
           src="public/images/venturalogo.jpeg"
@@ -201,7 +201,7 @@
     </div> -->
       </div>
 
-      <h2 class="text-gray-600 text-3xl font-bold mb-4 pl-1">
+      <h2 class="text-[#1e1742d8] text-3xl font-bold mb-4 pl-1">
         Ready to get started?
       </h2>
       <p class="text-gray-600 mb-8 pl-1">
@@ -215,7 +215,7 @@
         <input
           type="tel"
           v-model="phoneNumber"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:border-[#1E1B4B] block w-full p-2.5"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-[#1E1B4B] block w-full p-2.5"
           placeholder="Enter phone number"
           required
         />
@@ -255,11 +255,11 @@
 
       <button
         @click="handleContinue"
-        class="w-full bg-[#1E1B4B] text-white py-4 rounded-lg font-medium"
+        class="w-full bg-[#1E1B4B] text-white py-4 rounded-lg font-medium "
         :disabled="!phoneNumber && phoneNumber.length != 10"
         :class="
           phoneNumber && phoneNumber.length == 10
-            ? 'bg-[#1E1B4B] text-white'
+            ? 'bg-[#1E1B4B] text-white animate-bounce'
             : 'bg-gray-200 text-gray-500'
         "
       >
@@ -291,7 +291,7 @@
 
     <div
       v-if="openVerifygoogle"
-      class="fixed inset-0 z-10 w-screen overflow-y-auto"
+      class="fixed inset-0 z-10 md:w-screen sm:w-[90%] sm:mx-auto overflow-y-auto"
     >
       <div
         class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
@@ -352,7 +352,7 @@
 import { ref, onMounted } from "vue";
 
 import TruecallerVerification from "./TrueCallerVerification.vue";
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const showPostVerification = ref(false);
@@ -379,7 +379,7 @@ function isValidEmail(email: string): boolean {
 const handleDone = (email: any) => {
   let val = isValidEmail(email);
   if (val) {
-    showEmailOtp.value=true
+    showEmailOtp.value = true;
   } else {
     console.log("error");
   }
@@ -410,9 +410,14 @@ const isOtpComplete = computed(() => {
 const isOtpComplete1 = computed(() => {
   return otpDigits1.value.every((digit) => digit !== "");
 });
-const showEmailOtp=ref(false)
+const showEmailOtp = ref(false);
 
 const formatTime = (seconds: number) => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}s`;
+};
+const formatTime1 = (seconds: number) => {
   const mins = Math.floor(seconds / 60);
   const secs = seconds % 60;
   return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}s`;
@@ -487,6 +492,7 @@ const focusNextInput = (index: number) => {
 };
 
 const startTimer = () => {
+    debugger
   timer.value = 60;
   timerInterval = setInterval(() => {
     if (timer.value > 0) {
@@ -497,6 +503,7 @@ const startTimer = () => {
   }, 1000);
 };
 const startTimer1 = () => {
+    debugger
   timer1.value = 60;
   timerInterval = setInterval(() => {
     if (timer1.value > 0) {
@@ -512,6 +519,7 @@ const resendOtp = () => {
     // Reset OTP inputs
     otpDigits.value = ["", "", "", "", "", ""];
     // Restart timer
+
     startTimer();
     // TODO: Add API call to resend OTP
     console.log("Resending OTP...");
@@ -533,19 +541,42 @@ const verifyOtp = () => {
   showTruecaller.value = false;
   EmailHandling.value = true;
 };
-const verifyOtpforEmail = () =>{
-     const otp = otpDigits.value.join("");
- router.push('/SecondStep');
-}
+const verifyOtpforEmail = () => {
+  const otp = otpDigits.value.join("");
+  router.push("/SecondStep");
+};
 const closeSheet = () => {
   openVerifygoogle.value = false;
 };
 
 onMounted(() => {
-  startTimer();
+  if (showTruecaller.value ) {
+    startTimer();
+  }
+  if (showEmailOtp.value) {
     startTimer1();
+  }
 });
-
+watch(showTruecaller, (newVal) => {
+  if (newVal) {
+    // If showTruecaller is true, call the startTimer function
+    startTimer();
+  } else {
+    // Optional: You can stop the timer or perform other actions when showTruecaller is false
+    if (timerInterval) clearInterval(timerInterval);
+    timer.value = 60; // Reset the timer if necessary
+  }
+});
+watch(showEmailOtp, (newVal) => {
+  if (newVal) {
+    // If showTruecaller is true, call the startTimer function
+    startTimer1();
+  } else {
+    // Optional: You can stop the timer or perform other actions when showTruecaller is false
+    if (timerInterval) clearInterval(timerInterval);
+    timer1.value = 60; // Reset the timer if necessary
+  }
+});
 onUnmounted(() => {
   if (timerInterval) clearInterval(timerInterval);
 });

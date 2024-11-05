@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-orange-500 bg-opacity-50 z-40"
+      class="fixed inset-0 bg-orange-500  z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div
-      class="fixed h-[90%] bottom-0 left-0 right-0 bg-white z-50 transition-transform transform rounded-xl"
+      class="fixed h-[90%] bottom-0 left-0 right-0 bg-white z-50 transition-transform transform rounded-t-xl"
       :class="{ 'translate-y-0': isOpen, 'translate-y-full': !isOpen }"
     >
       <div class="md:w-[40%] md:flex md:mx-auto">
@@ -30,13 +30,13 @@
 
             <div class="rounded-lg px-2">
               <div class="flex flex-col">
-                <div class="flex items-center align-center space-x-4">
+                <div class="flex items-center align-center space-x-10">
                   <div class="bg-green-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="green"
-                      class="h-6 w-6"
+                      class="h-5 w-5"
                     >
                       <path
                         fill-rule="evenodd"
@@ -56,7 +56,7 @@
                   </div>
                 </div>
                 <div class="font-bold text-2xl py-4 px-1">Next Up...</div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       class="w-4 h-4 text-gray-500"
@@ -72,7 +72,7 @@
                       />
                     </svg>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-4">
                      
 
                     <div class="text-md font-bold">Setup Your Profile</div>
@@ -81,7 +81,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@
                       />
                     </svg>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-4">
                      
 
                     <h3 class="text-md font-bold">Link your bank a/c</h3>
@@ -107,7 +107,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +124,7 @@
                       />
                     </svg>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-4">
                      
 
                     <h3 class="text-md font-bold">Confirm it's you</h3>
@@ -133,7 +133,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,7 @@
                       />
                     </svg>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-4">
                      
 
                     <h3 class="text-md font-bold">eSign Ang Login</h3>
@@ -160,7 +160,7 @@
                 </div>
 
                 <button
-                  class="bg-[#1E1B4B] text-white font-bold py-3 mb-3 px-2 md:w-[30%] sm:w-[90%] fixed bottom-0 rounded-lg mt-8"
+                  class="bg-[#1E1B4B] text-white font-bold py-3 mb-3 px-2 animate-bounce md:w-[30%] sm:w-[90%] fixed bottom-0 rounded-lg mt-8"
                   @click="nextStep"
                 >
                   Continue
@@ -170,14 +170,14 @@
           </div>
         </div>
         <div v-if="isOccupation">
-          <div class="p-8">
+          <div class="p-8 mt-6">
             <h1 class="text-2xl font-semibold text-[#2D3648] mb-1">
               Your occupation
             </h1>
-            <p class="text-gray-500 text-sm mb-6">
+            <p class="text-gray-500 text-sm mb-10">
               These details are required by SEBI to open your demat account.
             </p>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-6">
               <button
                 class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Agriculturist')"
@@ -296,7 +296,7 @@
             <h1 class="text-2xl font-semibold text-[#2D3648] mb-1">
               Your trading experience
             </h1>
-            <p class="text-gray-500 text-sm mb-6">
+            <p class="text-gray-500 text-sm mb-10">
               These details are required by SEBI to open your demat account.
             </p>
             <div class="grid grid-cols-2 gap-6 mb-4">
@@ -400,7 +400,7 @@
               >
             </div>
             <button
-              class="w-full py-2 my-4 px-4 bg-[#1E1B4B] text-white rounded-lg"
+              class="w-full py-2 my-6 px-4 bg-[#1E1B4B] text-white rounded-lg animate-bounce"
               @click="moveToNext"
             >
               Continue

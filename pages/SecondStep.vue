@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-orange-500 bg-opacity-50 z-40"
+      class="fixed inset-0 bg-orange-500  z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div
-      class="fixed h-[90%] bottom-0 left-0 right-0 bg-white z-50 transition-transform transform rounded-xl"
+      class="fixed h-[90%] bottom-0 left-0 right-0 bg-white z-50 transition-transform transform rounded-t-xl"
       :class="{ 'translate-y-0': isOpen, 'translate-y-full': !isOpen }"
     >
       <div class="md:w-[40%] md:flex md:mx-auto">
@@ -34,7 +34,7 @@
             </div>
             <div class="rounded-lg px-2">
               <div class="flex flex-col">
-                <div class="flex items-center align-center space-x-4">
+                <div class="flex items-center align-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       class="w-4 h-4 text-gray-500"
@@ -50,7 +50,7 @@
                       />
                     </svg>
                   </div>
-                  <div class="mb-4">
+                  <div class="mb-5">
                      
 
                     <h3 class="text-md font-bold">Complete e-KYC</h3>
@@ -59,7 +59,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       class="w-4 h-4 text-gray-500"
@@ -75,7 +75,7 @@
                       />
                     </svg>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-5">
                      
 
                     <div class="text-md font-bold">Setup Your Profile</div>
@@ -84,7 +84,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@
                       />
                     </svg>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-5">
                      
 
                     <h3 class="text-md font-bold">Link your bank a/c</h3>
@@ -110,7 +110,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +127,7 @@
                       />
                     </svg>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-5">
                      
 
                     <h3 class="text-md font-bold">Confirm it's you</h3>
@@ -136,7 +136,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +163,7 @@
                 </div>
 
                 <button
-                  class="bg-[#1E1B4B] text-white font-bold py-3 mb-3 px-2 md:w-[30%] sm:w-[90%] fixed bottom-0 rounded-lg mt-8"
+                  class="bg-[#1E1B4B] text-white font-bold py-3 mb-3 px-2 md:w-[30%] sm:w-[95%] fixed bottom-0 rounded-lg mt-8 animate-bounce"
                   @click="nextStep"
                 >
                   Continue
@@ -308,7 +308,7 @@
                 type="submit"
                 class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed"
                 :disabled="!isFormValid"
-                :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B]'"
+                :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B] animate-bounce'"
                 @click="setPanDetails"
               >
                 Continue
@@ -344,7 +344,7 @@
               type="submit"
               class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed"
               :disabled="!isFormValid"
-              :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B]'"
+              :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B] animate-bounce'"
               @click="moveToEkyc"
             >
               Continue
@@ -406,7 +406,7 @@
               </ul>
             </div>
             <button
-              class="bg-[#1E1B4B] text-white py-2 px-4 rounded-lg w-full mb-4 font-semibold"
+              class="bg-[#1E1B4B] text-white py-2 px-4 rounded-lg w-full my-4 font-semibold animate-bounce"
               @click="moveToConfirmation"
             >
               Start e-KYC
@@ -418,8 +418,8 @@
         </div>
         <div v-if="finalConfirmation">
             <div id="app" class="w-full max-w-md p-6 ">
-      <h1 class="text-2xl font-semibold text-[#2D3648] mb-1">Confirm your details</h1>
-      <p class="text-gray-600 mb-4">We have fetched your Aadhaar details from Digilocker.</p>
+      <h1 class="text-xl font-semibold text-[#2D3648] mb-1">Confirm your details</h1>
+      <p class="text-gray-600 mb-6">We have fetched your Aadhaar details from Digilocker.</p>
       <div class="bg-gray-100 p-4 rounded-lg mb-4">
      <div class="mb-4">
           <span class="text-gray-600">Name:</span>
@@ -459,7 +459,7 @@
         <span class="text-gray-800 font-semibold text-sm">PAN linked with your Aadhaar Card</span>
         <a href="#" class="text-orange-500 font-semibold text-sm ml-auto pr-4">View ></a>
       </div>
-      <button class="w-full bg-[#1E1B4B] text-white font-bold py-2 rounded-lg" @click="completeEkyc">Continue</button>
+      <button class="w-full bg-[#1E1B4B] animate-bounce text-white font-bold py-2 rounded-lg my-4" @click="completeEkyc">Continue</button>
     </div>
         </div>
       </div>
