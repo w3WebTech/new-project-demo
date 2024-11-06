@@ -394,11 +394,10 @@
         <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4 relative">
        <!-- <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> -->
        <div class="relative">
-      <!-- Video element to display live camera feed -->
+      
       <video ref="video" class="w-full h-auto rounded-lg" autoplay playsinline></video>
       
-      <!-- Snapshot Canvas (invisible, used to capture the photo) -->
-      <canvas ref="canvas" class="hidden"></canvas>
+
 
       <!-- Capture Button -->
       <button
@@ -494,7 +493,24 @@ const handleConfirm = async () => {
     }
   }
 };
+const startCamera= async() =>{
+      try {
+        // Request access to the camera
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
+        // Bind the video stream to the video element
+        $refs.video.srcObject = stream;
+
+        // Optional: Stop the stream when the component is destroyed
+        $once('hook:beforeDestroy', () => {
+          const tracks = stream.getTracks();
+          tracks.forEach(track => track.stop());
+        });
+      } catch (error) {
+        console.error("Error accessing camera:", error);
+        alert('Unable to access the camera. Please check your permissions.');
+      }
+    }
 const handleContinue = () => {
     if(hasPermissions.value == true){
 vedioScreen.value=true
@@ -508,7 +524,9 @@ cameraaccessdialog.value = true;
 
 </script>
 <style scoped lang="scss">
-
+video {
+  object-fit: cover;
+}
 .lds-spinner,
 .lds-spinner div,
 .lds-spinner div:after {
