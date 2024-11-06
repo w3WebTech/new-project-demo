@@ -67,7 +67,7 @@ const nextStep = () => {
 
 const handleConfirm = async () => {
   try {
-    const stream = await navigator.mediaDevices.getUser Media({ video: true });
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     hasPermissions.value = true;
     startCamera(stream);
   } catch (error) {
