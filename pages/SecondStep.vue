@@ -14,7 +14,7 @@
       class="fixed h-[90%] bottom-0 left-0 right-0 bg-white z-50 transition-transform transform rounded-t-xl"
       :class="{ 'translate-y-0': isOpen, 'translate-y-full': !isOpen }"
     >
-      <div class="md:w-[40%] md:flex md:mx-auto">
+      <div class="md:w-[40%] md:flex md:mx-auto md:justify-center md:items-center">
         <!-- <div class="absolute inset-0 grid grid-cols-12 h-[300px]">
         <div v-for="i in 48" :key="i" class="border border-[#dad3fc]"></div>
       </div> -->

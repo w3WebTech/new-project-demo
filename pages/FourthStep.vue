@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-orange-500  z-40"
+      class="fixed inset-0 bg-orange-500 z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -14,11 +14,13 @@
       class="fixed h-[90%] bottom-0 left-0 right-0 bg-white z-50 transition-transform transform rounded-t-xl"
       :class="{ 'translate-y-0': isOpen, 'translate-y-full': !isOpen }"
     >
-      <div class="md:w-[40%] md:flex md:mx-auto">
+      <div
+        class="md:w-[40%] md:flex md:mx-auto md:justify-center md:items-center"
+      >
         <!-- <div class="absolute inset-0 grid grid-cols-12 h-[300px]">
         <div v-for="i in 48" :key="i" class="border border-[#dad3fc]"></div>
       </div> -->
-        <div >
+        <div v-if="verificationStep">
           <div class="md:pt-5 sm:pt-10 pb-5 relative">
             <!-- <div class="flex items-center justify-center text-center">
           <img
@@ -55,10 +57,10 @@
                     </p>
                   </div>
                 </div>
-               
+
                 <div class="flex items-center space-x-10">
                   <div class="bg-green-200 rounded-full p-3">
-                             <svg
+                    <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="green"
@@ -80,7 +82,7 @@
                     </div>
                   </div>
                 </div>
-                 <div class="font-bold text-2xl py-3 px-1">Next Up...</div>
+                <div class="font-bold text-2xl py-3 px-1">Next Up...</div>
                 <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
@@ -160,7 +162,7 @@
                 </div>
 
                 <button
-                  class="bg-[#1E1B4B] animate-bounce text-white font-bold py-3 mb-3 px-2 md:w-[30%] sm:w-[90%] fixed bottom-0 rounded-lg mt-8"
+                  class="bg-[#1E1B4B] animate-bounce text-white font-bold py-3 mb-3 px-2 md:w-[30%] sm:w-[95%] fixed bottom-0 rounded-lg mt-8"
                   @click="nextStep"
                 >
                   Continue
@@ -169,7 +171,166 @@
             </div>
           </div>
         </div>
-   
+        <div v-if="bankVerification">
+          <div class="max-w-2xl mx-auto md:p-8 sm:py-8 sm:px-3">
+            <h1 class="text-2xl font-semibold mb-2">Add bank account</h1>
+            <p class="text-gray-600 mb-4">
+              This will be your primary account for all transactions.
+            </p>
+            <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
+              <i class="fas fa-lock"></i> Your bank details are secured and will
+              not be shared with anyone
+            </div>
+            <div class="relative mb-6">
+              <input
+                v-model="searchQuery"
+                class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-[#1E1B4B]"
+                placeholder="Search your Bank"
+                type="text"
+              />
+              <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div>
+                <h2 class="text-gray-600 mb-2">POPULAR BANKS</h2>
+                <div class="bg-gray-100 px-1 rounded flex space-x-2">
+                  <div
+                    v-for="bank in filteredPopularBanks"
+                    :key="bank.name"
+                    class="flex flex-col items-center text-center rounded-md p-2 my-1 hover:bg-[#1E1B4B] hover:text-white"
+                    @click="setBankAccount(bank.name)"
+                    :class="{
+                      'bg-[#1E1B4B] text-white':
+                        selectedBankAccount === bank.name,
+                      'bg-gray-100': selectedBankAccount !== bank.name,
+                    }"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      :fill="
+                        selectedBankAccount === bank.name ? 'white' : '#1E1B4B'
+                      "
+                      class="h-5 w-5"
+                    >
+                      <path
+                        d="M11.584 2.376a.75.75 0 0 1 .832 0l9 6a.75.75 0 1 1-.832 1.248L12 3.901 3.416 9.624a.75.75 0 0 1-.832-1.248l9-6Z"
+                        :fill="selectedBankAccount === bank.name ? 'white' : '#1E1B4B'"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M20.25 10.332v9.918H21a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1 0-1.5h.75v-9.918a.75.75 0 0 1 .634-.74A49.109 49.109 0 0 1 12 9c2.59 0 5.134.202 7.616.592a.75.75 0 0 1 .634.74Zm-7.5 2.418a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Zm3-.75a.75.75 0 0 1 .75.75v6.75a.75.75 0 0 1-1.5 0v-6.75a.75.75 0 0 1 .75-.75ZM9 12.75a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Z"
+                        clip-rule="evenodd" :fill="selectedBankAccount === bank.name ? 'white' : '#1E1B4B'"
+                      />
+                      <path
+                        d="M12 7.875a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z" :fill="selectedBankAccount === bank.name ? 'white' : '#1E1B4B'"
+                      />
+                    </svg>
+                    <span class="text-sm">{{ bank.name }}</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h2 class="text-gray-600 mb-2">ALL BANKS</h2>
+                <div class="h-[200px] overflow-y-auto mb-3">
+                  <ul class="bg-gray-100 p-4 rounded space-y-2">
+                    <li
+                      v-for="bank in filteredAllBanks"
+                      :key="bank.name"
+                      class="flex items-center space-x-2 py-1 px-1 rounded-md hover:bg-[#1E1B4B] hover:text-white"
+                      @click="setBankAccount(bank.name)"
+                      :class="{
+                        'bg-[#1E1B4B] text-white':
+                          selectedBankAccount === bank.name,
+                        'bg-gray-100': selectedBankAccount !== bank.name,
+                      }"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        :fill="
+                          selectedBankAccount === bank.name
+                            ? 'white'
+                            : '#1E1B4B'
+                        "
+                        class="h-4 w-4 "
+                      >
+                        <path
+                          d="M11.584 2.376a.75.75 0 0 1 .832 0l9 6a.75.75 0 1 1-.832 1.248L12 3.901 3.416 9.624a.75.75 0 0 1-.832-1.248l9-6Z"
+                        />
+                        <path
+                          fill-rule="evenodd"
+                          d="M20.25 10.332v9.918H21a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1 0-1.5h.75v-9.918a.75.75 0 0 1 .634-.74A49.109 49.109 0 0 1 12 9c2.59 0 5.134.202 7.616.592a.75.75 0 0 1 .634.74Zm-7.5 2.418a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Zm3-.75a.75.75 0 0 1 .75.75v6.75a.75.75 0 0 1-1.5 0v-6.75a.75.75 0 0 1 .75-.75ZM9 12.75a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Z"
+                          clip-rule="evenodd"
+                        />
+                        <path
+                          d="M12 7.875a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"
+                        />
+                      </svg>
+                      <span>{{ bank.name }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-if="setBankDetails">
+          <div class="py-32 px-10">
+              <AnimatedList
+               :is-open="animatedVal"
+              @close="animaSuccess"/>
+          </div>
+    
+          
+        </div>
+        <div v-if="bankDetailsSuccess"><div class="min-h-screen  flex items-center justify-center p-4">
+    <div class=" space-y-3">
+      <div class="text-center">
+        <div class="w-24 h-24 bg-green-100 rounded-full mx-auto flex items-center justify-center">
+          <div class="w-12 h-12 text-green-500">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+        </div>
+        <h2 class="text-2xl font-bold mt-4">Bank account added</h2>
+        <p class="text-gray-600 mt-2">Your bank details have been verified.</p>
+      </div>
+
+      <div class="bg-gray-50 rounded-lg p-10 space-y-4">
+        <div class="flex items-center space-x-5">
+          <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
+            <span class="text-lg font-semibold">A</span>
+          </div>
+          <div>
+            <h3 class="font-semibold">Archana</h3>
+            <p class="text-sm text-gray-500">{{selectedBankAccount}}</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex justify-between">
+            <span class="text-gray-600 pr-10">Acc. No.</span>
+            <span class="font-medium">XXXX XXXX 6636</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-600 pr-10">IFSC Code</span>
+            <span class="font-medium">1234567</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-600 pr-10">Branch</span>
+            <span class="font-medium"> THANJAVUR</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="w-full bg-[#1E1B4B] text-white py-3 my-6 rounded-lg font-semibold hover:bg-[#1E1B4B] transition-colors"
+      @click="completeBankDetails">
+        Continue
+      </button>
+    </div>
+  </div></div>
        
       </div>
     </div>
@@ -179,21 +340,104 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { computed } from "vue";
+import AnimatedList from '@/components/AnimatedList.vue';
+
+const searchQuery = ref("");
 
 const router = useRouter();
 const isOpen = ref(false);
-
+const verificationStep = ref(true);
+const bankVerification = ref(false);
+const selectedBankAccount = ref("");
+const setBankDetails=ref(false)
+const bankDetailsSuccess=ref(false)
 const openBottomSheet = () => {
   isOpen.value = true;
 };
+const animationVal = ref(true);
 
 const closeBottomSheet = () => {
   isOpen.value = false;
 };
+const nextStep = () => {
+  verificationStep.value = false;
+  bankVerification.value = true;
+};
+
+const popularBanks = ref([
+  {
+    name: "Axis Bank",
+    logo: "https://storage.googleapis.com/a1aa/image/lTdfHGeZumnI2Eop0GOl4zfryBKePlhflNKKObNOksaBMWvdC.jpg",
+  },
+  {
+    name: "HDFC Bank",
+    logo: "https://storage.googleapis.com/a1aa/image/pRqD7yHPwloZIRdyG0ZZdPwU2u12SGszidDseJ4087nvY92JA.jpg",
+  },
+  {
+    name: "ICICI Bank",
+    logo: "https://storage.googleapis.com/a1aa/image/yHWEf7mzbSW0TaapfnEUs9 qbsWpKZ913fcWKzUAqYUVyi1bnA.jpg",
+  },
+  {
+    name: "State Bank",
+    logo: "https://storage.googleapis.com/a1aa/image/OnEs2VHVemynBaLsNJpY6ItJGagauRgxYfTDvd24nze8i1bnA.jpg",
+  },
+]);
+
+const allBanks = ref([
+  { name: "Axis Bank" },
+  { name: "Bandhan Bank" },
+  { name: "Bank of Baroda" },
+  { name: "Bank of India" },
+  { name: "HDFC Bank" },
+  { name: "ICICI Bank" },
+  { name: "State Bank of India" },
+  { name: "Punjab National Bank" },
+  { name: "Kotak Mahindra Bank" },
+  { name: "IndusInd Bank" },
+  { name: "Yes Bank" },
+  { name: "Bank of Maharashtra" },
+  { name: "Central Bank of India" },
+  { name: "Union Bank of India" },
+  { name: "Indian Bank" },
+  { name: "UCO Bank" },
+  { name: "Indian Overseas Bank" },
+  { name: "Bank of America" },
+  { name: "Citi Bank" },
+  { name: "Deutsche Bank" },
+]);
+
+const filteredPopularBanks = computed(() => {
+  return popularBanks.value.filter((bank) =>
+    bank.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
+});
+
+const filteredAllBanks = computed(() => {
+  return allBanks.value.filter((bank) =>
+    bank.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
+});
 
 // Open the bottom sheet after 0.5 seconds
 onMounted(() => {
   setTimeout(openBottomSheet, 100);
 });
-
+const setBankAccount = (bankName: string) => {
+  selectedBankAccount.value = bankName;
+  
+  
+  // After 2 seconds, set setBankDetails to true
+  setTimeout(() => {
+    bankVerification.value = false;
+    setBankDetails.value = true;
+  }, 1000); // 2000 ms = 2 seconds
+};
+const animaSuccess=() =>{
+  setBankDetails.value = false;
+  bankDetailsSuccess.value=true
+}
+const completeBankDetails =()=>{
+    router.push('/FifthStep');
+}
 </script>
