@@ -418,7 +418,7 @@ import { useRouter } from "vue-router";
 import { computed } from "vue";
 
 
-
+const videoElement = ref<HTMLVideoElement | null>(null); 
 const searchQuery = ref("");
 
 const router = useRouter();
@@ -493,24 +493,26 @@ const handleConfirm = async () => {
     }
   }
 };
-const startCamera= async() =>{
-      try {
-        // Request access to the camera
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+const startCamera = async () => {
+  try {
+    // Request access to the camera
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
-        // Bind the video stream to the video element
-        $refs.video.srcObject = stream;
-
-        // Optional: Stop the stream when the component is destroyed
-        $once('hook:beforeDestroy', () => {
-          const tracks = stream.getTracks();
-          tracks.forEach(track => track.stop());
-        });
-      } catch (error) {
-        console.error("Error accessing camera:", error);
-        alert('Unable to access the camera. Please check your permissions.');
-      }
+    // Bind the video stream to the video element
+    if (videoElement.value) {
+      videoElement.value.srcObject = stream;
     }
+
+    // Optional: Stop the stream when the component is destroyed
+    onUnmounted(() => {
+      const tracks = stream.getTracks();
+      tracks.forEach(track => track.stop());
+    });
+  } catch (error) {
+    console.error("Error accessing camera:", error);
+    alert('Unable to access the camera. Please check your permissions.');
+  }
+};
 const handleContinue = () => {
     if(hasPermissions.value == true){
 vedioScreen.value=true
