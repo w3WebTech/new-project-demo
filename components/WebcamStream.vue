@@ -1,8 +1,8 @@
 <template>
-  <div class="m-auto w-500 h-375 border-10 border-gray-800">
+  <div class="m-auto w-full h-full border-10 border-gray-800">
     <video
       ref="videoElement"
-      class="w-full h-full bg-gray-600"
+      class="w-full h-full "
       autoplay
     ></video>
   </div>

@@ -294,7 +294,7 @@
       <div
         class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
       >
-        <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4 relative">
+        <div class="bg-white rounded-lg p-6 sm:max-w-sm w-full mx-4 relative">
           <button
             @click="handleClose"
             class="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
@@ -386,25 +386,35 @@
     class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-50"
   >
     <div
-      class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
+      class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0 "
     >
       <div
-        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg md:w-[50%] md:h-[400px]"
       >
-        <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4 relative">
-       <!-- <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> -->
+        <div class="bg-white rounded-lg p-6 sm:max-w-sm w-full h-full relative">
+     
        <div class="relative">
       
-      <video ref="video" class="w-full h-auto rounded-lg" autoplay playsinline></video>
+     <WebcamStream />
       
-
+<div class="absolute top-3 right-3 p-2 bg-gray-100 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" fill="gray" viewBox="0 0 24 24" stroke-width="2.5" stroke="gray" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+</svg>
+</div>
+<div class="absolute top-[40%] left-[40%]" v-if="isSpinner">   <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> </div>
 
       <!-- Capture Button -->
       <button
         @click="capture"
-        class="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-6 py-2 rounded-full shadow-md hover:bg-blue-600 transition duration-200"
+         class="  bg-[#1E1B4B]  text-white px-6 py-2 w-full my-2 rounded-xl shadow-md  transition duration-200"
       >
-        Capture
+    <div class="flex justify-center text-center items-center">  <div>    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="h-5 w-5 my-0.5 mx-2">
+  <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />
+  <path fill-rule="evenodd" d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
+</svg></div>
+<div>Capture Photo</div>
+</div>
+
       </button></div>
         </div>
       </div>
@@ -416,7 +426,7 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { computed } from "vue";
-
+import WebcamStream from '@/components/WebcamStream.vue';
 
 const videoElement = ref<HTMLVideoElement | null>(null); 
 const searchQuery = ref("");
@@ -427,6 +437,7 @@ const verificationStep = ref(true);
 const isCameraAccess = ref(false);
 const cameraaccessdialog = ref(false);
 const vedioScreen = ref(false)
+const isSpinner =ref(false)
 const openBottomSheet = () => {
   isOpen.value = true;
 };
@@ -515,7 +526,11 @@ const startCamera = async () => {
 };
 const handleContinue = () => {
     if(hasPermissions.value == true){
+        isSpinner.value=true
 vedioScreen.value=true
+  setTimeout(() => {
+      isSpinner.value=false
+  }, 1000);
     }
     else{
 cameraaccessdialog.value = true;
