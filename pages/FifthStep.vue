@@ -292,7 +292,7 @@
       class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
     >
       <div
-        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:mx-5"
       >
      <div v-if="capturedImage && !isLoading" class="mt-4">
               <h2 class="text-lg font-bold">Captured Image:</h2>
@@ -402,7 +402,7 @@
       class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0 "
     >
       <div
-        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg md:w-[50%] md:h-[400px]"
+        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg md:w-[50%] md:h-[400px] sm:mx-5"
       >
         <div class="bg-white rounded-lg p-6  w-full h-full relative">
      
