@@ -408,7 +408,14 @@
      
        <div class="relative">
       
-     <WebcamStream />
+       <div class="m-auto w-full h-full border-10 border-gray-800">
+    <video
+      ref="videoElement"
+      class="w-full h-full "
+      autoplay
+    ></video>
+  </div>
+   <canvas ref="canvas" class="hidden"></canvas>
       
 <div class="absolute top-3 right-3 p-2 bg-gray-100 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" fill="gray" viewBox="0 0 24 24" stroke-width="2.5" stroke="gray" class="size-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -568,6 +575,7 @@ const handleContinue = () => {
   }
 };
 const capture = () => {
+    debugger
   if (videoElement.value && canvas.value) {
     const context = canvas.value.getContext("2d");
     if (context) {
