@@ -45,7 +45,6 @@ const videoElement = ref<HTMLVideoElement | null>(null);
 const isOpen = ref(false);
 const verificationStep = ref(true);
 const isCameraAccess = ref(false);
-const cameraaccessdialog = ref(false);
 const hasPermissions = ref(false);
 
 const openBottomSheet = () => {
@@ -54,15 +53,20 @@ const openBottomSheet = () => {
 
 const closeBottomSheet = () => {
   isOpen.value = false;
+  stopCamera(); // Stop the camera when closing the bottom sheet
 };
 
 onMounted(() => {
   setTimeout(openBottomSheet, 100);
 });
 
-const nextStep = () => {
-  verificationStep.value = false;
-  isCameraAccess.value = true;
+const handleContinue = async () => {
+  if (hasPermissions.value) {
+    isCameraAccess.value = true;
+    startCamera();
+  } else {
+    isCameraAccess.value = true;
+  }
 };
 
 const handleConfirm = async () => {
@@ -76,25 +80,33 @@ const handleConfirm = async () => {
   }
 };
 
-const startCamera = (stream: MediaStream) => {
+const startCamera = (stream?: MediaStream) => {
   if (videoElement.value) {
-    videoElement.value.srcObject = stream;
+    if (stream) {
+      videoElement.value.srcObject = stream;
+    } else {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(startCamera)
+        .catch(err => console.error("Error starting camera:", err));
+    }
   }
-  
-  onUnmounted(() => {
-    const tracks = stream.getTracks();
-    tracks.forEach(track => track.stop());
-  });
 };
 
-const handleContinue = () => {
-  if (hasPermissions.value) {
-    isCameraAccess.value = true;
-    handleConfirm(); // Request camera access
-  } else {
-    cameraaccessdialog.value = true;
+const stopCamera = () => {
+  if (videoElement.value && videoElement.value.srcObject) {
+    const tracks = (videoElement.value.srcObject as MediaStream).getTracks();
+    tracks.forEach(track => track.stop());
+    videoElement.value.srcObject = null; // Clear the video source
   }
 };
+
+const capture = () => {
+  // Implement your capture logic here
+};
+
+onUnmounted(() => {
+  stopCamera(); // Ensure the camera is stopped when the component is unmounted
+});
 </script>
 
 <style scoped lang="scss">
