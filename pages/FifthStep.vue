@@ -565,6 +565,18 @@ const startCamera = async () => {
 const handleContinue = () => {
   if (hasPermissions.value == true) {
     isSpinner.value = true;
+    const constraints = { video: true };
+
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+      if (videoElement.value) {
+        videoElement.value.srcObject = stream;
+      }
+    })
+    .catch((error) => {
+      console.error("Error accessing the camera:", error);
+      alert("Error accessing the camera.");
+    });
     vedioScreen.value = true;
     setTimeout(() => {
       isSpinner.value = false;
