@@ -25,7 +25,7 @@
         <div class="flex gap-2 mb-8 mr-3">
           <template v-for="(digit, index) in 6" :key="index">
             <input
-              type="text"
+              type="tel"
               maxlength="1"
               v-model="otpDigits[index]"
               @input="handleOtpInput($event, index)"
@@ -93,7 +93,7 @@
         <div class="flex gap-2 mb-8 mr-3">
           <template v-for="(digit, index) in 6" :key="index">
             <input
-              type="text"
+              type="tel"
               maxlength="1"
               v-model="otpDigits1[index]"
               @input="handleOtpInput1($event, index)"
