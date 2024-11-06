@@ -294,7 +294,17 @@
       <div
         class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
       >
-        <div class="bg-white rounded-lg p-6 sm:max-w-sm w-full mx-4 relative">
+     <div v-if="capturedImage && !isLoading" class="mt-4">
+              <h2 class="text-lg font-bold">Captured Image:</h2>
+              <img :src="capturedImage" alt="Captured Image" class="w-full h-auto rounded-lg" />
+            </div>
+            <div v-else-if="isLoading "> 
+                 <div class="">     
+                       <div class="font-bold p-5">Verifying</div>   
+                        <img src="public/images/faceverifying.png" alt="Google" class="w-100 h-100 mx-20 my-10" />
+                        </div></div>
+            <div v-else>
+        <div class="bg-white rounded-lg p-6 w-full mx-4 relative">
           <button
             @click="handleClose"
             class="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
@@ -378,8 +388,11 @@
             OK
           </button>
         </div>
+      
+        
       </div>
     </div>
+  </div>
   </div>
   <div
     v-if="vedioScreen "
@@ -391,7 +404,7 @@
       <div
         class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg md:w-[50%] md:h-[400px]"
       >
-        <div class="bg-white rounded-lg p-6 sm:max-w-sm w-full h-full relative">
+        <div class="bg-white rounded-lg p-6  w-full h-full relative">
      
        <div class="relative">
       
@@ -426,9 +439,9 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { computed } from "vue";
-import WebcamStream from '@/components/WebcamStream.vue';
+import WebcamStream from "@/components/WebcamStream.vue";
 
-const videoElement = ref<HTMLVideoElement | null>(null); 
+const videoElement = ref<HTMLVideoElement | null>(null);
 const searchQuery = ref("");
 
 const router = useRouter();
@@ -436,8 +449,11 @@ const isOpen = ref(false);
 const verificationStep = ref(true);
 const isCameraAccess = ref(false);
 const cameraaccessdialog = ref(false);
-const vedioScreen = ref(false)
-const isSpinner =ref(false)
+const vedioScreen = ref(false);
+const isSpinner = ref(false);
+const isLoading = ref(false);
+const canvas = ref<HTMLCanvasElement | null>(null);
+const capturedImage = ref<string | null>(null);
 const openBottomSheet = () => {
   isOpen.value = true;
 };
@@ -460,7 +476,9 @@ const handleConfirm = async () => {
   try {
     // Check if the device has a camera available
     const devices = await navigator.mediaDevices.enumerateDevices();
-    const videoDevices = devices.filter(device => device.kind === 'videoinput');
+    const videoDevices = devices.filter(
+      (device) => device.kind === "videoinput"
+    );
 
     if (videoDevices.length === 0) {
       // If no camera is found, log the warning and proceed to location permission
@@ -472,7 +490,9 @@ const handleConfirm = async () => {
 
     // Request location permission regardless of camera availability
     const locationPermission = await new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true });
+      navigator.geolocation.getCurrentPosition(resolve, reject, {
+        enableHighAccuracy: true,
+      });
     });
 
     // If both permissions are granted, set the hasPermissions flag to true
@@ -486,21 +506,32 @@ const handleConfirm = async () => {
     console.error("Error requesting permissions:", error);
 
     if (error.message === "No camera found on this device.") {
-      alert('No camera found on your device. Location permission will still be requested.');
-    } else if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
+      alert(
+        "No camera found on your device. Location permission will still be requested."
+      );
+    } else if (
+      error.name === "NotAllowedError" ||
+      error.name === "PermissionDeniedError"
+    ) {
       // Handle geolocation permission denial
       if (error.code === 1) {
-        alert('Location permission denied. Please enable location access in your browser settings.');
+        alert(
+          "Location permission denied. Please enable location access in your browser settings."
+        );
       } else if (error.code === 2) {
-        alert('Location is unavailable. Please try again later.');
+        alert("Location is unavailable. Please try again later.");
       }
 
       // Handle camera permission denial
       if (error.message.includes("getUserMedia")) {
-        alert('Camera permission denied. Please allow camera access in your browser settings.');
+        alert(
+          "Camera permission denied. Please allow camera access in your browser settings."
+        );
       }
     } else {
-      alert('An error occurred while requesting permissions. Please try again later.');
+      alert(
+        "An error occurred while requesting permissions. Please try again later."
+      );
     }
   }
 };
@@ -517,29 +548,49 @@ const startCamera = async () => {
     // Optional: Stop the stream when the component is destroyed
     onUnmounted(() => {
       const tracks = stream.getTracks();
-      tracks.forEach(track => track.stop());
+      tracks.forEach((track) => track.stop());
     });
   } catch (error) {
     console.error("Error accessing camera:", error);
-    alert('Unable to access the camera. Please check your permissions.');
+    alert("Unable to access the camera. Please check your permissions.");
   }
 };
 const handleContinue = () => {
-    if(hasPermissions.value == true){
-        isSpinner.value=true
-vedioScreen.value=true
-  setTimeout(() => {
-      isSpinner.value=false
-  }, 1000);
-    }
-    else{
-cameraaccessdialog.value = true;
-startCamera()
-    }
-  
+  if (hasPermissions.value == true) {
+    isSpinner.value = true;
+    vedioScreen.value = true;
+    setTimeout(() => {
+      isSpinner.value = false;
+    }, 1000);
+  } else {
+    cameraaccessdialog.value = true;
+    startCamera();
+  }
 };
-
-
+const capture = () => {
+  if (videoElement.value && canvas.value) {
+    const context = canvas.value.getContext("2d");
+    if (context) {
+      // Set canvas dimensions to match the video
+      canvas.value.width = videoElement.value.videoWidth;
+      canvas.value.height = videoElement.value.videoHeight;
+      // Draw the current video frame to the canvas
+      context.drawImage(
+        videoElement.value,
+        0,
+        0,
+        canvas.value.width,
+        canvas.value.height
+      );
+      // Convert the canvas to a data URL and store it in capturedImage
+      capturedImage.value = canvas.value.toDataURL("image/png");
+      isLoading.value = true;
+      setTimeout(() => {
+        isLoading.value = false;
+      }, 2000);
+    }
+  }
+};
 </script>
 <style scoped lang="scss">
 video {
@@ -556,7 +607,6 @@ video {
   position: relative;
   width: 80px;
   height: 80px;
-  
 }
 .lds-spinner div {
   transform-origin: 40px 40px;
@@ -629,6 +679,4 @@ video {
     opacity: 0;
   }
 }
-
-
 </style>
