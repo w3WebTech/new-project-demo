@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-orange-500 z-40"
+      class="fixed inset-0 bg-[#FF844B] z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -274,7 +274,7 @@
               These details are required by SEBI to open your demat account.
             </p>
             <button
-              class="bg-[#1E1B4B] text-white py-2 px-4 rounded-lg w-full"
+              class="bg-[#1E1B4B] text-white py-2 px-4 rounded-lg w-full animate-bounce md:mt-6"
               @click="handleContinue"
             >
               Open camera
@@ -285,7 +285,7 @@
     </div>
   </div>
   <div
-    v-if="cameraaccessdialog "
+    v-if="cameraaccessdialog"
     class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-50"
   >
     <div
@@ -294,148 +294,200 @@
       <div
         class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:mx-5"
       >
-     <div v-if="capturedImage && !isLoading" class="mt-4">
-              <h2 class="text-lg font-bold">Captured Image:</h2>
-              <img :src="capturedImage" alt="Captured Image" class="w-full h-auto rounded-lg" />
-            </div>
-            <div v-else-if="isLoading "> 
-                 <div class="">     
-                       <div class="font-bold p-5">Verifying</div>   
-                        <img src="public/images/faceverifying.png" alt="Google" class="w-100 h-100 mx-20 my-10" />
-                        </div></div>
-            <div v-else>
-        <div class="bg-white rounded-lg p-6 w-full mx-4 relative">
-          <button
-            @click="handleClose"
-            class="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
-          >
-            <Icon name="lucide:x" class="w-5 h-5" />
-          </button>
-
-          <div class="flex justify-center space-x-4 mb-4">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="green"
-                class="h-12 w-12"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"
-                />
-              </svg>
-            </div>
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="gray"
-                class="h-10 w-10 pt-5"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </div>
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="green"
-                class="h-12 w-12"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                />
-              </svg>
-            </div>
-          </div>
-
-          <h2 class="text-xl font-bold text-center mb-2">
-            Allow camera & location access
-          </h2>
-
-          <p class="text-gray-600 text-center font-semibold text-md mb-6">
-            In case disabled, please enable permissions from your browser's
-            settings
-          </p>
-
-          <button
-            @click="handleConfirm"
-            class="w-full bg-[#1E1B4B] font-bold text-white py-3 rounded-lg  transition-colors"
-
-          >
-            OK
-          </button>
-        </div>
-      
         
+        <div >
+          <div class="bg-white rounded-lg p-6 w-full mx-4 relative">
+            <button
+              @click="handleClose"
+              class="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
+            >
+              <Icon name="lucide:x" class="w-5 h-5" />
+            </button>
+
+            <div class="flex justify-center space-x-4 mb-4">
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="green"
+                  class="h-12 w-12"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="gray"
+                  class="h-10 w-10 pt-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="green"
+                  class="h-12 w-12"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <h2 class="text-xl font-bold text-center mb-2">
+              Allow camera & location access
+            </h2>
+
+            <p class="text-gray-600 text-center font-semibold text-md mb-6">
+              In case disabled, please enable permissions from your browser's
+              settings
+            </p>
+
+            <button
+              @click="handleConfirm"
+              class="w-full bg-[#1E1B4B] font-bold text-white py-3 rounded-lg transition-colors"
+            >
+              OK
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  </div>
   <div
-    v-if="vedioScreen "
+    v-if="vedioScreen"
     class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-50"
   >
     <div
-      class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0 "
+      class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
     >
       <div
         class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg md:w-[50%] md:h-[400px] sm:mx-5"
       >
-        <div class="bg-white rounded-lg p-6  w-full h-full relative">
-     
-       <div class="relative">
-      
-       <div class="m-auto w-full h-full border-10 border-gray-800">
-    <video
-      ref="videoElement"
-      class="w-full h-full "
-      autoplay
-    ></video>
-  </div>
-   <canvas ref="canvas" class="hidden"></canvas>
-      
-<div class="absolute top-3 right-3 p-2 bg-gray-100 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" fill="gray" viewBox="0 0 24 24" stroke-width="2.5" stroke="gray" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-</svg>
-</div>
-<div class="absolute top-[40%] left-[40%]" v-if="isSpinner">   <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> </div>
+        <div class="bg-white rounded-lg p-6 w-full h-full relative">
+            <div v-if="capturedImage && !isLoading" class="m-2">
+          <div class="font-bold py-2 text-xl">Looking Good !</div>
+          <div class="font-semibold text-sm">Your Photo Could be verified ...</div>
+          <img
+            :src="capturedImage"
+            alt="Captured Image"
+            class="w-full h-auto rounded-lg"
+          />
+           <button
+              @click="MoveToNext"
+              class="bg-[#1E1B4B] text-white px-6 py-2 w-full my-2 rounded-xl shadow-md transition duration-200"
+            >
+           
+                Continue
+              
+            </button>
+        </div>
+        <div v-else-if="isLoading">
+          <div class="">
+            <div class="font-bold p-5">Verifying...</div>
+            <img
+              src="public/images/faceverifying.png"
+              alt="Google"
+              class="w-100 h-100 md:mx-20 sm:mx-5 my-10"
+            />
+            
+          </div>
+        </div>
+           <div class="relative" v-else >
+            <div class="m-auto w-full h-full border-10 border-gray-800">
+              <video ref="videoElement" class="w-full h-full" autoplay></video>
+            </div>
+            <canvas ref="canvas" class="hidden"></canvas>
 
-      <!-- Capture Button -->
-      <button
-        @click="capture"
-         class="  bg-[#1E1B4B]  text-white px-6 py-2 w-full my-2 rounded-xl shadow-md  transition duration-200"
-      >
-    <div class="flex justify-center text-center items-center">  <div>    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="h-5 w-5 my-0.5 mx-2">
-  <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />
-  <path fill-rule="evenodd" d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
-</svg></div>
-<div>Capture Photo</div>
-</div>
+            <div class="absolute top-3 right-3 p-2 bg-gray-100 rounded-md" @click="vedioScreen =false">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="gray"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="gray"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            </div>
+            <div class="absolute top-[40%] left-[40%]" v-if="isSpinner">
+              <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
 
-      </button></div>
+        
+            <button
+              @click="capture"
+              class="bg-[#1E1B4B] text-white px-6 py-2 w-full my-2 rounded-xl shadow-md transition duration-200"
+            >
+              <div class="flex justify-center text-center items-center">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    class="h-5 w-5 my-0.5 mx-2"
+                  >
+                    <path
+                      d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div>Capture Photo</div>
+              </div>
+            </button>
+          </div> 
         </div>
       </div>
     </div>
@@ -567,16 +619,17 @@ const handleContinue = () => {
     isSpinner.value = true;
     const constraints = { video: true };
 
-  navigator.mediaDevices.getUserMedia(constraints)
-    .then((stream) => {
-      if (videoElement.value) {
-        videoElement.value.srcObject = stream;
-      }
-    })
-    .catch((error) => {
-      console.error("Error accessing the camera:", error);
-      alert("Error accessing the camera.");
-    });
+    navigator.mediaDevices
+      .getUserMedia(constraints)
+      .then((stream) => {
+        if (videoElement.value) {
+          videoElement.value.srcObject = stream;
+        }
+      })
+      .catch((error) => {
+        console.error("Error accessing the camera:", error);
+        alert("Error accessing the camera.");
+      });
     vedioScreen.value = true;
     setTimeout(() => {
       isSpinner.value = false;
@@ -586,8 +639,11 @@ const handleContinue = () => {
     startCamera();
   }
 };
+const MoveToNext =()=>{
+     router.push("/SixthStep");
+}
 const capture = () => {
-    debugger
+  debugger;
   if (videoElement.value && canvas.value) {
     const context = canvas.value.getContext("2d");
     if (context) {

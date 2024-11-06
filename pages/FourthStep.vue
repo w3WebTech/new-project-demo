@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-orange-500 z-40"
+      class="fixed inset-0 bg-[#FF844B] z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -284,7 +284,7 @@
     
           
         </div>
-        <div v-if="bankDetailsSuccess"><div class="min-h-screen  flex items-center justify-center p-4">
+        <div v-if="bankDetailsSuccess"><div class="min-h-screen  flex items-center justify-center ">
     <div class=" space-y-3">
       <div class="text-center">
         <div class="w-24 h-24 bg-green-100 rounded-full mx-auto flex items-center justify-center">
@@ -298,7 +298,7 @@
         <p class="text-gray-600 mt-2">Your bank details have been verified.</p>
       </div>
 
-      <div class="bg-gray-50 rounded-lg p-10 space-y-4">
+      <div class="bg-gray-50 rounded-lg p-10 space-y-2 ">
         <div class="flex items-center space-x-5">
           <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
             <span class="text-lg font-semibold">A</span>
@@ -325,7 +325,7 @@
         </div>
       </div>
 
-      <button class="w-full bg-[#1E1B4B] text-white py-3 my-6 rounded-lg font-semibold hover:bg-[#1E1B4B] transition-colors"
+      <button class="w-full animate-bounce bg-[#1E1B4B] text-white py-3 mt-10 mb-6 rounded-lg font-semibold hover:bg-[#1E1B4B] transition-colors"
       @click="completeBankDetails">
         Continue
       </button>

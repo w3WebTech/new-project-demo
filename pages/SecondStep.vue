@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-orange-500  z-40"
+      class="fixed inset-0 bg-[#FF844B]  z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
