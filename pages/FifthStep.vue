@@ -517,6 +517,7 @@ vedioScreen.value=true
     }
     else{
 cameraaccessdialog.value = true;
+startCamera()
     }
   
 };
