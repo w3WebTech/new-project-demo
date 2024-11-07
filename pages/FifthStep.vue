@@ -401,7 +401,7 @@
           <img
             :src="capturedImage"
             alt="Captured Image"
-            class="w-[400px] h-[400px] m-auto rounded-lg"
+            class="w-[400px] h-[300px] m-auto rounded-lg"
           />
            <button
               @click="MoveToNext"
@@ -424,7 +424,7 @@
           </div>
         </div>
            <div class="relative h-screen " v-else >
-            <div class="m-auto w-full border-10 border-gray-800 bg-gray-50 h-[300px] " >
+            <div class="m-auto w-full border-10 border-gray-800 bg-gray-50 h-[400px] " >
               <video ref="videoElement" class="w-full h-full" autoplay></video>
             </div>
             <canvas ref="canvas" class="hidden"></canvas>
