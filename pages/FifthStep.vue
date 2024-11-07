@@ -401,7 +401,7 @@
           <img
             :src="capturedImage"
             alt="Captured Image"
-            class="w-full h-auto rounded-lg"
+            class="w-full h-[300px] rounded-lg"
           />
            <button
               @click="MoveToNext"
