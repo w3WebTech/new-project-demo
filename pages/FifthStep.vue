@@ -392,7 +392,7 @@
       class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
     >
       <div
-        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg md:w-[50%] md:h-[400px] sm:mx-5"
+        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg md:w-[50%] md:h-[500px] sm:mx-5"
       >
         <div class="bg-white rounded-lg p-6 w-full h-full relative">
             <div v-if="capturedImage && !isLoading" class="m-2">
@@ -401,7 +401,7 @@
           <img
             :src="capturedImage"
             alt="Captured Image"
-            class="w-full h-[300px] rounded-lg"
+            class="w-[400px] h-[400px] m-auto rounded-lg"
           />
            <button
               @click="MoveToNext"
