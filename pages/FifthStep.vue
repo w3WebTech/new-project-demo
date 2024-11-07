@@ -3,7 +3,7 @@
     <div
       class="fixed inset-0 bg-primary z-40"
       v-if="isOpen"
-      @click="closeBottomSheet"
+      
     >
       <div class="flex justify-between">
         <div></div>
@@ -162,7 +162,8 @@
 
                <button
                 type="submit"
-                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] animate-bounce"
+                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] 
+"
                     @click="nextStep"
               >
                 Continue
@@ -172,7 +173,7 @@
           </div>
         </div>
         <div v-if="isCameraAccess">
-          <div class="p-6 rounded-lg md:my-6">
+          <div class="p-6 rounded-lg md:my-6 max-w-md mx-auto" >
             <h1 class="text-2xl font-bold text-bigtext mb-2">Take a Selfie</h1>
             <p class="text-smtext mb-4">
               Ensure your face appears clearly within the frame
@@ -275,7 +276,8 @@
               These details are required by SEBI to open your demat account.
             </p>
             <button
-              class="bg-[#1E1B4B] text-white font-bold py-2 px-4 rounded-lg w-full animate-bounce md:mt-6"
+              class="bg-[#1E1B4B] text-white font-bold py-2 px-4 rounded-lg w-full 
+ md:mt-6"
               @click="handleContinue"
             >
               Open camera
@@ -287,7 +289,7 @@
   </div>
   <div
     v-if="cameraaccessdialog"
-    class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-50"
+    class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-50 "
   >
     <div
       class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
@@ -296,7 +298,7 @@
         class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:mx-5"
       >
         
-        <div >
+        <div class="max-w-md mx-auto">
           <div class="bg-white rounded-lg p-6 w-full  relative">
             <button
               @click="handleClose"

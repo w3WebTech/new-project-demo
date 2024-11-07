@@ -7,7 +7,7 @@
         v-show="isVisible && !showTruecaller"
         class="fixed inset-0  duration-300"
         :class="{ 'opacity-0': !isVisible }"
-        @click="closeBottomSheet"
+        
       ></div>
 
       <!-- Bottom Sheet -->

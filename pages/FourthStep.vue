@@ -3,7 +3,7 @@
     <div
       class="fixed inset-0 bg-primary z-40"
       v-if="isOpen"
-      @click="closeBottomSheet"
+      
     >
       <div class="flex justify-between">
         <div></div>
@@ -21,7 +21,7 @@
         <div v-for="i in 48" :key="i" class="border border-[#dad3fc]"></div>
       </div> -->
         <div v-if="verificationStep">
-          <div class="md:pt-5 sm:pt-10 pb-5 relative">
+          <div class="md:pt-5 sm:pt-10 pb-5 relative max-w-md mx-auto">
             <!-- <div class="flex items-center justify-center text-center">
           <img
             src="public/images/ventura.jpeg"
@@ -163,7 +163,8 @@
 
                 <button
                 type="submit"
-                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] animate-bounce"
+                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] 
+"
                     @click="nextStep"
               >
                 Continue
@@ -173,7 +174,7 @@
           </div>
         </div>
         <div v-if="bankVerification">
-          <div class="max-w-2xl mx-auto md:p-8 sm:py-8 sm:px-3">
+          <div class="max-w-2xl mx-auto md:p-14 sm:py-8 sm:px-3  ">
             <h1 class="text-2xl font-semibold mb-2 text-bigtext">Add bank account</h1>
             <p class="text-smtext mb-4">
               This will be your primary account for all transactions.
@@ -285,21 +286,24 @@
     
           
         </div>
-        <div v-if="bankDetailsSuccess"><div class=" flex items-center justify-center ">
-    <div class=" space-y-2 pt-5">
-      <div class="text-center">
-        <div class="w-24 h-24 bg-green-100 rounded-full mx-auto flex items-center justify-center">
+        <div v-if="bankDetailsSuccess"><div class="max-w-2xl mx-auto sm:p-3">
+    <div class="  pt-5">
+      <div class=" text-center">
+        <div class="mr-4">
+          <div class=" bg-green-100 rounded-full mx-auto flex items-center justify-center  w-20 h-20">
           <div class="w-12 h-12 text-green-500">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
           </div>
         </div>
-        <h2 class="text-2xl font-bold text-bigtext mt-4">Bank account added</h2>
-        <p class="text-smtext mt-2">Your bank details have been verified.</p>
+        </div>
+        
+        <div class="text-2xl font-bold text-bigtext mt-4">Bank account added</div>
+        <p class="text-smtext my-2">Your bank details have been verified.</p>
       </div>
 
-      <div class="bg-gray-50 rounded-lg p-5 space-y-2  ">
+      <div class="bg-gray-50 rounded-lg p-10 space-y-2  ">
         <div class="">
         <div class="flex  space-x-5  mr-10" >
           <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
@@ -327,7 +331,8 @@
         </div>
         </div>
       </div>
-<div class="py-5"><button class="w-full animate-bounce bg-[#1E1B4B] text-white py-3   rounded-lg font-semibold hover:bg-[#1E1B4B] transition-colors"
+<div class="py-5"><button class="w-full 
+ bg-[#1E1B4B] text-white py-3   rounded-lg font-semibold hover:bg-[#1E1B4B] transition-colors"
       @click="completeBankDetails">
         Continue
       </button></div>

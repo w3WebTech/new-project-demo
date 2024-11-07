@@ -3,7 +3,7 @@
     <div
       class="fixed inset-0 bg-primary z-40"
       v-if="isOpen"
-      @click="closeBottomSheet"
+      
     >
       <div class="flex justify-between">
         <div></div>
@@ -161,7 +161,8 @@
 
                 <button
                 type="submit"
-                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] animate-bounce"
+                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] 
+"
                     @click="nextStep"
               >
                 Continue

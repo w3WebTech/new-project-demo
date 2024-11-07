@@ -1,10 +1,6 @@
 <template>
   <div class="h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
-    <div
-      class="fixed inset-0 bg-primary  z-40"
-      v-if="isOpen"
-      @click="closeBottomSheet"
-    >
+    <div class="fixed inset-0 bg-primary z-40" v-if="isOpen">
       <div class="flex justify-between">
         <div></div>
         <div class="p-7 text-xl text-white font-bold font-serif">goodwill</div>
@@ -14,12 +10,14 @@
       class="fixed h-[90%] bottom-0 left-0 right-0 bg-white z-50 transition-transform transform rounded-t-xl"
       :class="{ 'translate-y-0': isOpen, 'translate-y-full': !isOpen }"
     >
-      <div class="md:w-[40%] md:flex md:mx-auto md:justify-center md:items-center">
+      <div
+        class="md:w-[40%] md:flex md:mx-auto md:justify-center md:items-center"
+      >
         <!-- <div class="absolute inset-0 grid grid-cols-12 h-[300px]">
         <div v-for="i in 48" :key="i" class="border border-[#dad3fc]"></div>
       </div> -->
         <div v-if="isStepPage">
-          <div class="md:pt-5 sm:pt-10 pb-5 relative">
+          <div class="md:pt-5 sm:pt-10 pb-5 relative max-w-md mx-auto ">
             <!-- <div class="flex items-center justify-center text-center">
           <img
             src="public/images/ventura.jpeg"
@@ -53,8 +51,10 @@
                   <div class="mb-5">
                      
 
-                    <h3 class="text-md font-bold text-bigtext">Complete e-KYC</h3>
-                    <p class=" text-sm text-mdtext">
+                    <h3 class="text-md font-bold text-bigtext">
+                      Complete e-KYC
+                    </h3>
+                    <p class="text-sm text-mdtext">
                       Keep your Aadhaar and PAN card handy
                     </p>
                   </div>
@@ -78,7 +78,9 @@
                   <div class="mb-5">
                      
 
-                    <div class="text-md font-bold text-bigtext">Setup Your Profile</div>
+                    <div class="text-md font-bold text-bigtext">
+                      Setup Your Profile
+                    </div>
                     <div class="text-mdtext text-sm">
                       Answer a few question about yourself
                     </div>
@@ -104,8 +106,10 @@
                   <div class="mb-5">
                      
 
-                    <h3 class="text-md font-bold text-bigtext">Link your bank a/c</h3>
-                    <p class=" text-sm text-mdtext">
+                    <h3 class="text-md font-bold text-bigtext">
+                      Link your bank a/c
+                    </h3>
+                    <p class="text-sm text-mdtext">
                       Set the primary account for your transaction
                     </p>
                   </div>
@@ -130,8 +134,10 @@
                   <div class="mb-5">
                      
 
-                    <h3 class="text-md font-bold text-bigtext">Confirm it's you</h3>
-                    <p class=" text-sm text-mdtext">
+                    <h3 class="text-md font-bold text-bigtext">
+                      Confirm it's you
+                    </h3>
+                    <p class="text-sm text-mdtext">
                       Click a photo and submit your signature
                     </p>
                   </div>
@@ -155,20 +161,24 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold text-bigtext">eSign Ang Login</h3>
-                    <p class=" text-sm text-mdtext">
+                    <h3 class="text-md font-bold text-bigtext">
+                      eSign Ang Login
+                    </h3>
+                    <p class="text-sm text-mdtext">
                       Sign your Application and start Investing
                     </p>
                   </div>
                 </div>
-
-                 <button
-                type="submit"
-                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] animate-bounce"
-                    @click="nextStep"
-              >
-                Continue
-              </button>
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-white">
+        <div class="md:w-[40%] sm:w-full mx-auto ">
+                <button
+                  type="submit"
+                  class=" text-white rounded-lg py-2 md:w-[70%] sm:w-full md:mx-20 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B]"
+                  @click="nextStep"
+                >
+                  Continue
+                </button>
+        </div></div>
               </div>
             </div>
           </div>
@@ -309,7 +319,7 @@
                 type="submit"
                 class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed"
                 :disabled="!isFormValid"
-                :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B] animate-bounce'"
+                :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B] '"
                 @click="setPanDetails"
               >
                 Continue
@@ -325,7 +335,9 @@
             <p class="text-smtext text-sm mb-6">
               These details are required by SEBI to open your demat account.
             </p>
-            <div class="text-xl py-3 font-bold text-bigtext ">{{ form.pan }}</div>
+            <div class="text-xl py-3 font-bold text-bigtext">
+              {{ form.pan }}
+            </div>
             <div class="bg-gray-100 border border-gray-200 rounded-md p-3">
               <div class="text-sm text-mdtext py-2">Name</div>
               <div class="text-md font-bold text-bigtext">{{ form.name }}</div>
@@ -346,7 +358,7 @@
               type="submit"
               class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed"
               :disabled="!isFormValid"
-              :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B] animate-bounce'"
+              :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B] '"
               @click="moveToEkyc"
             >
               Continue
@@ -354,21 +366,37 @@
           </div>
         </div>
         <div v-if="eKycFinalStep">
-          <div class=" p-6  max-w-md">
+          <div class="p-6 max-w-md mx-auto">
             <div class="flex">
-              <div class="mt-1 " @click="movePrev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" class="h-5 w-5">
-  <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
-</svg>
-</div>
- <h1 class="text-xl font-semibold text-bigtext mb-2 px-2">
-              Complete e-KYC
-            </h1></div>
-           
+              <div class="mt-1" @click="movePrev">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="gray"
+                  class="h-5 w-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <h1 class="text-xl font-semibold text-bigtext mb-2 px-2">
+                Complete e-KYC
+              </h1>
+            </div>
+
             <p class="text-smtext mb-4">
               Make sure your mobile number is linked to your Aadhaar card.
             </p>
-            <a href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html" class="text-primary mb-6 block underline font-semibold" target="_blank" rel="noopener noreferrer">
-            How to link Aadhaar with mobile?</a
+            <a
+              href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html"
+              class="text-primary mb-6 block underline font-semibold"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              How to link Aadhaar with mobile?</a
             >
             <div class="bg-gray-100 p-4 rounded-lg mb-6">
               <h2 class="text-lg font-semibold text-bigtext mb-4">
@@ -376,35 +404,66 @@
               </h2>
               <ul class="space-y-4">
                 <li class="flex items-start">
-                     <div class="bg-white rounded-lg border p-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="blue" class="h-4 w-4">
-  <path fill-rule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875Zm6.905 9.97a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72V18a.75.75 0 0 0 1.5 0v-4.19l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z" clip-rule="evenodd" />
-  <path d="M14.25 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 16.5 7.5h-1.875a.375.375 0 0 1-.375-.375V5.25Z" />
-</svg>
-</div>
+                  <div class="bg-white rounded-lg border p-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="blue"
+                      class="h-4 w-4"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875Zm6.905 9.97a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72V18a.75.75 0 0 0 1.5 0v-4.19l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z"
+                        clip-rule="evenodd"
+                      />
+                      <path
+                        d="M14.25 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 16.5 7.5h-1.875a.375.375 0 0 1-.375-.375V5.25Z"
+                      />
+                    </svg>
+                  </div>
                   <span class="text-smtext text-sm px-2"
                     >You will be redirected to Digilocker for e-KYC.</span
                   >
                 </li>
                 <li class="flex items-start">
                   <div class="bg-white rounded-lg border p-2">
-                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="green" class="h-4 w-4">
-  <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z" clip-rule="evenodd" />
-  <path d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z" />
-</svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="green"
+                      class="h-4 w-4"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z"
+                        clip-rule="evenodd"
+                      />
+                      <path
+                        d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z"
+                      />
+                    </svg>
                   </div>
-  
+
                   <span class="text-smtext text-sm px-2"
                     >It is a Govt. of India initiative with more than 150
                     million trusted users.</span
                   >
                 </li>
                 <li class="flex items-start">
-                   <div class="bg-white rounded-lg border p-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" class="h-4 w-4">
-  <path fill-rule="evenodd" d="M12 3.75a6.715 6.715 0 0 0-3.722 1.118.75.75 0 1 1-.828-1.25 8.25 8.25 0 0 1 12.8 6.883c0 3.014-.574 5.897-1.62 8.543a.75.75 0 0 1-1.395-.551A21.69 21.69 0 0 0 18.75 10.5 6.75 6.75 0 0 0 12 3.75ZM6.157 5.739a.75.75 0 0 1 .21 1.04A6.715 6.715 0 0 0 5.25 10.5c0 1.613-.463 3.12-1.265 4.393a.75.75 0 0 1-1.27-.8A6.715 6.715 0 0 0 3.75 10.5c0-1.68.503-3.246 1.367-4.55a.75.75 0 0 1 1.04-.211ZM12 7.5a3 3 0 0 0-3 3c0 3.1-1.176 5.927-3.105 8.056a.75.75 0 1 1-1.112-1.008A10.459 10.459 0 0 0 7.5 10.5a4.5 4.5 0 1 1 9 0c0 .547-.022 1.09-.067 1.626a.75.75 0 0 1-1.495-.123c.041-.495.062-.996.062-1.503a3 3 0 0 0-3-3Zm0 2.25a.75.75 0 0 1 .75.75c0 3.908-1.424 7.485-3.781 10.238a.75.75 0 0 1-1.14-.975A14.19 14.19 0 0 0 11.25 10.5a.75.75 0 0 1 .75-.75Zm3.239 5.183a.75.75 0 0 1 .515.927 19.417 19.417 0 0 1-2.585 5.544.75.75 0 0 1-1.243-.84 17.915 17.915 0 0 0 2.386-5.116.75.75 0 0 1 .927-.515Z" clip-rule="evenodd" />
-</svg>
-                   </div>
+                  <div class="bg-white rounded-lg border p-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="red"
+                      class="h-4 w-4"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M12 3.75a6.715 6.715 0 0 0-3.722 1.118.75.75 0 1 1-.828-1.25 8.25 8.25 0 0 1 12.8 6.883c0 3.014-.574 5.897-1.62 8.543a.75.75 0 0 1-1.395-.551A21.69 21.69 0 0 0 18.75 10.5 6.75 6.75 0 0 0 12 3.75ZM6.157 5.739a.75.75 0 0 1 .21 1.04A6.715 6.715 0 0 0 5.25 10.5c0 1.613-.463 3.12-1.265 4.393a.75.75 0 0 1-1.27-.8A6.715 6.715 0 0 0 3.75 10.5c0-1.68.503-3.246 1.367-4.55a.75.75 0 0 1 1.04-.211ZM12 7.5a3 3 0 0 0-3 3c0 3.1-1.176 5.927-3.105 8.056a.75.75 0 1 1-1.112-1.008A10.459 10.459 0 0 0 7.5 10.5a4.5 4.5 0 1 1 9 0c0 .547-.022 1.09-.067 1.626a.75.75 0 0 1-1.495-.123c.041-.495.062-.996.062-1.503a3 3 0 0 0-3-3Zm0 2.25a.75.75 0 0 1 .75.75c0 3.908-1.424 7.485-3.781 10.238a.75.75 0 0 1-1.14-.975A14.19 14.19 0 0 0 11.25 10.5a.75.75 0 0 1 .75-.75Zm3.239 5.183a.75.75 0 0 1 .515.927 19.417 19.417 0 0 1-2.585 5.544.75.75 0 0 1-1.243-.84 17.915 17.915 0 0 0 2.386-5.116.75.75 0 0 1 .927-.515Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
 
                   <span class="text-smtext text-sm px-2"
                     >You won't need to enter your details manually as the
@@ -414,67 +473,123 @@
               </ul>
             </div>
             <button
-              class="bg-[#1E1B4B] text-white py-2 px-4 rounded-lg w-full my-4 font-semibold animate-bounce"
+              class="bg-[#1E1B4B] text-white py-2 px-4 rounded-lg w-full my-4 font-semibold"
               @click="moveToConfirmation"
             >
               Start e-KYC
             </button>
-            <a  href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html" target="_blank" rel="noopener noreferrer" class="text-primary block text-center font-semibold"
+            <a
+              href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary block text-center font-semibold"
               >Mobile not linked with Aadhaar?</a
             >
           </div>
         </div>
         <div v-if="finalConfirmation">
-            <div id="app" class="w-full max-w-md p-6 ">
-              <div class="flex">
-                <div class="mt-1" @click="MoveEkyc"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" class="h-5 w-5">
-  <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
-</svg></div>
-<h1 class="text-xl font-semibold text-bigtext mb-1 px-2">Confirm your details</h1>
+          <div id="app" class="w-full max-w-md p-6">
+            <div class="flex">
+              <div class="mt-1" @click="MoveEkyc">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="gray"
+                  class="h-5 w-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
               </div>
-      
-      <p class="text-smtext mb-6">We have fetched your Aadhaar details from Digilocker.</p>
-      <div class="bg-gray-100 p-4 rounded-lg mb-4">
-     <div class="mb-4">
-          <span class="text-smtext">Name:</span>
-          <span class="font-semibold text-bigtext ml-2">{{form.name}}</span>
-        </div>
-        <div class="mb-2 flex items-center justify-between">
-          <div><span class="text-smtext">Father's Name:</span>
-          <span class="font-semibold text-bigtext  px-2 py-1 rounded ml-2">{{fName}}</span></div>
-          
-          <div class="ml-2 text-primary" @click="openEdit=true">
-          <a href="#" class="text-primary text-sm font-semibold ml-auto">Edit ></a>
-          </div>
-        </div>
-     <div class="mb-4">
-          <span class="text-smtext">DOB:</span>
-          <span class="font-semibold text-bigtext  px-2 py-1 rounded">{{form.dob}}</span>
-        </div>
-     <div class="mb-4">
-          <span class="text-smtext">Gender:</span>
-          <span class="font-semibold text-bigtext px-2">male</span>
-        </div>
-     <div class="mb-4">
-          <span class="text-smtext">Address:</span>
-          <span class="font-semibold text-bigtext px-2 py-1 rounded">Nadu, India, 613204</span>
-        </div>
-     <div class="mb-4">
-          <span class="text-gray-600">Aadhaar No:</span>
-          <span class="font-semibold text-gray-800 px-2">xxxxxxxx8649</span>
-        </div>
-      </div>
-      <div class="flex items-center py-5">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="primary" class="w-5 h-5 mx-2">
-  <path d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z" />
-  <path fill-rule="evenodd" d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-7.5Zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" clip-rule="evenodd" />
-</svg>
+              <h1 class="text-xl font-semibold text-bigtext mb-1 px-2">
+                Confirm your details
+              </h1>
+            </div>
 
-        <span class="text-mdtext font-semibold text-sm">PAN linked with your Aadhaar Card</span>
-        <a href="#" class="text-primary font-semibold text-sm ml-auto pr-4">View ></a>
-      </div>
-      <button class="w-full bg-[#1E1B4B] animate-bounce text-white font-bold py-2 rounded-lg my-4" @click="completeEkyc">Continue</button>
-    </div>
+            <p class="text-smtext mb-6">
+              We have fetched your Aadhaar details from Digilocker.
+            </p>
+            <div class="bg-gray-100 p-4 rounded-lg mb-4">
+              <div class="mb-4">
+                <span class="text-smtext">Name:</span>
+                <span class="font-semibold text-bigtext ml-2">{{
+                  form.name
+                }}</span>
+              </div>
+              <div class="mb-2 flex items-center justify-between">
+                <div>
+                  <span class="text-smtext">Father's Name:</span>
+                  <span
+                    class="font-semibold text-bigtext px-2 py-1 rounded ml-2"
+                    >{{ fName }}</span
+                  >
+                </div>
+
+                <div class="ml-2 text-primary" @click="openEdit = true">
+                  <a href="#" class="text-primary text-sm font-semibold ml-auto"
+                    >Edit ></a
+                  >
+                </div>
+              </div>
+              <div class="mb-4">
+                <span class="text-smtext">DOB:</span>
+                <span class="font-semibold text-bigtext px-2 py-1 rounded">{{
+                  form.dob
+                }}</span>
+              </div>
+              <div class="mb-4">
+                <span class="text-smtext">Gender:</span>
+                <span class="font-semibold text-bigtext px-2">male</span>
+              </div>
+              <div class="mb-4">
+                <span class="text-smtext">Address:</span>
+                <span class="font-semibold text-bigtext px-2 py-1 rounded"
+                  >Nadu, India, 613204</span
+                >
+              </div>
+              <div class="mb-4">
+                <span class="text-gray-600">Aadhaar No:</span>
+                <span class="font-semibold text-gray-800 px-2"
+                  >xxxxxxxx8649</span
+                >
+              </div>
+            </div>
+            <div class="flex items-center py-5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="primary"
+                class="w-5 h-5 mx-2"
+              >
+                <path
+                  d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-7.5Zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              <span class="text-mdtext font-semibold text-sm"
+                >PAN linked with your Aadhaar Card</span
+              >
+              <a
+                href="#"
+                class="text-primary font-semibold text-sm ml-auto pr-4"
+                >View ></a
+              >
+            </div>
+            <button
+              class="w-full bg-[#1E1B4B] text-white font-bold py-2 rounded-lg my-4"
+              @click="completeEkyc"
+            >
+              Continue
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -494,11 +609,10 @@
       <div
         class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:mx-5"
       >
-        
-        <div >
+        <div>
           <div class="bg-white rounded-lg p-6 w-full relative">
-            <div class="text-bigtext font-semibold " >Father's Name</div>
-         <div class="my-4">
+            <div class="text-bigtext font-semibold">Father's Name</div>
+            <div class="my-4">
               <input
                 type="text"
                 v-model="fName"
@@ -523,13 +637,13 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const isOpen = ref(false);
 const isPanDetails = ref(false);
-const openEdit=ref(false)
-const fName=ref("Name")
+const openEdit = ref(false);
+const fName = ref("Name");
 const openBottomSheet = () => {
   isOpen.value = true;
 };
@@ -567,10 +681,10 @@ const isFormValid = computed(() => {
     form.value.isTaxResident
   );
 });
-const eKycFinalStep=ref(false)
-const finalConfirmation=ref(false)
+const eKycFinalStep = ref(false);
+const finalConfirmation = ref(false);
 const handleSubmit = () => {
-  openEdit.value=false
+  openEdit.value = false;
 };
 const nextStep = () => {
   isStepPage.value = false;
@@ -580,29 +694,27 @@ const setPanDetails = () => {
   isPanForm.value = false;
   isPanDetails.value = true;
 };
-const moveToEkyc =()=>{
+const moveToEkyc = () => {
   isPanDetails.value = false;
-  eKycFinalStep.value=true
-}
-const moveToConfirmation =()=>{
- eKycFinalStep.value=false
- finalConfirmation.value=true
-
-}
-const completeEkyc =()=>{
-    router.push('/ThirdStep');
-}
-const moveBack =() =>{
-  isPanDetails.value=false
-  isPanForm.value=true
-}
- const movePrev =()=>{
-  eKycFinalStep.value=false
-  isPanDetails.value=true
- }
- const MoveEkyc=()=>{
-   finalConfirmation.value=false
-  eKycFinalStep.value=true
- 
- }
+  eKycFinalStep.value = true;
+};
+const moveToConfirmation = () => {
+  eKycFinalStep.value = false;
+  finalConfirmation.value = true;
+};
+const completeEkyc = () => {
+  router.push("/ThirdStep");
+};
+const moveBack = () => {
+  isPanDetails.value = false;
+  isPanForm.value = true;
+};
+const movePrev = () => {
+  eKycFinalStep.value = false;
+  isPanDetails.value = true;
+};
+const MoveEkyc = () => {
+  finalConfirmation.value = false;
+  eKycFinalStep.value = true;
+};
 </script>

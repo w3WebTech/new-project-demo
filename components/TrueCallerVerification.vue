@@ -8,7 +8,7 @@
       <div class="bg-white rounded-t-2xl p-8 relative shadow-xl">
         <!-- Back Button -->
         <button 
-          @click="closeBottomSheet"
+          
           class="absolute left-4 top-4 p-2 text-gray-600"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

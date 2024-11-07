@@ -44,7 +44,7 @@
           <button
             @click="resendOtp"
             :disabled="timer > 0"
-            :class="timer > 0 ? 'text-white' : 'text-red-500'"
+            :class="timer > 0 ? 'text-gray-300' : 'text-red-500'"
             class="font-medium"
           >
             Resend OTP
@@ -58,7 +58,7 @@
           class="w-full py-3 rounded-lg font-medium transition-colors"
           :class="
             isOtpComplete
-              ? 'bg-[#1E1B4B] text-white  animate-bounce'
+              ? 'bg-[#1E1B4B] text-white   '
               : 'bg-gray-200 text-white'
           "
         >
@@ -112,7 +112,7 @@
           <button
             @click="resendOtp1"
             :disabled="timer1 > 0"
-            :class="timer1 > 0 ? 'text-white' : 'text-red-500'"
+            :class="timer1 > 0 ? 'text-gray-300' : 'text-red-500'"
             class="font-medium"
           >
             Resend OTP
@@ -126,7 +126,7 @@
           class="w-full py-3 rounded-lg font-medium transition-colors"
           :class="
             isOtpComplete1
-              ? 'bg-[#1E1B4B] text-white animate-bounce'
+              ? 'bg-[#1E1B4B] text-white  '
               : 'bg-gray-200 text-white'
           "
         >
@@ -168,7 +168,7 @@
           class="w-full py-3 rounded-lg font-medium transition-colors mt-5"
           :class="
             isValidEmail(email)
-              ? 'bg-[#1E1B4B] text-white animate-bounce'
+              ? 'bg-[#1E1B4B] text-white  '
               : 'bg-gray-200 text-white'
           "
         >
@@ -264,7 +264,7 @@
         :disabled="!form.phoneNumber && form.phoneNumber.length != 10"
         :class="
           form.phoneNumber && form.phoneNumber.length == 10
-            ? 'bg-[#1E1B4B] text-white animate-bounce'
+            ? 'bg-[#1E1B4B] text-white  '
             : 'bg-gray-200 text-gray-500'
         "
       >
