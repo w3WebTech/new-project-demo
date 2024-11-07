@@ -169,7 +169,7 @@
                     </p>
                   </div>
                 </div>
-<div class="fixed bottom-0 left-0 right-0 p-4 bg-white">
+<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
         <div class="md:w-[40%] sm:w-full mx-auto ">
                 <button
                   type="submit"
@@ -313,7 +313,8 @@
                 if you are looking to open an HUF, Corporate, Partnership, Joint
                 or NRI account.
               </div>
-
+<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto ">
               <!-- Submit Button -->
               <button
                 type="submit"
@@ -324,6 +325,7 @@
               >
                 Continue
               </button>
+        </div></div>
             </form>
           </div>
         </div>
@@ -353,7 +355,8 @@
             >
               Not your Pan ? Try Again
             </div>
-
+<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 sm:bg-white">
+        <div class="sm:w-full sm:mx-auto ">
             <button
               type="submit"
               class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed"
@@ -363,6 +366,7 @@
             >
               Continue
             </button>
+        </div></div>
           </div>
         </div>
         <div v-if="eKycFinalStep">
