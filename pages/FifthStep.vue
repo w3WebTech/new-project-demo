@@ -159,7 +159,8 @@
                     </p>
                   </div>
                 </div>
-
+<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto ">
                <button
                 type="submit"
                 class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] 
@@ -168,6 +169,7 @@
               >
                 Continue
               </button>
+        </div></div>
               </div>
             </div>
           </div>
@@ -275,6 +277,8 @@
             <p class="text-smtext mb-8">
               These details are required by SEBI to open your demat account.
             </p>
+            <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto ">
             <button
               class="bg-[#1E1B4B] text-white font-bold py-2 px-4 rounded-lg w-full 
  md:mt-6"
@@ -282,6 +286,7 @@
             >
               Open camera
             </button>
+        </div></div>
           </div>
         </div>
       </div>

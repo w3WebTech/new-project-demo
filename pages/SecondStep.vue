@@ -170,10 +170,10 @@
                   </div>
                 </div>
 <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
-        <div class="md:w-[40%] sm:w-full mx-auto ">
+        <div class="sm:w-full sm:mx-auto ">
                 <button
                   type="submit"
-                  class=" text-white rounded-lg py-2 md:w-[70%] sm:w-full md:mx-20 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B]"
+                  class=" text-white rounded-lg py-2  w-full font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B]"
                   @click="nextStep"
                 >
                   Continue
@@ -476,6 +476,8 @@
                 </li>
               </ul>
             </div>
+            <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 sm:bg-white">
+        <div class="sm:w-full sm:mx-auto ">
             <button
               class="bg-[#1E1B4B] text-white py-2 px-4 rounded-lg w-full my-4 font-semibold"
               @click="moveToConfirmation"
@@ -489,6 +491,7 @@
               class="text-primary block text-center font-semibold"
               >Mobile not linked with Aadhaar?</a
             >
+        </div></div>
           </div>
         </div>
         <div v-if="finalConfirmation">
@@ -587,12 +590,15 @@
                 >View ></a
               >
             </div>
+            <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto ">
             <button
               class="w-full bg-[#1E1B4B] text-white font-bold py-2 rounded-lg my-4"
               @click="completeEkyc"
             >
               Continue
             </button>
+        </div></div>
           </div>
         </div>
       </div>

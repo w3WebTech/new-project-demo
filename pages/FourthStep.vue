@@ -160,7 +160,8 @@
                     </p>
                   </div>
                 </div>
-
+<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto ">
                 <button
                 type="submit"
                 class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] 
@@ -169,6 +170,7 @@
               >
                 Continue
               </button>
+        </div></div>
               </div>
             </div>
           </div>
@@ -331,12 +333,14 @@
         </div>
         </div>
       </div>
-<div class="py-5"><button class="w-full 
+<div class="md:py-5">
+  <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto "><button class="w-full 
  bg-[#1E1B4B] text-white py-3   rounded-lg font-semibold hover:bg-[#1E1B4B] transition-colors"
       @click="completeBankDetails">
         Continue
       </button></div>
-      
+  </div></div>
     </div>
   </div></div>
        

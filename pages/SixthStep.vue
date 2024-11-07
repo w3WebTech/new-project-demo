@@ -158,7 +158,8 @@
                     </p>
                   </div>
                 </div>
-
+<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto ">
                 <button
                 type="submit"
                 class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] 
@@ -167,6 +168,7 @@
               >
                 Continue
               </button>
+        </div></div>
               </div>
             </div>
           </div>
