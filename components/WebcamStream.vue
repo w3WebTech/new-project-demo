@@ -24,7 +24,7 @@ onMounted(() => {
     })
     .catch((error) => {
       console.error("Error accessing the camera:", error);
-      alert("Error accessing the camera.");
+      //alert("Error accessing the camera.");
     });
 });
 </script>
