@@ -15,7 +15,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <div class="text-white text-sm">ventura</div>
+          <div class="text-white text-sm">goodwill</div>
         </div>
 
         <!-- Content -->
@@ -60,7 +60,7 @@
           <button
             @click="verifyOtp"
             :disabled="!isOtpComplete"
-            class="w-full py-4 rounded-lg font-medium transition-colors"
+            class="w-full py-2 rounded-lg font-medium transition-colors"
             :class="isOtpComplete ? 'bg-[#1E1B4B] text-white' : 'bg-gray-200 text-gray-500'"
           >
             Verify OTP

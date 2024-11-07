@@ -44,7 +44,7 @@
           <button
             @click="resendOtp"
             :disabled="timer > 0"
-            :class="timer > 0 ? 'text-gray-400' : 'text-red-500'"
+            :class="timer > 0 ? 'text-white' : 'text-red-500'"
             class="font-medium"
           >
             Resend OTP
@@ -55,7 +55,7 @@
         <button
           @click="verifyOtp"
           :disabled="!isOtpComplete"
-          class="w-full py-4 rounded-lg font-medium transition-colors  "
+          class="w-full py-3 rounded-lg font-medium transition-colors  "
           :class="
             isOtpComplete
               ? 'bg-[#1E1B4B] text-white  animate-bounce'
@@ -112,7 +112,7 @@
           <button
             @click="resendOtp1"
             :disabled="timer1 > 0"
-            :class="timer1 > 0 ? 'text-gray-400' : 'text-red-500'"
+            :class="timer1 > 0 ? 'text-white' : 'text-red-500'"
             class="font-medium"
           >
             Resend OTP
@@ -123,7 +123,7 @@
         <button
           @click="verifyOtpforEmail"
           :disabled="!isOtpComplete1"
-          class="w-full py-4 rounded-lg font-medium transition-colors"
+          class="w-full py-3 rounded-lg font-medium transition-colors"
           :class="
             isOtpComplete1
               ? 'bg-[#1E1B4B] text-white animate-bounce'
@@ -189,7 +189,7 @@
     </div>
   </div>
   <div class="md:my-10 md:mx-20" v-else>
-    <div class="bg-white rounded-2xl md:p-10 sm:py-14 sm:px-5 md:shadow-2xl hover:shake transition-transform duration-300 ease-in-out">
+    <div class="bg-white rounded-2xl md:p-10 sm:py-14 sm:px-5 md:shadow-2xl ">
       <div class="grid grid-cols-2 py-3">
         <img
           src="public/images/venturalogo.jpeg"
@@ -218,6 +218,9 @@
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-[#1E1B4B] block w-full p-2.5"
           placeholder="Enter phone number"
           required
+           pattern="\d{10}"
+              @input="validatePhoneNumber"
+                maxlength="10"
         />
       </div>
 
@@ -255,7 +258,7 @@
 
       <button
         @click="handleContinue"
-        class="w-full bg-[#1E1B4B] text-white py-4 rounded-lg font-medium "
+        class="w-full bg-[#1E1B4B] text-white py-3 rounded-lg font-medium "
         :disabled="!phoneNumber && phoneNumber.length != 10"
         :class="
           phoneNumber && phoneNumber.length == 10
@@ -369,6 +372,10 @@ const email = ref("");
 const closeBottomSheet = () => {
   isVisible.value = false;
 };
+const  validatePhoneNumber = () => {
+      // Remove any non-digit characters
+      phoneNumber.value = phoneNumber.value.replace(/\D/g, '').slice(0, 10);
+    }
 function isValidEmail(email: string): boolean {
   // Regular expression for validating an email
   const emailRegex: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

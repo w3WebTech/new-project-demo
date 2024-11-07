@@ -7,7 +7,7 @@
     >
       <div class="flex justify-between">
         <div></div>
-        <div class="p-7 text-xl text-white font-bold font-serif">ventura</div>
+        <div class="p-7 text-xl text-white font-bold font-serif">goodwill</div>
       </div>
     </div>
     <div
@@ -162,12 +162,13 @@
                   </div>
                 </div>
 
-                <button
-                  class="bg-[#1E1B4B] text-white font-bold py-3 mb-3 px-2 md:w-[30%] sm:w-[95%] fixed bottom-0 rounded-lg mt-8 animate-bounce"
-                  @click="nextStep"
-                >
-                  Continue
-                </button>
+                 <button
+                type="submit"
+                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] animate-bounce"
+                    @click="nextStep"
+              >
+                Continue
+              </button>
               </div>
             </div>
           </div>
@@ -325,7 +326,7 @@
               These details are required by SEBI to open your demat account.
             </p>
             <div class="text-xl py-3 font-bold text-[#2D3648] ">{{ form.pan }}</div>
-            <div class="bg-blue-100 border border-blue-200 rounded-md p-3">
+            <div class="bg-gray-100 border border-gray-200 rounded-md p-3">
               <div class="text-sm text-gray-500 py-2">Name</div>
               <div class="text-md font-bold text-[#2D3648]">{{ form.name }}</div>
 
@@ -335,7 +336,8 @@
               <div class="text-md font-bold text-[#2D3648]">{{ form.pan }}</div>
             </div>
             <div
-              class="flex justify-center text-orange-500 font-bold text-sm py-5"
+              class="flex justify-center text-orange-500 font-bold text-sm py-5 cursor-pointer"
+              @click="moveBack"
             >
               Not your Pan ? Try Again
             </div>
@@ -353,14 +355,20 @@
         </div>
         <div v-if="eKycFinalStep">
           <div class=" p-6  max-w-md">
-            <h1 class="text-xl font-semibold text-gray-800 mb-2">
+            <div class="flex">
+              <div class="mt-1 " @click="movePrev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" class="h-5 w-5">
+  <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+</svg>
+</div>
+ <h1 class="text-xl font-semibold text-gray-800 mb-2 px-2">
               Complete e-KYC
-            </h1>
+            </h1></div>
+           
             <p class="text-gray-600 mb-4">
               Make sure your mobile number is linked to your Aadhaar card.
             </p>
-            <a href="#" class="text-orange-500 mb-6 block underline font-semibold"
-              >How to link Aadhaar with mobile?</a
+            <a href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html" class="text-orange-500 mb-6 block underline font-semibold" target="_blank" rel="noopener noreferrer">
+            How to link Aadhaar with mobile?</a
             >
             <div class="bg-gray-100 p-4 rounded-lg mb-6">
               <h2 class="text-lg font-semibold text-gray-800 mb-4">
@@ -411,14 +419,20 @@
             >
               Start e-KYC
             </button>
-            <a href="#" class="text-orange-500 block text-center font-semibold"
+            <a  href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html" target="_blank" rel="noopener noreferrer"class="text-orange-500 block text-center font-semibold"
               >Mobile not linked with Aadhaar?</a
             >
           </div>
         </div>
         <div v-if="finalConfirmation">
             <div id="app" class="w-full max-w-md p-6 ">
-      <h1 class="text-xl font-semibold text-[#2D3648] mb-1">Confirm your details</h1>
+              <div class="flex">
+                <div class="mt-1.5" @click="MoveEkyc"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" class="h-5 w-5">
+  <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+</svg></div>
+<h1 class="text-xl font-semibold text-[#2D3648] mb-1 px-2">Confirm your details</h1>
+              </div>
+      
       <p class="text-gray-600 mb-6">We have fetched your Aadhaar details from Digilocker.</p>
       <div class="bg-gray-100 p-4 rounded-lg mb-4">
      <div class="mb-4">
@@ -544,4 +558,17 @@ const moveToConfirmation =()=>{
 const completeEkyc =()=>{
     router.push('/ThirdStep');
 }
+const moveBack =() =>{
+  isPanDetails.value=false
+  isPanForm.value=true
+}
+ const movePrev =()=>{
+  eKycFinalStep.value=false
+  isPanDetails.value=true
+ }
+ const MoveEkyc=()=>{
+   finalConfirmation.value=false
+  eKycFinalStep.value=true
+ 
+ }
 </script>

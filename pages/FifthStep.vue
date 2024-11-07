@@ -7,7 +7,7 @@
     >
       <div class="flex justify-between">
         <div></div>
-        <div class="p-7 text-xl text-white font-bold font-serif">ventura</div>
+        <div class="p-7 text-xl text-white font-bold font-serif">goodwill</div>
       </div>
     </div>
     <div
@@ -160,12 +160,13 @@
                   </div>
                 </div>
 
-                <button
-                  class="bg-[#1E1B4B] animate-bounce text-white font-bold py-3 mb-3 px-2 md:w-[30%] sm:w-[95%] fixed bottom-0 rounded-lg mt-8"
-                  @click="nextStep"
-                >
-                  Continue
-                </button>
+               <button
+                type="submit"
+                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] animate-bounce"
+                    @click="nextStep"
+              >
+                Continue
+              </button>
               </div>
             </div>
           </div>
@@ -423,8 +424,8 @@
           </div>
         </div>
            <div class="relative" v-else >
-            <div class="m-auto w-full h-full border-10 border-gray-800">
-              <video ref="videoElement" class="w-full h-full" autoplay></video>
+            <div class="m-auto w-full border-10 border-gray-800">
+              <video ref="videoElement" class="w-full " autoplay></video>
             </div>
             <canvas ref="canvas" class="hidden"></canvas>
 
@@ -670,7 +671,7 @@ const capture = () => {
 </script>
 <style scoped lang="scss">
 video {
-  object-fit: cover;
+  //object-fit: cover;
 }
 .lds-spinner,
 .lds-spinner div,

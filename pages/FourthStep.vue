@@ -7,7 +7,7 @@
     >
       <div class="flex justify-between">
         <div></div>
-        <div class="p-7 text-xl text-white font-bold font-serif">ventura</div>
+        <div class="p-7 text-xl text-white font-bold font-serif">goodwill</div>
       </div>
     </div>
     <div
@@ -162,11 +162,12 @@
                 </div>
 
                 <button
-                  class="bg-[#1E1B4B] animate-bounce text-white font-bold py-3 mb-3 px-2 md:w-[30%] sm:w-[95%] fixed bottom-0 rounded-lg mt-8"
-                  @click="nextStep"
-                >
-                  Continue
-                </button>
+                type="submit"
+                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] animate-bounce"
+                    @click="nextStep"
+              >
+                Continue
+              </button>
               </div>
             </div>
           </div>
@@ -276,7 +277,7 @@
           </div>
         </div>
         <div v-if="setBankDetails">
-          <div class="py-32 px-10">
+          <div class="py-20 px-10">
               <AnimatedList
                :is-open="animatedVal"
               @close="animaSuccess"/>
@@ -284,8 +285,8 @@
     
           
         </div>
-        <div v-if="bankDetailsSuccess"><div class="min-h-screen  flex items-center justify-center ">
-    <div class=" space-y-3">
+        <div v-if="bankDetailsSuccess"><div class=" flex items-center justify-center ">
+    <div class=" space-y-2 pt-5">
       <div class="text-center">
         <div class="w-24 h-24 bg-green-100 rounded-full mx-auto flex items-center justify-center">
           <div class="w-12 h-12 text-green-500">
@@ -298,37 +299,39 @@
         <p class="text-gray-600 mt-2">Your bank details have been verified.</p>
       </div>
 
-      <div class="bg-gray-50 rounded-lg p-10 space-y-2 ">
-        <div class="flex items-center space-x-5">
+      <div class="bg-gray-50 rounded-lg p-5 space-y-2  ">
+        <div class="">
+        <div class="flex  space-x-5  mr-10" >
           <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
             <span class="text-lg font-semibold">A</span>
           </div>
-          <div>
+          <div class="mb-2">
             <h3 class="font-semibold">Archana</h3>
             <p class="text-sm text-gray-500">{{selectedBankAccount}}</p>
           </div>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-3 my-3">
           <div class="flex justify-between">
-            <span class="text-gray-600 pr-10">Acc. No.</span>
+            <span class="text-gray-600 pr-20">Acc. No.</span>
             <span class="font-medium">XXXX XXXX 6636</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-gray-600 pr-10">IFSC Code</span>
+            <span class="text-gray-600 pr-20">IFSC Code</span>
             <span class="font-medium">1234567</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-gray-600 pr-10">Branch</span>
+            <span class="text-gray-600 pr-20">Branch</span>
             <span class="font-medium"> THANJAVUR</span>
           </div>
         </div>
+        </div>
       </div>
-
-      <button class="w-full animate-bounce bg-[#1E1B4B] text-white py-3 mt-10 mb-6 rounded-lg font-semibold hover:bg-[#1E1B4B] transition-colors"
+<div class="py-5"><button class="w-full animate-bounce bg-[#1E1B4B] text-white py-3   rounded-lg font-semibold hover:bg-[#1E1B4B] transition-colors"
       @click="completeBankDetails">
         Continue
-      </button>
+      </button></div>
+      
     </div>
   </div></div>
        

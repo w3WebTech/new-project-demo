@@ -7,7 +7,7 @@
     >
       <div class="flex justify-between">
         <div></div>
-        <div class="p-7 text-xl text-white font-bold font-serif">ventura</div>
+        <div class="p-7 text-xl text-white font-bold font-serif">goodwill</div>
       </div>
     </div>
     <div
@@ -158,13 +158,13 @@
                     </p>
                   </div>
                 </div>
-
-                <button
-                  class="bg-[#1E1B4B] text-white font-bold py-3 mb-3 px-2 animate-bounce md:w-[30%] sm:w-[90%] fixed bottom-0 rounded-lg mt-8"
-                  @click="nextStep"
-                >
-                  Continue
-                </button>
+   <button
+                type="submit"
+                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] animate-bounce"
+                    @click="nextStep"
+              >
+                Continue
+              </button>
               </div>
             </div>
           </div>
@@ -293,9 +293,15 @@
         </div>
         <div v-if="tradingExp">
           <div class="p-6 pt-10">
-            <h1 class="text-2xl font-semibold text-[#2D3648] mb-1">
-              Your trading experience
+            <div class="flex">
+              <div class="mt-2" @click="moveBack"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" class="h-5 w-5">
+  <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+</svg></div>
+  <h1 class="text-2xl font-semibold text-[#2D3648] mb-1 px-2">Your trading experience
             </h1>
+            </div>
+          
+              
             <p class="text-gray-500 text-sm mb-10">
               These details are required by SEBI to open your demat account.
             </p>
@@ -449,5 +455,10 @@ const tradingExperienceVal = (val: string) => {
 };
 const moveToNext = () =>{
      router.push('/FourthStep');
+}
+const moveBack=()=>{
+    tradingExp.value=false
+  isOccupation.value=true
+
 }
 </script>
