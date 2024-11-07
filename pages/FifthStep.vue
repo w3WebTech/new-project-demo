@@ -423,9 +423,9 @@
             
           </div>
         </div>
-           <div class="relative" v-else >
-            <div class="m-auto w-full border-10 border-gray-800">
-              <video ref="videoElement" class="w-full " autoplay></video>
+           <div class="relative h-screen " v-else >
+            <div class="m-auto w-full border-10 border-gray-800 bg-red-500 h-[300px]" >
+              <video ref="videoElement" class="w-full h-full" autoplay></video>
             </div>
             <canvas ref="canvas" class="hidden"></canvas>
 
