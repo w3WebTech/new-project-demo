@@ -394,14 +394,14 @@
       <div
         class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg md:w-[50%] md:h-[500px] sm:mx-5"
       >
-        <div class="bg-white rounded-lg p-6 w-full h-full relative">
+        <div class="bg-white rounded-lg p-6 w-full md:h-full relative">
             <div v-if="capturedImage && !isLoading" class="m-2">
           <div class="font-bold py-2 text-xl">Looking Good !</div>
           <div class="font-semibold text-sm">Your Photo Could be verified ...</div>
           <img
             :src="capturedImage"
             alt="Captured Image"
-            class="md:w-[400px] md:h-[350px] sm:h-full sm:w-full m-auto rounded-lg"
+            class="md:w-[400px] md:h-[350px]  sm:w-full m-auto rounded-lg"
           />
            <button
               @click="MoveToNext"
@@ -423,7 +423,7 @@
             
           </div>
         </div>
-           <div class="relative h-screen " v-else >
+           <div class="relative  " v-else >
             <div class="m-auto w-full border-10 border-gray-800 bg-gray-50 md:h-[400px] " >
               <video ref="videoElement" class="w-full md:h-full" autoplay></video>
             </div>
