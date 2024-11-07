@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-[#FF844B]  z-40"
+      class="fixed inset-0 bg-primary  z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -49,13 +49,13 @@
                   <div class="mb-4">
                      
 
-                    <h3 class="text-md font-bold">Complete e-KYC</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md  text-bigtext font-bold">Complete e-KYC</h3>
+                    <p class="text-mdtext text-sm">
                       Keep your Aadhaar and PAN card handy
                     </p>
                   </div>
                 </div>
-                <div class="font-bold text-2xl py-4 px-1">Next Up...</div>
+                <div class="font-bold text-2xl py-4 px-1 text-bigtext">Next Up...</div>
                 <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
@@ -75,8 +75,8 @@
                   <div class="mb-4">
                      
 
-                    <div class="text-md font-bold">Setup Your Profile</div>
-                    <div class="text-gray-600 text-sm">
+                    <div class="text-md font-bold text-bigtext">Setup Your Profile</div>
+                    <div class="text-smtext text-sm">
                       Answer a few question about yourself
                     </div>
                   </div>
@@ -101,8 +101,8 @@
                   <div class="mb-4">
                      
 
-                    <h3 class="text-md font-bold">Link your bank a/c</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Link your bank a/c</h3>
+                    <p class="text-smtext text-sm">
                       Set the primary account for your transaction
                     </p>
                   </div>
@@ -127,8 +127,8 @@
                   <div class="mb-4">
                      
 
-                    <h3 class="text-md font-bold">Confirm it's you</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Confirm it's you</h3>
+                    <p class="text-smtext text-sm">
                       Click a photo and submit your signature
                     </p>
                   </div>
@@ -152,8 +152,8 @@
                   <div class="mb-4">
                      
 
-                    <h3 class="text-md font-bold">eSign Ang Login</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">eSign Ang Login</h3>
+                    <p class="text-smtext text-sm">
                       Sign your Application and start Investing
                     </p>
                   </div>
@@ -171,119 +171,119 @@
         </div>
         <div v-if="isOccupation">
           <div class="p-8 mt-6">
-            <h1 class="text-2xl font-semibold text-[#2D3648] mb-1">
+            <h1 class="text-2xl font-semibold text-bigtext mb-1">
               Your occupation
             </h1>
-            <p class="text-gray-500 text-sm mb-10">
+            <p class="text-smtext text-md mb-10">
               These details are required by SEBI to open your demat account.
             </p>
             <div class="grid grid-cols-2 gap-6">
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Agriculturist')"
                 :class="
                   userOccupation == 'Agriculturist'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                    : 'bg-gray-100 text-mdtext'
                 "
               >
                 Agriculturist
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Business')"
                 :class="
                   userOccupation == 'Business'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 Business
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Govt. Service')"
                 :class="
                   userOccupation == 'Govt. Service'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 Govt. Service
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Housewife')"
                 :class="
                   userOccupation == 'Housewife'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 Housewife
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Private Sector')"
                 :class="
                   userOccupation == 'Private Sector'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 Private Sector
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Public Sector')"
                 :class="
                   userOccupation == 'Public Sector'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 Public Sector
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Professional')"
                 :class="
                   userOccupation == 'Professional'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 Professional
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Retired')"
                 :class="
                   userOccupation == 'Retired'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 Retired
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Student')"
                 :class="
                   userOccupation == 'Student'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 Student
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="occupationVal('Others')"
                 :class="
                   userOccupation == 'Others'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 Others
@@ -297,99 +297,100 @@
               <div class="mt-2" @click="moveBack"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" class="h-5 w-5">
   <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
 </svg></div>
-  <h1 class="text-2xl font-semibold text-[#2D3648] mb-1 px-2">Your trading experience
+  <h1 class="text-2xl font-semibold text-bigtext mb-1 px-2">Your trading experience
             </h1>
             </div>
           
               
-            <p class="text-gray-500 text-sm mb-10">
+            <p class="text-smtext text-md mb-10">
               These details are required by SEBI to open your demat account.
             </p>
             <div class="grid grid-cols-2 gap-6 mb-4">
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="tradingExperienceVal('New Investor')"
                 :class="
                   tradingExperience == 'New Investor'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 New Investor
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="tradingExperienceVal('Less than 1 year')"
                 :class="
                   tradingExperience == 'Less than 1 year'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 Less than 1 year
               </button>
-              <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                <button
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="tradingExperienceVal('1-2 years')"
                 :class="
                   tradingExperience == '1-2 years'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 1-2 years
               </button>
+             
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="tradingExperienceVal('2-5 years')"
                 :class="
                   tradingExperience == '2-5 years'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 2-5 years
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="tradingExperienceVal('5-10 years')"
                 :class="
                   tradingExperience == '5-10 years'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 5-10 years
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="tradingExperienceVal('10-20 years')"
                 :class="
                   tradingExperience == '10-20 years'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 10-20 years
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="tradingExperienceVal('20-25 years')"
                 :class="
                   tradingExperience == '20-25 years'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 20-25 years
               </button>
               <button
-                class="text-gray-800 py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
+                class=" py-2 px-4 rounded-lg border border-gray-300 hover:bg-[#1E1B4B] hover:text-white hover:font-semibold"
                 @click="tradingExperienceVal('25 years+')"
                 :class="
                   tradingExperience == '25 years+'
                     ? 'bg-[#1E1B4B] text-white font-semibold'
-                    : 'bg-gray-100'
+                     : 'bg-gray-100 text-mdtext'
                 "
               >
                 25 years+
@@ -399,14 +400,14 @@
               <input
                 type="checkbox"
                 id="pep"
-                class="h-4 w-4 text-green-600 border-gray-300 rounded hover:ring-white"
+                class="h-4 w-4 text-green-600 border-gray-300 rounded hover:ring-white focus:ring-white"
               />
-              <label for="pep" class="ml-2 text-sm text-gray-700"
+              <label for="pep" class="ml-2 text-md text-smtext"
                 >I am not a politically exposed person</label
               >
             </div>
             <button
-              class="w-full py-2 my-6 px-4 bg-[#1E1B4B] text-white rounded-lg animate-bounce"
+              class="w-full py-2 my-6 px-4 bg-[#1E1B4B] font-bold  text-white rounded-lg animate-bounce"
               @click="moveToNext"
             >
               Continue

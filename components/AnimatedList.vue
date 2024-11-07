@@ -17,7 +17,7 @@
           </div>
 
         </div>
-        <div class="p-2 typewriter font-bold text-md">{{ item.text }}</div>
+        <div class="p-2 typewriter font-bold text-bigtext text-lg">{{ item.text }}</div>
       </div>
     </AnimatedItem>
   </div>

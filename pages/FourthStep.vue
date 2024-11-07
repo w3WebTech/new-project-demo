@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-[#FF844B] z-40"
+      class="fixed inset-0 bg-primary z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -51,8 +51,8 @@
                   <div class="mb-4">
                      
 
-                    <h3 class="text-md font-bold">Complete e-KYC</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Complete e-KYC</h3>
+                    <p class="text-mdtext text-sm">
                       Keep your Aadhaar and PAN card handy
                     </p>
                   </div>
@@ -76,13 +76,13 @@
                   <div class="mb-3">
                      
 
-                    <div class="text-md font-bold">Setup Your Profile</div>
-                    <div class="text-gray-600 text-sm">
+                    <div class="text-md font-bold text-bigtext">Setup Your Profile</div>
+                    <div class="text-mdtext text-sm">
                       Answer a few question about yourself
                     </div>
                   </div>
                 </div>
-                <div class="font-bold text-2xl py-3 px-1">Next Up...</div>
+                <div class="font-bold text-2xl py-3 px-1 text-bigtext">Next Up...</div>
                 <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
@@ -103,8 +103,8 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold">Link your bank a/c</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Link your bank a/c</h3>
+                    <p class="text-mdtext text-sm">
                       Set the primary account for your transaction
                     </p>
                   </div>
@@ -129,8 +129,8 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold">Confirm it's you</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Confirm it's you</h3>
+                    <p class="text-mdtext text-sm">
                       Click a photo and submit your signature
                     </p>
                   </div>
@@ -154,8 +154,8 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold">eSign Ang Login</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">eSign Ang Login</h3>
+                    <p class="text-mdtext text-sm">
                       Sign your Application and start Investing
                     </p>
                   </div>
@@ -174,8 +174,8 @@
         </div>
         <div v-if="bankVerification">
           <div class="max-w-2xl mx-auto md:p-8 sm:py-8 sm:px-3">
-            <h1 class="text-2xl font-semibold mb-2">Add bank account</h1>
-            <p class="text-gray-600 mb-4">
+            <h1 class="text-2xl font-semibold mb-2 text-bigtext">Add bank account</h1>
+            <p class="text-smtext mb-4">
               This will be your primary account for all transactions.
             </p>
             <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
@@ -193,7 +193,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
               <div>
-                <h2 class="text-gray-600 mb-2">POPULAR BANKS</h2>
+                <h2 class="text-mdtext mb-2">POPULAR BANKS</h2>
                 <div class="bg-gray-100 px-1 rounded flex space-x-2">
                   <div
                     v-for="bank in filteredPopularBanks"
@@ -203,7 +203,7 @@
                     :class="{
                       'bg-[#1E1B4B] text-white':
                         selectedBankAccount === bank.name,
-                      'bg-gray-100': selectedBankAccount !== bank.name,
+                      'bg-gray-100 text-smtext': selectedBankAccount !== bank.name,
                     }"
                   >
                     <svg
@@ -227,12 +227,12 @@
                         d="M12 7.875a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z" :fill="selectedBankAccount === bank.name ? 'white' : '#1E1B4B'"
                       />
                     </svg>
-                    <span class="text-sm">{{ bank.name }}</span>
+                    <span class="text-sm ">{{ bank.name }}</span>
                   </div>
                 </div>
               </div>
               <div>
-                <h2 class="text-gray-600 mb-2">ALL BANKS</h2>
+                <h2 class="text-mdtext mb-2">ALL BANKS</h2>
                 <div class="h-[200px] overflow-y-auto mb-3">
                   <ul class="bg-gray-100 p-4 rounded space-y-2">
                     <li
@@ -243,7 +243,7 @@
                       :class="{
                         'bg-[#1E1B4B] text-white':
                           selectedBankAccount === bank.name,
-                        'bg-gray-100': selectedBankAccount !== bank.name,
+                        'bg-gray-100 text-mdtext': selectedBankAccount !== bank.name,
                       }"
                     >
                       <svg
@@ -268,7 +268,7 @@
                           d="M12 7.875a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"
                         />
                       </svg>
-                      <span>{{ bank.name }}</span>
+                      <span class=" text-sm">{{ bank.name }}</span>
                     </li>
                   </ul>
                 </div>
@@ -295,8 +295,8 @@
             </svg>
           </div>
         </div>
-        <h2 class="text-2xl font-bold mt-4">Bank account added</h2>
-        <p class="text-gray-600 mt-2">Your bank details have been verified.</p>
+        <h2 class="text-2xl font-bold text-bigtext mt-4">Bank account added</h2>
+        <p class="text-smtext mt-2">Your bank details have been verified.</p>
       </div>
 
       <div class="bg-gray-50 rounded-lg p-5 space-y-2  ">
@@ -305,24 +305,24 @@
           <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
             <span class="text-lg font-semibold">A</span>
           </div>
-          <div class="mb-2">
-            <h3 class="font-semibold">Archana</h3>
-            <p class="text-sm text-gray-500">{{selectedBankAccount}}</p>
+          <div class="">
+            <h3 class="font-semibold text-bigtext">Archana</h3>
+            <p class="text-sm text-mdtext">{{selectedBankAccount}}</p>
           </div>
         </div>
 
         <div class="space-y-3 my-3">
           <div class="flex justify-between">
-            <span class="text-gray-600 pr-20">Acc. No.</span>
-            <span class="font-medium">XXXX XXXX 6636</span>
+            <span class="text-smtext pr-20">Acc. No.</span>
+            <span class="font-medium text-bigtext">XXXX XXXX 6636</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-gray-600 pr-20">IFSC Code</span>
-            <span class="font-medium">1234567</span>
+            <span class="text-smtext pr-20">IFSC Code</span>
+            <span class="font-medium text-bigtext">1234567</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-gray-600 pr-20">Branch</span>
-            <span class="font-medium"> THANJAVUR</span>
+            <span class="text-smtext pr-20">Branch</span>
+            <span class="font-medium text-bigtext"> THANJAVUR</span>
           </div>
         </div>
         </div>

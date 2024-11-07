@@ -14,6 +14,14 @@ export default {
       screens: {
         'sm': {'max': '640px'},  // Ensure 'sm' is set correctly if customized
       },
+      colors: {
+        primary: '#FF844B', // Your primary color
+        secondary: '#1E1B4B',
+        bigtext:'#1e1742d8',
+        smtext:'#63666b',
+        mdtext:'#4e5054',
+        buttonblue:'#1E1B4B' // Your secondary color
+      },
     },
   
   },

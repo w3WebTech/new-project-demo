@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-[#FF844B]  z-40"
+      class="fixed inset-0 bg-primary  z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -28,7 +28,7 @@
           />
         </div> -->
             <div
-              class="text-3xl font-bold py-1 flex items-center md:justify-start sm:justify-center px-3 text-center"
+              class="text-3xl text-bigtext font-bold py-1 flex items-center md:justify-start sm:justify-center px-3 text-center"
             >
               Here's what's next
             </div>
@@ -53,8 +53,8 @@
                   <div class="mb-5">
                      
 
-                    <h3 class="text-md font-bold">Complete e-KYC</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Complete e-KYC</h3>
+                    <p class=" text-sm text-mdtext">
                       Keep your Aadhaar and PAN card handy
                     </p>
                   </div>
@@ -78,8 +78,8 @@
                   <div class="mb-5">
                      
 
-                    <div class="text-md font-bold">Setup Your Profile</div>
-                    <div class="text-gray-600 text-sm">
+                    <div class="text-md font-bold text-bigtext">Setup Your Profile</div>
+                    <div class="text-mdtext text-sm">
                       Answer a few question about yourself
                     </div>
                   </div>
@@ -104,8 +104,8 @@
                   <div class="mb-5">
                      
 
-                    <h3 class="text-md font-bold">Link your bank a/c</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Link your bank a/c</h3>
+                    <p class=" text-sm text-mdtext">
                       Set the primary account for your transaction
                     </p>
                   </div>
@@ -130,8 +130,8 @@
                   <div class="mb-5">
                      
 
-                    <h3 class="text-md font-bold">Confirm it's you</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Confirm it's you</h3>
+                    <p class=" text-sm text-mdtext">
                       Click a photo and submit your signature
                     </p>
                   </div>
@@ -155,8 +155,8 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold">eSign Ang Login</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">eSign Ang Login</h3>
+                    <p class=" text-sm text-mdtext">
                       Sign your Application and start Investing
                     </p>
                   </div>
@@ -175,10 +175,10 @@
         </div>
         <div v-if="isPanForm">
           <div class="max-w-md mx-auto p-6">
-            <h1 class="text-2xl font-semibold text-[#2D3648] mb-1">
+            <h1 class="text-2xl font-semibold text-bigtext mb-1">
               Enter your PAN
             </h1>
-            <p class="text-gray-500 text-sm mb-6">
+            <p class="text-smtext text-sm mb-6">
               These details are required by SEBI to open your demat account.
             </p>
 
@@ -187,7 +187,7 @@
               <div>
                 <label
                   for="pan"
-                  class="block text-sm font-medium text-gray-600 mb-1"
+                  class="block text-sm font-medium text-bigtext mb-1"
                   >PAN</label
                 >
                 <input
@@ -204,7 +204,7 @@
               <div>
                 <label
                   for="name"
-                  class="block text-sm font-medium text-gray-600 mb-1"
+                  class="block text-sm font-medium text-bigtext mb-1"
                   >Name as per PAN</label
                 >
                 <input
@@ -220,7 +220,7 @@
               <div>
                 <label
                   for="dob"
-                  class="block text-sm font-medium text-gray-600 mb-1"
+                  class="block text-sm font-medium text-bigtext mb-1"
                   >DOB</label
                 >
                 <div class="relative">
@@ -283,7 +283,7 @@
                   </div>
                 </div>
                 <label
-                  class="text-sm text-gray-600 leading-tight cursor-pointer"
+                  class="text-sm text-smtext leading-tight cursor-pointer"
                   @click="form.isTaxResident = !form.isTaxResident"
                 >
                   I'm a tax resident of India and not paying taxes to any other
@@ -293,7 +293,7 @@
 
               <!-- Info Text -->
               <div
-                class="mt-6 text-xs text-gray-500 bg-gray-50 p-1 rounded-t-xl leading-relaxed"
+                class="mt-6 text-xs text-smtext bg-gray-50 p-1 rounded-t-xl leading-relaxed"
               >
                 <span class="text-red-500">*</span> Your account would be opened
                 as per your PAN card details. Please use the
@@ -319,24 +319,24 @@
         </div>
         <div v-if="isPanDetails">
           <div class="max-w-md mx-auto p-6 py-20">
-            <h1 class="text-2xl font-semibold text-[#2D3648] mb-1">
+            <h1 class="text-2xl font-semibold text-bigtext mb-1">
               Enter your PAN
             </h1>
-            <p class="text-gray-500 text-sm mb-6">
+            <p class="text-smtext text-sm mb-6">
               These details are required by SEBI to open your demat account.
             </p>
-            <div class="text-xl py-3 font-bold text-[#2D3648] ">{{ form.pan }}</div>
+            <div class="text-xl py-3 font-bold text-bigtext ">{{ form.pan }}</div>
             <div class="bg-gray-100 border border-gray-200 rounded-md p-3">
-              <div class="text-sm text-gray-500 py-2">Name</div>
-              <div class="text-md font-bold text-[#2D3648]">{{ form.name }}</div>
+              <div class="text-sm text-mdtext py-2">Name</div>
+              <div class="text-md font-bold text-bigtext">{{ form.name }}</div>
 
-              <div class="text-sm text-gray-500 py-2">
+              <div class="text-sm text-mdtext py-2">
                 Permanent Address Number
               </div>
-              <div class="text-md font-bold text-[#2D3648]">{{ form.pan }}</div>
+              <div class="text-md font-bold text-bigtext">{{ form.pan }}</div>
             </div>
             <div
-              class="flex justify-center text-orange-500 font-bold text-sm py-5 cursor-pointer"
+              class="flex justify-center text-primary font-bold text-sm py-5 cursor-pointer"
               @click="moveBack"
             >
               Not your Pan ? Try Again
@@ -360,18 +360,18 @@
   <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
 </svg>
 </div>
- <h1 class="text-xl font-semibold text-gray-800 mb-2 px-2">
+ <h1 class="text-xl font-semibold text-bigtext mb-2 px-2">
               Complete e-KYC
             </h1></div>
            
-            <p class="text-gray-600 mb-4">
+            <p class="text-smtext mb-4">
               Make sure your mobile number is linked to your Aadhaar card.
             </p>
-            <a href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html" class="text-orange-500 mb-6 block underline font-semibold" target="_blank" rel="noopener noreferrer">
+            <a href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html" class="text-primary mb-6 block underline font-semibold" target="_blank" rel="noopener noreferrer">
             How to link Aadhaar with mobile?</a
             >
             <div class="bg-gray-100 p-4 rounded-lg mb-6">
-              <h2 class="text-lg font-semibold text-gray-800 mb-4">
+              <h2 class="text-lg font-semibold text-bigtext mb-4">
                 How this works?
               </h2>
               <ul class="space-y-4">
@@ -382,7 +382,7 @@
   <path d="M14.25 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 16.5 7.5h-1.875a.375.375 0 0 1-.375-.375V5.25Z" />
 </svg>
 </div>
-                  <span class="text-gray-700 text-sm px-2"
+                  <span class="text-smtext text-sm px-2"
                     >You will be redirected to Digilocker for e-KYC.</span
                   >
                 </li>
@@ -394,7 +394,7 @@
 </svg>
                   </div>
   
-                  <span class="text-gray-700 text-sm px-2"
+                  <span class="text-smtext text-sm px-2"
                     >It is a Govt. of India initiative with more than 150
                     million trusted users.</span
                   >
@@ -406,7 +406,7 @@
 </svg>
                    </div>
 
-                  <span class="text-gray-700 text-sm px-2"
+                  <span class="text-smtext text-sm px-2"
                     >You won't need to enter your details manually as the
                     required documents will be fetched from Digilocker.</span
                   >
@@ -419,7 +419,7 @@
             >
               Start e-KYC
             </button>
-            <a  href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html" target="_blank" rel="noopener noreferrer"class="text-orange-500 block text-center font-semibold"
+            <a  href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html" target="_blank" rel="noopener noreferrer" class="text-primary block text-center font-semibold"
               >Mobile not linked with Aadhaar?</a
             >
           </div>
@@ -427,37 +427,37 @@
         <div v-if="finalConfirmation">
             <div id="app" class="w-full max-w-md p-6 ">
               <div class="flex">
-                <div class="mt-1.5" @click="MoveEkyc"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" class="h-5 w-5">
+                <div class="mt-1" @click="MoveEkyc"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" class="h-5 w-5">
   <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
 </svg></div>
-<h1 class="text-xl font-semibold text-[#2D3648] mb-1 px-2">Confirm your details</h1>
+<h1 class="text-xl font-semibold text-bigtext mb-1 px-2">Confirm your details</h1>
               </div>
       
-      <p class="text-gray-600 mb-6">We have fetched your Aadhaar details from Digilocker.</p>
+      <p class="text-smtext mb-6">We have fetched your Aadhaar details from Digilocker.</p>
       <div class="bg-gray-100 p-4 rounded-lg mb-4">
      <div class="mb-4">
-          <span class="text-gray-600">Name:</span>
-          <span class="font-semibold text-gray-800 ml-2">{{form.name}}</span>
+          <span class="text-smtext">Name:</span>
+          <span class="font-semibold text-bigtext ml-2">{{form.name}}</span>
         </div>
         <div class="mb-2 flex items-center justify-between">
-          <div><span class="text-gray-600">Father's Name:</span>
-          <span class="font-semibold text-gray-800  px-2 py-1 rounded ml-2">Name</span></div>
+          <div><span class="text-smtext">Father's Name:</span>
+          <span class="font-semibold text-bigtext  px-2 py-1 rounded ml-2">{{fName}}</span></div>
           
-          <div class="ml-2 text-orange-500">
-          <a href="#" class="text-orange-500 text-sm font-semibold ml-auto">Edit ></a>
+          <div class="ml-2 text-primary" @click="openEdit=true">
+          <a href="#" class="text-primary text-sm font-semibold ml-auto">Edit ></a>
           </div>
         </div>
      <div class="mb-4">
-          <span class="text-gray-600">DOB:</span>
-          <span class="font-semibold text-gray-800  px-2 py-1 rounded">{{form.dob}}</span>
+          <span class="text-smtext">DOB:</span>
+          <span class="font-semibold text-bigtext  px-2 py-1 rounded">{{form.dob}}</span>
         </div>
      <div class="mb-4">
-          <span class="text-gray-600">Gender:</span>
-          <span class="font-semibold text-gray-800 px-2">male</span>
+          <span class="text-smtext">Gender:</span>
+          <span class="font-semibold text-bigtext px-2">male</span>
         </div>
      <div class="mb-4">
-          <span class="text-gray-600">Address:</span>
-          <span class="font-semibold text-gray-800  px-2 py-1 rounded">Nadu, India, 613204</span>
+          <span class="text-smtext">Address:</span>
+          <span class="font-semibold text-bigtext px-2 py-1 rounded">Nadu, India, 613204</span>
         </div>
      <div class="mb-4">
           <span class="text-gray-600">Aadhaar No:</span>
@@ -465,13 +465,13 @@
         </div>
       </div>
       <div class="flex items-center py-5">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="orange" class="w-5 h-5 mx-2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="primary" class="w-5 h-5 mx-2">
   <path d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z" />
   <path fill-rule="evenodd" d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-7.5Zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" clip-rule="evenodd" />
 </svg>
 
-        <span class="text-gray-800 font-semibold text-sm">PAN linked with your Aadhaar Card</span>
-        <a href="#" class="text-orange-500 font-semibold text-sm ml-auto pr-4">View ></a>
+        <span class="text-mdtext font-semibold text-sm">PAN linked with your Aadhaar Card</span>
+        <a href="#" class="text-primary font-semibold text-sm ml-auto pr-4">View ></a>
       </div>
       <button class="w-full bg-[#1E1B4B] animate-bounce text-white font-bold py-2 rounded-lg my-4" @click="completeEkyc">Continue</button>
     </div>
@@ -484,6 +484,41 @@
     :is-open="showDatePicker"
     @close="showDatePicker = false"
   />
+  <div
+    v-if="openEdit"
+    class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-50"
+  >
+    <div
+      class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
+    >
+      <div
+        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:mx-5"
+      >
+        
+        <div >
+          <div class="bg-white rounded-lg p-6 w-full relative">
+            <div class="text-bigtext font-semibold " >Father's Name</div>
+         <div class="my-4">
+              <input
+                type="text"
+                v-model="fName"
+                placeholder="Enter your text here"
+                class="border border-gray-300 rounded-md p-2 w-full"
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              @click="handleSubmit"
+              class="bg-[#1E1B4B] text-white py-2 w-full my-2 rounded-xl shadow-md transition duration-200"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -493,6 +528,8 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const isOpen = ref(false);
 const isPanDetails = ref(false);
+const openEdit=ref(false)
+const fName=ref("Name")
 const openBottomSheet = () => {
   isOpen.value = true;
 };
@@ -533,10 +570,7 @@ const isFormValid = computed(() => {
 const eKycFinalStep=ref(false)
 const finalConfirmation=ref(false)
 const handleSubmit = () => {
-  if (isFormValid.value) {
-    console.log("Form submitted:", form.value);
-    // Handle form submission
-  }
+  openEdit.value=false
 };
 const nextStep = () => {
   isStepPage.value = false;

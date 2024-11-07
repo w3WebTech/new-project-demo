@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-[#FF844B] z-40"
+      class="fixed inset-0 bg-primary z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -51,8 +51,8 @@
                   <div class="mb-4">
                      
 
-                    <h3 class="text-md font-bold">Complete e-KYC</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Complete e-KYC</h3>
+                    <p class="text-mdtext text-sm">
                       Keep your Aadhaar and PAN card handy
                     </p>
                   </div>
@@ -76,8 +76,8 @@
                   <div class="mb-3">
                      
 
-                    <div class="text-md font-bold">Setup Your Profile</div>
-                    <div class="text-gray-600 text-sm">
+                    <div class="text-md font-bold text-bigtext">Setup Your Profile</div>
+                    <div class="text-mdtext text-sm">
                       Answer a few question about yourself
                     </div>
                   </div>
@@ -100,13 +100,13 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold">Link your bank a/c</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Link your bank a/c</h3>
+                    <p class="text-mdtext text-sm">
                       Set the primary account for your transaction
                     </p>
                   </div>
                 </div>
-                <div class="font-bold text-2xl py-3 px-1">Next Up...</div>
+                <div class="font-bold text-2xl py-3 px-1 text-bigtext">Next Up...</div>
 
                 <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
@@ -128,8 +128,8 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold">Confirm it's you</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Confirm it's you</h3>
+                    <p class="text-mdtext text-sm">
                       Click a photo and submit your signature
                     </p>
                   </div>
@@ -153,8 +153,8 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold">eSign Ang Login</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">eSign Ang Login</h3>
+                    <p class="text-mdtext text-sm">
                       Sign your Application and start Investing
                     </p>
                   </div>
@@ -173,14 +173,14 @@
         </div>
         <div v-if="isCameraAccess">
           <div class="p-6 rounded-lg md:my-6">
-            <h1 class="text-xl font-bold text-[#1f1f1f] mb-2">Take a Selfie</h1>
-            <p class="text-gray-700 mb-4">
+            <h1 class="text-2xl font-bold text-bigtext mb-2">Take a Selfie</h1>
+            <p class="text-smtext mb-4">
               Ensure your face appears clearly within the frame
             </p>
             <div class="bg-[#f3f4f6] p-4 rounded-lg mb-4">
-              <p class="text-[#1f1f1f] font-bold mb-2">Please remember this:</p>
+              <p class="text-bigtext font-bold mb-2">Please remember this:</p>
               <ul class="space-y-2">
-                <li class="flex items-center text-[#6b7280]">
+                <li class="flex items-center text-smtext">
                   <div class="bg-purple-200 rounded-xl p-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -198,11 +198,11 @@
                     </svg>
                   </div>
 
-                  <span class="px-2"
+                  <span class="px-2 "
                     >Avoid caps, hats, glasses, and sunglasses.</span
                   >
                 </li>
-                <li class="flex items-center text-[#6b7280]">
+                <li class="flex items-center text-smtext">
                   <div class="bg-purple-200 rounded-xl p-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -224,7 +224,7 @@
                     >Keep your face straight & within the frame.</span
                   >
                 </li>
-                <li class="flex items-center text-[#6b7280]">
+                <li class="flex items-center text-smtext">
                   <div class="bg-purple-200 rounded-xl p-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +246,7 @@
                     >Be in a bright area and take a clear picture.</span
                   >
                 </li>
-                <li class="flex items-center text-[#6b7280]">
+                <li class="flex items-center text-smtext">
                   <div class="bg-purple-200 rounded-xl p-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -271,11 +271,11 @@
                 </li>
               </ul>
             </div>
-            <p class="text-[#6b7280] mb-8">
+            <p class="text-smtext mb-8">
               These details are required by SEBI to open your demat account.
             </p>
             <button
-              class="bg-[#1E1B4B] text-white py-2 px-4 rounded-lg w-full animate-bounce md:mt-6"
+              class="bg-[#1E1B4B] text-white font-bold py-2 px-4 rounded-lg w-full animate-bounce md:mt-6"
               @click="handleContinue"
             >
               Open camera
@@ -364,11 +364,11 @@
               </div>
             </div>
 
-            <h2 class="text-xl font-bold text-center mb-2">
+            <h2 class="text-xl font-bold text-center  text-bigtext mb-2">
               Allow camera & location access
             </h2>
 
-            <p class="text-gray-600 text-center font-semibold text-md mb-6">
+            <p class="text-mdtext text-center font-semibold text-md mb-6">
               In case disabled, please enable permissions from your browser's
               settings
             </p>
@@ -396,8 +396,8 @@
       >
         <div class="bg-white rounded-lg p-6 w-full md:h-full relative">
             <div v-if="capturedImage && !isLoading" class="m-2">
-          <div class="font-bold py-2 text-xl">Looking Good !</div>
-          <div class="font-semibold text-sm">Your Photo Could be verified ...</div>
+          <div class="font-bold py-1 text-2xl text-bigtext">Looking Good !</div>
+          <div class="font-semibold text-md text-smtext ">Your Photo Could be verified ...</div>
           <img
             :src="capturedImage"
             alt="Captured Image"
@@ -405,7 +405,7 @@
           />
            <button
               @click="MoveToNext"
-              class="bg-[#1E1B4B] text-white px-6 py-2 w-full my-2 rounded-xl shadow-md transition duration-200"
+              class="bg-[#1E1B4B] font-bold text-white px-6 py-2 w-full my-2 rounded-xl shadow-md transition duration-200"
             >
            
                 Continue
@@ -414,7 +414,7 @@
         </div>
         <div v-else-if="isLoading">
           <div class="">
-            <div class="font-bold p-5">Verifying...</div>
+            <div class="font-bold text-bigtext p-5">Verifying...</div>
             <img
               src="public/images/faceverifying.png"
               alt="Google"
@@ -465,7 +465,7 @@
         
             <button
               @click="capture"
-              class="bg-[#1E1B4B] text-white px-6 py-2 w-full my-2 rounded-xl shadow-md transition duration-200"
+              class="bg-[#1E1B4B] text-white font-bold  px-6 py-2 w-full my-2 rounded-xl shadow-md transition duration-200"
             >
               <div class="flex justify-center text-center items-center">
                 <div>
@@ -566,32 +566,32 @@ const handleConfirm = async () => {
     console.error("Error requesting permissions:", error);
 
     if (error.message === "No camera found on this device.") {
-      alert(
-        "No camera found on your device. Location permission will still be requested."
-      );
+      // alert(
+      //   "No camera found on your device. Location permission will still be requested."
+      // );
     } else if (
       error.name === "NotAllowedError" ||
       error.name === "PermissionDeniedError"
     ) {
       // Handle geolocation permission denial
       if (error.code === 1) {
-        alert(
-          "Location permission denied. Please enable location access in your browser settings."
-        );
+        // alert(
+        //   "Location permission denied. Please enable location access in your browser settings."
+        // );
       } else if (error.code === 2) {
-        alert("Location is unavailable. Please try again later.");
+      // alert("Location is unavailable. Please try again later.");
       }
 
       // Handle camera permission denial
       if (error.message.includes("getUserMedia")) {
-        alert(
-          "Camera permission denied. Please allow camera access in your browser settings."
-        );
+        // alert(
+        //   "Camera permission denied. Please allow camera access in your browser settings."
+        // );
       }
     } else {
-      alert(
-        "An error occurred while requesting permissions. Please try again later."
-      );
+      // alert(
+      //   "An error occurred while requesting permissions. Please try again later."
+      // );
     }
   }
 };
@@ -612,7 +612,7 @@ const startCamera = async () => {
     });
   } catch (error) {
     console.error("Error accessing camera:", error);
-    alert("Unable to access the camera. Please check your permissions.");
+    //alert("Unable to access the camera. Please check your permissions.");
   }
 };
 const handleContinue = () => {
@@ -629,7 +629,7 @@ const handleContinue = () => {
       })
       .catch((error) => {
         console.error("Error accessing the camera:", error);
-        alert("Error accessing the camera.");
+        //alert("Error accessing the camera.");
       });
     vedioScreen.value = true;
     setTimeout(() => {
@@ -644,7 +644,7 @@ const MoveToNext =()=>{
      router.push("/SixthStep");
 }
 const capture = () => {
-  debugger;
+
   if (videoElement.value && canvas.value) {
     const context = canvas.value.getContext("2d");
     if (context) {

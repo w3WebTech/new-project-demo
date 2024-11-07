@@ -5,7 +5,7 @@
       <div class="p-8 rounded-2xl md:shadow-2xl overflow-hidden bg-white">
         <div class="grid grid-cols-2 py-4">
           <img
-            src="public/images/venturalogo.jpeg"
+            src="public/images/goodwillname.jpg"
             alt="Google"
             class="w-45 h-14"
           />
@@ -13,12 +13,12 @@
       <div v-for="i in 36" :key="i" class="border border-[rgba(72,52,129,0.1)]"></div>
     </div> -->
         </div>
-        <h1 class="text-gray-600 text-2xl font-bold mb-4 pl-1">
+        <h1 class="text-bigtext text-2xl font-bold mb-4 pl-1">
           Enter OTP here
         </h1>
-        <p class="text-gray-600 mb-8 pl-1">
+        <p class="text-smtext mb-8 pl-1">
           We have sent an OTP to your mobile number<br />
-          +91 *****{{ phoneNumber.slice(-4) }}
+          +91 *****{{ form.phoneNumber.slice(-4) }}
         </p>
 
         <!-- OTP Input -->
@@ -40,7 +40,7 @@
 
         <!-- Timer -->
         <div class="flex justify-between items-center mb-12">
-          <p class="text-gray-600">{{ formatTime(timer) }}</p>
+          <p class="text-mdtext">{{ formatTime(timer) }}</p>
           <button
             @click="resendOtp"
             :disabled="timer > 0"
@@ -55,11 +55,11 @@
         <button
           @click="verifyOtp"
           :disabled="!isOtpComplete"
-          class="w-full py-3 rounded-lg font-medium transition-colors  "
+          class="w-full py-3 rounded-lg font-medium transition-colors"
           :class="
             isOtpComplete
               ? 'bg-[#1E1B4B] text-white  animate-bounce'
-              : 'bg-gray-200 text-gray-500'
+              : 'bg-gray-200 text-white'
           "
         >
           Verify OTP
@@ -73,7 +73,7 @@
       <div class="p-8 rounded-2xl md:shadow-2xl overflow-hidden bg-white">
         <div class="grid grid-cols-2 py-3">
           <img
-            src="public/images/venturalogo.jpeg"
+            src="public/images/goodwillname.jpg"
             alt="Google"
             class="w-45 h-14"
           />
@@ -81,10 +81,10 @@
       <div v-for="i in 36" :key="i" class="border border-[rgba(72,52,129,0.1)]"></div>
     </div> -->
         </div>
-        <h1 class="text-gray-600 text-2xl font-bold mb-4 pl-1">
+        <h1 class="text-bigtext text-2xl font-bold mb-4 pl-1">
           Enter OTP here
         </h1>
-        <p class="text-gray-600 mb-8 pl-1">
+        <p class="text-smtext mb-8 pl-1">
           We have sent an OTP to your email id <br />
           ******@gmail.com
         </p>
@@ -108,7 +108,7 @@
 
         <!-- Timer -->
         <div class="flex justify-between items-center mb-12">
-          <p class="text-gray-600">{{ formatTime(timer1) }}</p>
+          <p class="text-mdtext">{{ formatTime(timer1) }}</p>
           <button
             @click="resendOtp1"
             :disabled="timer1 > 0"
@@ -127,7 +127,7 @@
           :class="
             isOtpComplete1
               ? 'bg-[#1E1B4B] text-white animate-bounce'
-              : 'bg-gray-200 text-gray-500'
+              : 'bg-gray-200 text-white'
           "
         >
           Verify OTP
@@ -140,7 +140,7 @@
       <div class="flex flex-col mt-10 mx-1">
         <div class="grid grid-cols-2 py-3">
           <img
-            src="public/images/venturalogo.jpeg"
+            src="public/images/goodwillname.jpg"
             alt="Google"
             class="w-45 h-14"
           />
@@ -148,18 +148,19 @@
       <div v-for="i in 36" :key="i" class="border border-[rgba(72,52,129,0.1)]"></div>
     </div> -->
         </div>
-        <h2 class="text-2xl font-bold mb-4 pl-1 text-gray-600">
+        <h2 class="text-2xl font-bold mb-4 pl-1 text-bigtext">
           Add your email
         </h2>
-        <p class="text-gray-600 mb-6 pl-1">
+        <p class="text-smtext mb-6 pl-1">
           This is where we'll send you important updates and insights on the
           market.
         </p>
         <input
           v-model="email"
           type="email"
+          id="email"
           placeholder="Enter email"
-          class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-[#1E1B4B] mb-6"
+          class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:bg-blue-50 focus:border-[#1E1B4B] mb-6"
         />
         <button
           @click="handleDone(email)"
@@ -168,12 +169,12 @@
           :class="
             isValidEmail(email)
               ? 'bg-[#1E1B4B] text-white animate-bounce'
-              : 'bg-gray-200 text-gray-500'
+              : 'bg-gray-200 text-white'
           "
         >
           Verify email
         </button>
-        <p class="text-gray-600 mt-2 text-center">or</p>
+        <p class="text-mdtext mt-2 text-center">or</p>
         <button
           @click="openVerifygoogle = true"
           class="bg-[#1A1442] text-white py-2 px-4 inline-flex items-center justify-center focus:outline-none focus:shadow-outline mt-4 w-full rounded-lg font-medium transition-colors"
@@ -189,10 +190,10 @@
     </div>
   </div>
   <div class="md:my-10 md:mx-20" v-else>
-    <div class="bg-white rounded-2xl md:p-10 sm:py-14 sm:px-5 md:shadow-2xl ">
+    <div class="bg-white rounded-2xl md:p-10 sm:py-14 sm:px-5 md:shadow-2xl">
       <div class="grid grid-cols-2 py-3">
         <img
-          src="public/images/venturalogo.jpeg"
+          src="public/images/goodwillname.jpg"
           alt="Google"
           class="w-45 h-14"
         />
@@ -201,26 +202,27 @@
     </div> -->
       </div>
 
-      <h2 class="text-[#1e1742d8] text-3xl font-bold mb-4 pl-1 ">
+      <h2 class="text-bigtext text-3xl font-bold mb-4 pl-1">
         Ready to get started?
       </h2>
-      <p class="text-gray-600 mb-8 pl-1">
+      <p class="text-smtext mb-8 pl-1">
         Enter your number to help us set up your investment account.
       </p>
 
       <div class="flex gap-4 mb-8">
         <div class="bg-gray-100 px-4 py-3 rounded-lg">
-          <span class="text-gray-700">+91</span>
+          <span class="text-mdtext">+91</span>
         </div>
         <input
           type="tel"
-          v-model="phoneNumber"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-[#1E1B4B] block w-full p-2.5"
+          id="phoneNumber"
+          v-model="form.phoneNumber"
+          class="bg-gray-50 border border-gray-300 text-mdtext text-sm rounded-lg focus:border-[#1E1B4B] focus:bg-blue-50 block w-full p-2.5"
           placeholder="Enter phone number"
           required
-           pattern="\d{10}"
-              @input="validatePhoneNumber"
-                maxlength="10"
+          pattern="\d{10}"
+          @input="validatePhoneNumber"
+          maxlength="10"
         />
       </div>
 
@@ -244,24 +246,24 @@
             />
           </svg>
         </button>
-        <span class="text-gray-600">Enable WhatsApp notifications</span>
+        <span class="text-smtext">Enable WhatsApp notifications</span>
       </div>
-      <p class="text-center text-gray-900 font-semibold text-sm py-4">
+      <p class="text-center text-mdtext font-semibold text-sm py-4">
         Have an account ?
-        <span class="text-[#FF7F50] font-semibold">Login</span>
+        <span class="text-primary font-semibold">Login</span>
       </p>
-      <p class="text-center text-gray-500 text-sm mb-8">
+      <p class="text-center text-smtext text-sm mb-8">
         By proceeding, you accept Ventura's
-        <a href="#" class="text-[#1E1B4B] font-semibold">Terms of Use</a> and
-        <a href="#" class="text-[#1E1B4B] font-semibold">Privacy Policy</a>
+        <a href="#" class="text-mdtext font-semibold">Terms of Use</a> and
+        <a href="#" class="text-mdtext font-semibold">Privacy Policy</a>
       </p>
 
       <button
         @click="handleContinue"
-        class="w-full bg-[#1E1B4B] text-white py-3 rounded-lg font-medium "
-        :disabled="!phoneNumber && phoneNumber.length != 10"
+        class="w-full bg-[#1E1B4B] text-white py-3 rounded-lg font-medium"
+        :disabled="!form.phoneNumber && form.phoneNumber.length != 10"
         :class="
-          phoneNumber && phoneNumber.length == 10
+          form.phoneNumber && form.phoneNumber.length == 10
             ? 'bg-[#1E1B4B] text-white animate-bounce'
             : 'bg-gray-200 text-gray-500'
         "
@@ -362,9 +364,15 @@ const showPostVerification = ref(false);
 const isVisible = ref(false);
 const showTruecaller = ref(false);
 const EmailHandling = ref(false);
-const phoneNumber = ref("");
+// const phoneNumber = ref("");
 const whatsAppEnabled = ref(true);
+interface FormData {
+  phoneNumber: string;
+}
 
+const form = ref<FormData>({
+  phoneNumber: "",
+});
 const toggleWhatsApp = () => {
   whatsAppEnabled.value = !whatsAppEnabled.value;
 };
@@ -372,10 +380,10 @@ const email = ref("");
 const closeBottomSheet = () => {
   isVisible.value = false;
 };
-const  validatePhoneNumber = () => {
-      // Remove any non-digit characters
-      phoneNumber.value = phoneNumber.value.replace(/\D/g, '').slice(0, 10);
-    }
+const validatePhoneNumber = () => {
+  // Remove any non-digit characters
+  form.value.phoneNumber= form.value.phoneNumber.replace(/\D/g, "").slice(0, 10);
+};
 function isValidEmail(email: string): boolean {
   // Regular expression for validating an email
   const emailRegex: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -392,7 +400,7 @@ const handleDone = (email: any) => {
   }
 };
 const handleContinue = () => {
-  if (phoneNumber.value && phoneNumber.value.length == 10) {
+  if (form.value.phoneNumber && form.value.phoneNumber.length == 10) {
     showTruecaller.value = true;
   }
 };
@@ -499,7 +507,6 @@ const focusNextInput = (index: number) => {
 };
 
 const startTimer = () => {
-    
   timer.value = 60;
   timerInterval = setInterval(() => {
     if (timer.value > 0) {
@@ -510,7 +517,6 @@ const startTimer = () => {
   }, 1000);
 };
 const startTimer1 = () => {
-    
   timer1.value = 60;
   timerInterval = setInterval(() => {
     if (timer1.value > 0) {
@@ -557,7 +563,7 @@ const closeSheet = () => {
 };
 
 onMounted(() => {
-  if (showTruecaller.value ) {
+  if (showTruecaller.value) {
     startTimer();
   }
   if (showEmailOtp.value) {
@@ -615,14 +621,25 @@ onMounted(() => {
 </script>
 <style scoped lang="scss">
 @keyframes shake {
-  0% { transform: translate(1px, 0); }
-  25% { transform: translate(-1px, 0); }
-  50% { transform: translate(1px, 0); }
-  75% { transform: translate(-1px, 0); }
-  100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(1px, 0);
+  }
+  25% {
+    transform: translate(-1px, 0);
+  }
+  50% {
+    transform: translate(1px, 0);
+  }
+  75% {
+    transform: translate(-1px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
-@media (min-width: 768px) { /* md breakpoint in Tailwind CSS */
+@media (min-width: 768px) {
+  /* md breakpoint in Tailwind CSS */
   .hover\:shake:hover {
     animation: shake 0.5s ease-in-out;
   }

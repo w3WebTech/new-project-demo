@@ -1,7 +1,7 @@
 <template>
   <div class="max-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
-      class="fixed inset-0 bg-[#FF844B] z-40"
+      class="fixed inset-0 bg-primary z-40"
       v-if="isOpen"
       @click="closeBottomSheet"
     >
@@ -51,8 +51,8 @@
                   <div class="mb-4">
                      
 
-                    <h3 class="text-md font-bold">Complete e-KYC</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Complete e-KYC</h3>
+                    <p class="text-mdtext text-sm">
                       Keep your Aadhaar and PAN card handy
                     </p>
                   </div>
@@ -76,8 +76,8 @@
                   <div class="mb-3">
                      
 
-                    <div class="text-md font-bold">Setup Your Profile</div>
-                    <div class="text-gray-600 text-sm">
+                    <div class="text-md font-bold text-bigtext">Setup Your Profile</div>
+                    <div class="text-mdtext text-sm">
                       Answer a few question about yourself
                     </div>
                   </div>
@@ -100,8 +100,8 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold">Link your bank a/c</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Link your bank a/c</h3>
+                    <p class="text-mdtext text-sm">
                       Set the primary account for your transaction
                     </p>
                   </div>
@@ -126,13 +126,13 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold">Confirm it's you</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">Confirm it's you</h3>
+                    <p class="text-mdtext text-sm">
                       Click a photo and submit your signature
                     </p>
                   </div>
                 </div>
-                <div class="font-bold text-2xl py-3 px-1">Next Up...</div>
+                <div class="font-bold text-2xl py-3 px-1 text-bigtext">Next Up...</div>
                 <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
@@ -152,8 +152,8 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold">eSign Ang Login</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="text-md font-bold text-bigtext">eSign Ang Login</h3>
+                    <p class="text-mdtext text-sm">
                       Sign your Application and start Investing
                     </p>
                   </div>
