@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
+  <div class="h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div
       class="fixed inset-0 bg-primary  z-40"
       v-if="isOpen"
