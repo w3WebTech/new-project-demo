@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
+ <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
     <div class="fixed inset-0 bg-primary z-40" v-if="isOpen">
       <div class="flex justify-between">
         <div></div>
@@ -12,42 +12,137 @@
   >
     <div class="md:w-[40%] md:mx-auto px-4 relative h-full pb-20">
       <div class="md:pt-5 sm:pt-10 pb-5 relative max-w-md mx-auto">
-      
-        <h1 class="text-2xl font-semibold text-bigtext mb-1">
-              Enter your PAN
-            </h1>
-        <div class="my-1">
-            <label
-                  for="name"
-                  class="block text-sm font-medium text-bigtext mb-1"
-                  >ADHAR</label
-                >
-          <FileUpload 
-            @file-selected="handleFileSelected"
-            @file-removed="handleFileRemoved"
-          />
+        <div class="text-3xl text-bigtext font-bold py-1 flex items-center md:justify-start sm:justify-center text-center">
+          Upload Your Documentst
         </div>
-         <div class="my-1">
-            <label
-                  for="name"
-                  class="block text-sm font-medium text-bigtext mb-1"
-                  >PAN</label
-                >
-          <FileUpload 
-            @file-selected="handleFileSelected"
-            @file-removed="handleFileRemoved"
-          />
-        </div>
-         <div class="my-1">
-            <label
-                  for="name"
-                  class="block text-sm font-medium text-bigtext mb-1"
-                  >EDUCATION PROOF</label
-                >
-          <FileUpload 
-            @file-selected="handleFileSelected"
-            @file-removed="handleFileRemoved"
-          />
+        
+        <!-- File Upload Section -->
+        <div class="mt-6 space-y-6">
+          <!-- Aadhaar Upload -->
+          <div>
+            <label class="block text-sm font-medium text-bigtext mb-2">Aadhaar Card</label>
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6" 
+                :class="{ 'bg-gray-50': isDraggingAadhaar }"
+                @dragenter.prevent="isDraggingAadhaar = true"
+                @dragleave.prevent="isDraggingAadhaar = false"
+                @dragover.prevent
+                @drop.prevent="handleDrop($event, 'aadhaar')">
+              
+              <div v-if="!aadhaarFile" class="text-center">
+                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                  <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4-4m4-4h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <div class="mt-4 flex text-sm justify-center">
+                  <label class="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500">
+                    <span>Upload Aadhaar</span>
+                    <input 
+                      type="file" 
+                      class="sr-only" 
+                      accept="image/*,.pdf" 
+                      @change="(e) => handleFileSelect(e, 'aadhaar')"
+                    >
+                  </label>
+                  <p class="pl-1 text-gray-500">or drag and drop</p>
+                </div>
+                <p class="text-xs text-gray-500 mt-2">PDF or images up to 5MB</p>
+              </div>
+
+              <div v-else class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="flex-shrink-0">
+                    <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-900 truncate">
+                      {{ aadhaarFile.name }}
+                    </p>
+                    <p class="text-sm text-gray-500">
+                      {{ formatFileSize(aadhaarFile.size) }}
+                    </p>
+                  </div>
+                </div>
+                <div class="flex space-x-3">
+                  <button 
+                    @click="() => openPreview('aadhaar')" 
+                    class="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                  >
+                    View
+                  </button>
+                  <button 
+                    @click="() => removeFile('aadhaar')" 
+                    class="text-sm font-medium text-red-600 hover:text-red-500"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAN Upload -->
+          <div>
+            <label class="block text-sm font-medium text-bigtext mb-2">PAN Card</label>
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6" 
+                :class="{ 'bg-gray-50': isDraggingPan }"
+                @dragenter.prevent="isDraggingPan = true"
+                @dragleave.prevent="isDraggingPan = false"
+                @dragover.prevent
+                @drop.prevent="handleDrop($event, 'pan')">
+              
+              <div v-if="!panFile" class="text-center">
+                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                  <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4-4m4-4h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <div class="mt-4 flex text-sm justify-center">
+                  <label class="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500">
+                    <span>Upload PAN</span>
+                    <input 
+                      type="file" 
+                      class="sr-only" 
+                      accept="image/*,.pdf" 
+                      @change="(e) => handleFileSelect(e, 'pan')"
+                    >
+                  </label>
+                  <p class="pl-1 text-gray-500">or drag and drop</p>
+                </div>
+                <p class="text-xs text-gray-500 mt-2">PDF or images up to 5MB</p>
+              </div>
+
+              <div v-else class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="flex-shrink-0">
+                    <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-900 truncate">
+                      {{ panFile.name }}
+                    </p>
+                    <p class="text-sm text-gray-500">
+                      {{ formatFileSize(panFile.size) }}
+                    </p>
+                  </div>
+                </div>
+                <div class="flex space-x-3">
+                  <button 
+                    @click="() => openPreview('pan')" 
+                    class="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                  >
+                    View
+                  </button>
+                  <button 
+                    @click="() => removeFile('pan')" 
+                    class="text-sm font-medium text-red-600 hover:text-red-500"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -56,8 +151,8 @@
         <div class="md:w-[40%] md:mx-auto">
           <button
             type="submit"
-            class="w-full bg-[#1E1B4B] text-white rounded-lg py-3 font-medium transition-colors hover:bg-[#2d2974] disabled:cursor-not-allowed"
-            :disabled="!hasFile"
+            class="w-full bg-[#1E1B4B] text-white rounded-lg py-3 font-medium transition-colors hover:bg-[#2d2974] disabled:cursor-not-allowed disabled:opacity-50"
+            :disabled="!isComplete"
             @click="nextStep"
           >
             Continue
@@ -65,27 +160,177 @@
         </div>
       </div>
     </div>
+
+    <!-- Preview Modal -->
+    
   </div>
+ </div>
+<div v-if="isPreviewOpen" class="fixed inset-0 z-50 overflow-y-auto sm:mx-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" @click="closePreview"></div>
+
+      <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden md:w-[40%] shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full sm:p-6">
+        <div class="absolute top-0 right-0 pt-4 pr-4 ">
+          <button @click="closePreview" class="bg-white rounded-md text-gray-400 hover:text-gray-500">
+            <span class="sr-only">Close</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        
+        <div class="mt-3 text-center sm:mt-0 sm:text-left ">
+          <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+            Document Preview
+          </h3>
+          <div class="mt-4">
+            <div v-if="currentPreviewUrl">
+              <template v-if="currentFileType?.startsWith('image/')">
+                <img 
+                  :src="currentPreviewUrl" 
+                  class="w-full h-auto" 
+                  :alt="currentFileName"
+                >
+              </template>
+               <template v-else-if="currentFileType === 'application/pdf'">
+                <object
+                  :data="currentPreviewUrl"
+                  type="application/pdf"
+                  class="w-full h-[70vh] md:h-[80vh]"
+                >
+                  <p>Your browser does not support PDFs. <a :href="currentPreviewUrl">Download the PDF</a>.</p>
+                </object>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed, onUnmounted, onMounted } from 'vue';
+//import VuePdfEmbed from 'vue-pdf-embed';
 
-import FileUpload from '@/components/FileUpload.vue';
 const isOpen = ref(true);
-const hasFile = ref(false);
+const isDraggingAadhaar = ref(false);
+const isDraggingPan = ref(false);
+const aadhaarFile = ref<File | null>(null);
+const panFile = ref<File | null>(null);
+const aadhaarPreviewUrl = ref<string | null>(null);
+const panPreviewUrl = ref<string | null>(null);
+const isPreviewOpen = ref(false);
+const currentPreviewType = ref<'aadhaar' | 'pan' | null>(null);
 
-const handleFileSelected = (file: File) => {
-  hasFile.value = true;
+const isComplete = computed(() => aadhaarFile.value && panFile.value);
+
+const currentPreviewUrl = computed(() => {
+  if (currentPreviewType.value === 'aadhaar') return aadhaarPreviewUrl.value;
+  if (currentPreviewType.value === 'pan') return panPreviewUrl.value;
+  return null;
+});
+
+const currentFileName = computed(() => {
+  if (currentPreviewType.value === 'aadhaar') return aadhaarFile.value?.name;
+  if (currentPreviewType.value === 'pan') return panFile.value?.name;
+  return '';
+});
+
+const currentFileType = computed(() => {
+  if (currentPreviewType.value === 'aadhaar') return aadhaarFile.value?.type;
+  if (currentPreviewType.value === 'pan') return panFile.value?.type;
+  return '';
+});
+
+const handleFileSelect = (event: Event, type: 'aadhaar' | 'pan') => {
+  const input = event.target as HTMLInputElement;
+  if (input.files && input.files[0]) {
+    processFile(input.files[0], type);
+  }
 };
 
-const handleFileRemoved = () => {
-  hasFile.value = false;
+const handleDrop = (event: DragEvent, type: 'aadhaar' | 'pan') => {
+  if (type === 'aadhaar') isDraggingAadhaar.value = false;
+  if (type === 'pan') isDraggingPan.value = false;
+
+  if (event.dataTransfer?.files.length) {
+    processFile(event.dataTransfer.files[0], type);
+  }
+};
+
+const processFile = (file: File, type: 'aadhaar' | 'pan') => {
+  if (file.size > 5 * 1024 * 1024) {
+    alert('File size should not exceed 5MB');
+    return;
+  }
+
+  if (type === 'aadhaar') {
+    aadhaarFile.value = file;
+    aadhaarPreviewUrl.value = URL.createObjectURL(file);
+  } else {
+    panFile.value = file;
+    panPreviewUrl.value = URL.createObjectURL(file);
+  }
+};
+
+const removeFile = (type: 'aadhaar' | 'pan') => {
+  if (type === 'aadhaar') {
+    if (aadhaarPreviewUrl.value) {
+      URL.revokeObjectURL(aadhaarPreviewUrl.value);
+    }
+    aadhaarFile.value = null;
+    aadhaarPreviewUrl.value = null;
+  } else {
+    if ( panPreviewUrl.value) {
+      URL.revokeObjectURL(panPreviewUrl.value);
+    }
+    panFile.value = null;
+    panPreviewUrl.value = null;
+  }
+
+  if (currentPreviewType.value === type) {
+    closePreview();
+  }
+};
+
+const openPreview = (type: 'aadhaar' | 'pan') => {
+  currentPreviewType.value = type;
+  isPreviewOpen.value = true;
+};
+
+const closePreview = () => {
+  isPreviewOpen.value = false;
+  currentPreviewType.value = null;
+};
+
+const formatFileSize = (bytes: number): string => {
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 };
 
 const nextStep = () => {
   // Handle next step logic
   console.log('Next step clicked');
+  console.log('Aadhaar:', aadhaarFile.value?.name);
+  console.log('PAN:', panFile.value?.name);
 };
-</script>
+
+// Cleanup on component unmount
+onUnmounted(() => {
+  if (aadhaarPreviewUrl.value) {
+    URL.revokeObjectURL(aadhaarPreviewUrl.value);
+  }
+  if (panPreviewUrl.value) {
+    URL.revokeObjectURL(panPreviewUrl.value);
+  }
+});
+
+// Ensure client-side execution
+onMounted(() => {
+  // Any code that requires document can be placed here
+});
+</script> 
