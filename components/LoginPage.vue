@@ -52,6 +52,8 @@
         </div>
 
         <!-- Verify Button -->
+        <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto ">
         <button
           @click="verifyOtp"
           :disabled="!isOtpComplete"
@@ -64,6 +66,7 @@
         >
           Verify OTP
         </button>
+        </div></div>
       </div>
     </div>
   </div>
@@ -120,6 +123,8 @@
         </div>
 
         <!-- Verify Button -->
+        <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto ">
         <button
           @click="verifyOtpforEmail"
           :disabled="!isOtpComplete1"
@@ -132,6 +137,8 @@
         >
           Verify OTP
         </button>
+        </div>
+        </div>
       </div>
     </div>
   </div>
@@ -162,6 +169,8 @@
           placeholder="Enter email"
           class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:bg-blue-50 focus:border-[#1E1B4B] mb-6"
         />
+        <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto ">
         <button
           @click="handleDone(email)"
           :disabled="!email"
@@ -186,6 +195,7 @@
           />
           <span>Continue with Google</span>
         </button>
+        </div></div>
       </div>
     </div>
   </div>
@@ -257,7 +267,8 @@
         <a href="#" class="text-mdtext font-semibold">Terms of Use</a> and
         <a href="#" class="text-mdtext font-semibold">Privacy Policy</a>
       </p>
-
+<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto ">
       <button
         @click="handleContinue"
         class="w-full bg-[#1E1B4B] text-white py-3 rounded-lg font-medium"
@@ -270,6 +281,7 @@
       >
         Continue
       </button>
+        </div></div>
     </div>
   </div>
   <div
