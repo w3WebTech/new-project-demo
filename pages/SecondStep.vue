@@ -17,7 +17,7 @@
         <div v-for="i in 48" :key="i" class="border border-[#dad3fc]"></div>
       </div> -->
         <div v-if="isStepPage">
-          <div class="md:pt-5 sm:pt-10 pb-5 relative max-w-md mx-auto ">
+          <div class="md:pt-5 sm:pt-10 pb-5 relative max-w-md mx-auto">
             <!-- <div class="flex items-center justify-center text-center">
           <img
             src="public/images/ventura.jpeg"
@@ -169,16 +169,19 @@
                     </p>
                   </div>
                 </div>
-<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
-        <div class="sm:w-full sm:mx-auto ">
-                <button
-                  type="submit"
-                  class=" text-white rounded-lg py-2  w-full font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B]"
-                  @click="nextStep"
+                <div
+                  class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white"
                 >
-                  Continue
-                </button>
-        </div></div>
+                  <div class="sm:w-full sm:mx-auto">
+                    <button
+                      type="submit"
+                      class="text-white rounded-lg py-2 w-full font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B]"
+                      @click="nextStep"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -313,19 +316,22 @@
                 if you are looking to open an HUF, Corporate, Partnership, Joint
                 or NRI account.
               </div>
-<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
-        <div class="sm:w-full sm:mx-auto ">
-              <!-- Submit Button -->
-              <button
-                type="submit"
-                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed"
-                :disabled="!isFormValid"
-                :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B] '"
-                @click="setPanDetails"
+              <div
+                class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white"
               >
-                Continue
-              </button>
-        </div></div>
+                <div class="sm:w-full sm:mx-auto">
+                  <!-- Submit Button -->
+                  <button
+                    type="submit"
+                    class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed"
+                    :disabled="!isFormValid"
+                    :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B] '"
+                    @click="setPanDetails"
+                  >
+                    Continue
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -355,18 +361,21 @@
             >
               Not your Pan ? Try Again
             </div>
-<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 sm:bg-white">
-        <div class="sm:w-full sm:mx-auto ">
-            <button
-              type="submit"
-              class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed"
-              :disabled="!isFormValid"
-              :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B] '"
-              @click="moveToEkyc"
+            <div
+              class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 sm:bg-white"
             >
-              Continue
-            </button>
-        </div></div>
+              <div class="sm:w-full sm:mx-auto">
+                <button
+                  type="submit"
+                  class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed"
+                  :disabled="!isFormValid"
+                  :class="!isFormValid ? 'bg-gray-300' : 'bg-[#1E1B4B] '"
+                  @click="moveToEkyc"
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div v-if="eKycFinalStep">
@@ -476,22 +485,25 @@
                 </li>
               </ul>
             </div>
-            <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 sm:bg-white">
-        <div class="sm:w-full sm:mx-auto ">
-            <button
-              class="bg-[#1E1B4B] text-white py-2 px-4 rounded-lg w-full my-4 font-semibold"
-              @click="moveToConfirmation"
+            <div
+              class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 sm:bg-white"
             >
-              Start e-KYC
-            </button>
-            <a
-              href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-primary block text-center font-semibold"
-              >Mobile not linked with Aadhaar?</a
-            >
-        </div></div>
+              <div class="sm:w-full sm:mx-auto">
+                <button
+                  class="bg-[#1E1B4B] text-white py-2 px-4 rounded-lg w-full my-4 font-semibold"
+                  @click="moveToConfirmation"
+                >
+                  Start e-KYC
+                </button>
+                <a
+                  href="https://uidai.gov.in/en/my-aadhaar/avail-aadhaar-services.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-primary block text-center font-semibold"
+                  >Mobile not linked with Aadhaar?</a
+                >
+              </div>
+            </div>
           </div>
         </div>
         <div v-if="finalConfirmation">
@@ -590,15 +602,188 @@
                 >View ></a
               >
             </div>
-            <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
-        <div class="sm:w-full sm:mx-auto ">
-            <button
-              class="w-full bg-[#1E1B4B] text-white font-bold py-2 rounded-lg my-4"
-              @click="completeEkyc"
+            <div
+              class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white"
             >
-              Continue
-            </button>
-        </div></div>
+              <div class="sm:w-full sm:mx-auto">
+                <button
+                  class="w-full bg-[#1E1B4B] text-white font-bold py-2 rounded-lg my-4"
+                  @click="moveToAddressdetails"
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-if="isAddressDetails">
+          <div class="max-w-md mx-auto p-6">
+            <h1 class="text-2xl font-semibold text-bigtext mb-1">
+              Enter your Addressdetails
+            </h1>
+            <p class="text-smtext text-sm mb-5">
+              These details are required by SEBI to open your demat account.
+            </p>
+
+            <form @submit.prevent="handleSubmit" class="space-y-2">
+              <!-- PAN Input -->
+             <div>
+  <label for="nationality" class="block text-sm font-medium text-bigtext mb-1">
+    Nationality
+  </label>
+  <select
+    v-model="form.nationality"
+    id="nationality"
+    aria-placeholder="Indian"
+    
+    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
+  >
+    <option value="IN">Indian</option>
+    <option value="US">American</option>
+    <option value="UK">British</option>
+    <option value="CA">Canadian</option>
+    <option value="AU">Australian</option>
+    <option value="FR">French</option>
+    <option value="DE">German</option>
+    <!-- Add more nationalities as needed -->
+  </select>
+</div>
+
+
+              <!-- Name Input -->
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-bigtext mb-1"
+                  >Permanent Address (From Digilocker)</label
+                >
+                <textarea
+                  v-model="form.address"
+                  type="text"
+                  id="address"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors"
+                  placeholder="Your address here ..."
+                />
+              </div>
+
+              <!-- DOB Input -->
+              <div>
+                <label
+                  for="dob"
+                  class="block text-sm font-medium text-bigtext mb-1"
+                  >City / District</label
+                >
+
+                <input
+                  v-model="form.city"
+                  type="text"
+                  id="city"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
+                  placeholder="AGMK566672"
+                  maxlength="10"
+                />
+              </div>
+              <div class="grid grid-cols-12 space-x-2">
+                <div class="col-span-8">
+                  <div>
+                    <label
+         
+                      class="block text-sm font-medium text-bigtext mb-1"
+                      >State</label
+                    >
+                     <select
+    v-model="form.state"
+    id="state"
+    
+    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
+  >
+    <option value="IN">Indian</option>
+    <option value="US">American</option>
+    <option value="UK">British</option>
+    <option value="CA">Canadian</option>
+    <option value="AU">Australian</option>
+    <option value="FR">French</option>
+    <option value="DE">German</option>
+    <!-- Add more nationalities as needed -->
+  </select>
+                  </div>
+                </div>
+                <div class="col-span-4">
+                  <div>
+                    <label
+                     
+                      class="block text-sm font-medium text-bigtext mb-1"
+                      >Pincode</label
+                    >
+                    <input
+                      v-model="form.pincode"
+                      type="text"
+                      id="pincode"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
+                      placeholder="613601"
+                      maxlength="6"
+                        pattern="\d{6}"
+                         @input="validatePincode"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tax Residency Checkbox -->
+              <div class="flex items-start gap-3 mt-5">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="w-5 h-5 border-2 rounded-xl flex items-center justify-center cursor-pointer"
+                    :class="
+                      form.isPermanentaddress
+                        ? 'border-emerald-500 bg-emerald-500'
+                        : 'border-gray-300'
+                    "
+                    @click="form.isPermanentaddress = !form.isPermanentaddress"
+                  >
+                    <svg
+                      v-if="form.isPermanentaddress"
+                      class="w-3 h-3 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="3"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <label
+                  class="text-sm text-smtext leading-tight cursor-pointer py-1"
+                  @click="form.isPermanentaddress = !form.isPermanentaddress"
+                >
+                  COMMUNICATION SAME AS PERMANENT ADDRESS.
+                </label>
+              </div>
+
+              <!-- Info Text -->
+
+              <div
+                class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white"
+              >
+                <div class="sm:w-full sm:mx-auto">
+                  <!-- Submit Button -->
+                  <button
+                    type="submit"
+                    class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed"
+                    :disabled="!isFormValidforAd"
+                    :class="!isFormValidforAd ? 'bg-gray-300' : 'bg-[#1E1B4B] '"
+                    @click="completeEkyc"
+                  >
+                    Continue
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -654,6 +839,7 @@ const isOpen = ref(false);
 const isPanDetails = ref(false);
 const openEdit = ref(false);
 const fName = ref("Name");
+const isAddressDetails = ref(false);
 const openBottomSheet = () => {
   isOpen.value = true;
 };
@@ -672,6 +858,12 @@ interface FormData {
   name: string;
   dob: string;
   isTaxResident: boolean;
+  nationality:string;
+  address:string;
+  city:string;
+  state:string;
+  pincode:string;
+  isPermanentaddress:boolean;
 }
 
 const form = ref<FormData>({
@@ -679,6 +871,13 @@ const form = ref<FormData>({
   name: "",
   dob: "",
   isTaxResident: false,
+  nationality:"",
+  city:"",
+  address:"",
+  state:"",
+  pincode:"",
+  isPermanentaddress:false
+
 });
 
 const showDatePicker = ref(false);
@@ -691,6 +890,19 @@ const isFormValid = computed(() => {
     form.value.isTaxResident
   );
 });
+const isFormValidforAd = computed(() => {
+  console.log(form,"form")
+  debugger
+  return (
+    form.value.nationality &&
+    form.value.address.length > 4 &&
+    form.value.city.length > 4 &&
+    form.value.state &&
+    form.value.pincode.length === 6 &&
+    form.value.isPermanentaddress
+  );
+});
+
 const eKycFinalStep = ref(false);
 const finalConfirmation = ref(false);
 const handleSubmit = () => {
@@ -726,5 +938,13 @@ const movePrev = () => {
 const MoveEkyc = () => {
   finalConfirmation.value = false;
   eKycFinalStep.value = true;
+};
+const moveToAddressdetails = () => {
+  finalConfirmation.value = false;
+  isAddressDetails.value = true;
+};
+const validatePincode = () => {
+  // Remove any non-digit characters
+  form.value.pincode= form.value.pincode.replace(/\D/g, "").slice(0, 6);
 };
 </script>
