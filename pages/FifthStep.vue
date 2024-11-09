@@ -540,6 +540,7 @@ const nextStep = () => {
 const hasPermissions = ref(false);
 
 const handleConfirm = async () => {
+  
   try {
     // Check if the device has a camera available
     const devices = await navigator.mediaDevices.enumerateDevices();
@@ -571,6 +572,10 @@ const handleConfirm = async () => {
     console.log("Camera and location permissions granted.");
   } catch (error) {
     console.error("Error requesting permissions:", error);
+      hasPermissions.value = false;
+
+    // Optionally, close the camera access dialog/modal
+    cameraaccessdialog.value = false;
 
     if (error.message === "No camera found on this device.") {
       // alert(
