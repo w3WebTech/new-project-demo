@@ -621,7 +621,7 @@
             <h1 class="text-2xl font-semibold text-bigtext mb-1">
               Enter your Addressdetails
             </h1>
-            <p class="text-smtext text-sm mb-5">
+            <p class="text-smtext text-sm mb-2">
               These details are required by SEBI to open your demat account.
             </p>
 
