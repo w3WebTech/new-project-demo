@@ -414,6 +414,6 @@ const animaSuccess=() =>{
   bankDetailsSuccess.value=true
 }
 const completeBankDetails =()=>{
-    router.push('/FifthStep');
+    router.push('/UploadFile');
 }
 </script>
