@@ -1,5 +1,5 @@
 
-<template>
+<template><div>
 <div class="md:hidden">
  <!-- <OnBoardingSlider /> -->
  <LoginPage/>
@@ -12,7 +12,7 @@
     </div>
    </div>
 </div>
- 
+ </div>
 </template>
 
 <script lang="ts">

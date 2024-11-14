@@ -200,17 +200,20 @@
               <div>
                 <label
                   for="pan"
-                  class="block text-sm font-medium text-bigtext mb-1"
+                  class="block text-sm font-medium  mb-1"
+                  :class="isPanError ? 'text-red-700 ':'text-bigtext'"
                   >PAN</label
                 >
                 <input
                   v-model="form.pan"
                   type="text"
                   id="pan"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
+                  class="w-full px-4 py-3 rounded-lg border  focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
                   placeholder="AGMK566672"
+                  :class="isPanError ? 'border-red-700 ':'border-gray-300'"
                   maxlength="10"
                 />
+                <div v-if="isPanError" class="text-sm text-red-700 py-2 font-semibold"> Invalid Pan</div>
               </div>
 
               <!-- Name Input -->
@@ -627,28 +630,29 @@
 
             <form @submit.prevent="handleSubmit" class="space-y-2">
               <!-- PAN Input -->
-             <div>
-  <label for="nationality" class="block text-sm font-medium text-bigtext mb-1">
-    Nationality
-  </label>
-  <select
-    v-model="form.nationality"
-    id="nationality"
-    aria-placeholder="Indian"
-    
-    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
-  >
-    <option value="IN">Indian</option>
-    <option value="US">American</option>
-    <option value="UK">British</option>
-    <option value="CA">Canadian</option>
-    <option value="AU">Australian</option>
-    <option value="FR">French</option>
-    <option value="DE">German</option>
-    <!-- Add more nationalities as needed -->
-  </select>
-</div>
-
+              <div>
+                <label
+                  for="nationality"
+                  class="block text-sm font-medium text-bigtext mb-1"
+                >
+                  Nationality
+                </label>
+                <select
+                  v-model="form.nationality"
+                  id="nationality"
+                  aria-placeholder="Indian"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
+                >
+                  <option value="IN">Indian</option>
+                  <option value="US">American</option>
+                  <option value="UK">British</option>
+                  <option value="CA">Canadian</option>
+                  <option value="AU">Australian</option>
+                  <option value="FR">French</option>
+                  <option value="DE">German</option>
+                  <!-- Add more nationalities as needed -->
+                </select>
+              </div>
 
               <!-- Name Input -->
               <div>
@@ -686,33 +690,28 @@
               <div class="grid grid-cols-12 space-x-2">
                 <div class="col-span-8">
                   <div>
-                    <label
-         
-                      class="block text-sm font-medium text-bigtext mb-1"
+                    <label class="block text-sm font-medium text-bigtext mb-1"
                       >State</label
                     >
-                     <select
-    v-model="form.state"
-    id="state"
-    
-    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
-  >
-    <option value="IN">Indian</option>
-    <option value="US">American</option>
-    <option value="UK">British</option>
-    <option value="CA">Canadian</option>
-    <option value="AU">Australian</option>
-    <option value="FR">French</option>
-    <option value="DE">German</option>
-    <!-- Add more nationalities as needed -->
-  </select>
+                    <select
+                      v-model="form.state"
+                      id="state"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
+                    >
+                      <option value="IN">Indian</option>
+                      <option value="US">American</option>
+                      <option value="UK">British</option>
+                      <option value="CA">Canadian</option>
+                      <option value="AU">Australian</option>
+                      <option value="FR">French</option>
+                      <option value="DE">German</option>
+                      <!-- Add more nationalities as needed -->
+                    </select>
                   </div>
                 </div>
                 <div class="col-span-4">
                   <div>
-                    <label
-                     
-                      class="block text-sm font-medium text-bigtext mb-1"
+                    <label class="block text-sm font-medium text-bigtext mb-1"
                       >Pincode</label
                     >
                     <input
@@ -722,8 +721,8 @@
                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"
                       placeholder="613601"
                       maxlength="6"
-                        pattern="\d{6}"
-                         @input="validatePincode"
+                      pattern="\d{6}"
+                      @input="validatePincode"
                     />
                   </div>
                 </div>
@@ -831,9 +830,80 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted,watch } from "vue";
 import { useRouter } from "vue-router";
+import axios from "axios";
 
+const setPanDetails = async () => {
+   try {
+     // Wait for the API call to complete
+     await callApi(); 
+     
+     console.log(isPanValid.value, "isPanValid");  // Check value after the API call
+
+     // If PAN is valid, proceed to the next step
+     if (isPanValid.value) {
+       isPanForm.value = false;
+       isPanDetails.value = true;
+     } else {
+      isPanError.value=true
+       console.log('Invalid PAN');
+       // Optionally handle the invalid PAN case
+     }
+   } catch (error) {
+     console.error("Error in setting PAN details:", error);
+   }
+};
+
+let isPanValid = ref(false);
+let isPanError =ref(false)
+const callApi = async () => {
+  const apiUrl = "https://phpstack-529375-5021731.cloudwaysapps.com/api/pan-verify.php";
+  const formData = new URLSearchParams();
+  formData.append("pan", form.value.pan);
+  formData.append("name", form.value.name);
+
+  try {
+    const response = await axios.post(apiUrl, formData, {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+
+    // Check the structure of the response
+    if (response && response.data) {
+      // Assuming the API returns an object with isValid property
+      console.log(response.data.valid,"response.data.isValid")
+      isPanValid.value = response.data.valid; // Adjust based on your API response
+    } else {
+      console.error('API response format is not as expected');
+      isPanValid.value = false;  // Handle unexpected API response
+    }
+  } catch (error) {
+    console.error("Error calling API:", error);
+    isPanValid.value = false;  // Set to false if the API call fails
+  }
+};
+
+const getDigiLocker = async () => {
+  const apiUrl = "https://phpstack-529375-5021731.cloudwaysapps.com/api/create-digilocker.php";
+try {
+  const response = await axios.get(apiUrl);  // Make the API call
+  if (response && response.data && response.data.result && response.data.result.url) {
+    const url = response.data.result.url;  // Get the URL from the response
+
+    console.log(url, "checking");  // Log the URL for debugging
+window.location.href = url;
+// let croppedUrl = url.replace(/^http:\/\/localhost:3001\//, '');  // Remove 'http://localhost:3001/'
+// console.log(croppedUrl);
+//     router.push(croppedUrl); 
+  } else {
+    console.error('API response format is not as expected');
+  }
+} catch (error) {
+  console.error("Error calling API:", error);  // Handle errors in the API call
+}
+};
 const router = useRouter();
 const isOpen = ref(false);
 const isPanDetails = ref(false);
@@ -858,12 +928,12 @@ interface FormData {
   name: string;
   dob: string;
   isTaxResident: boolean;
-  nationality:string;
-  address:string;
-  city:string;
-  state:string;
-  pincode:string;
-  isPermanentaddress:boolean;
+  nationality: string;
+  address: string;
+  city: string;
+  state: string;
+  pincode: string;
+  isPermanentaddress: boolean;
 }
 
 const form = ref<FormData>({
@@ -871,13 +941,12 @@ const form = ref<FormData>({
   name: "",
   dob: "",
   isTaxResident: false,
-  nationality:"",
-  city:"",
-  address:"",
-  state:"",
-  pincode:"",
-  isPermanentaddress:false
-
+  nationality: "",
+  city: "",
+  address: "",
+  state: "",
+  pincode: "",
+  isPermanentaddress: false,
 });
 
 const showDatePicker = ref(false);
@@ -891,8 +960,8 @@ const isFormValid = computed(() => {
   );
 });
 const isFormValidforAd = computed(() => {
-  console.log(form,"form")
-  debugger
+  console.log(form, "form");
+  debugger;
   return (
     form.value.nationality &&
     form.value.address.length > 4 &&
@@ -912,17 +981,15 @@ const nextStep = () => {
   isStepPage.value = false;
   isPanForm.value = true;
 };
-const setPanDetails = () => {
-  isPanForm.value = false;
-  isPanDetails.value = true;
-};
+
 const moveToEkyc = () => {
   isPanDetails.value = false;
   eKycFinalStep.value = true;
 };
-const moveToConfirmation = () => {
-  eKycFinalStep.value = false;
-  finalConfirmation.value = true;
+const moveToConfirmation = async () => {
+  // eKycFinalStep.value = false;
+  // finalConfirmation.value = true;
+   await getDigiLocker()
 };
 const completeEkyc = () => {
   router.push("/ThirdStep");
@@ -945,6 +1012,11 @@ const moveToAddressdetails = () => {
 };
 const validatePincode = () => {
   // Remove any non-digit characters
-  form.value.pincode= form.value.pincode.replace(/\D/g, "").slice(0, 6);
+  form.value.pincode = form.value.pincode.replace(/\D/g, "").slice(0, 6);
 };
+watch(() => form.value.pan, (newValue) => {
+  if (newValue) {
+    isPanError.value = false; // Reset the error state when PAN changes
+  }
+});
 </script>

@@ -53,20 +53,21 @@
 
         <!-- Verify Button -->
         <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
-        <div class="sm:w-full sm:mx-auto ">
-        <button
-          @click="verifyOtp"
-          :disabled="!isOtpComplete"
-          class="w-full py-3 rounded-lg font-medium transition-colors"
-          :class="
-            isOtpComplete
-              ? 'bg-[#1E1B4B] text-white   '
-              : 'bg-gray-200 text-white'
-          "
-        >
-          Verify OTP
-        </button>
-        </div></div>
+          <div class="sm:w-full sm:mx-auto">
+            <button
+              @click="verifyOtp"
+              :disabled="!isOtpComplete"
+              class="w-full py-3 rounded-lg font-medium transition-colors"
+              :class="
+                isOtpComplete
+                  ? 'bg-[#1E1B4B] text-white   '
+                  : 'bg-gray-200 text-white'
+              "
+            >
+              Verify OTP
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -124,20 +125,20 @@
 
         <!-- Verify Button -->
         <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
-        <div class="sm:w-full sm:mx-auto ">
-        <button
-          @click="verifyOtpforEmail"
-          :disabled="!isOtpComplete1"
-          class="w-full py-3 rounded-lg font-medium transition-colors"
-          :class="
-            isOtpComplete1
-              ? 'bg-[#1E1B4B] text-white  '
-              : 'bg-gray-200 text-white'
-          "
-        >
-          Verify OTP
-        </button>
-        </div>
+          <div class="sm:w-full sm:mx-auto">
+            <button
+              @click="verifyOtpforEmail"
+              :disabled="!isOtpComplete1"
+              class="w-full py-3 rounded-lg font-medium transition-colors"
+              :class="
+                isOtpComplete1
+                  ? 'bg-[#1E1B4B] text-white  '
+                  : 'bg-gray-200 text-white'
+              "
+            >
+              Verify OTP
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -170,32 +171,33 @@
           class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:bg-blue-50 focus:border-[#1E1B4B] mb-6"
         />
         <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
-        <div class="sm:w-full sm:mx-auto ">
-        <button
-          @click="handleDone(email)"
-          :disabled="!email"
-          class="w-full py-3 rounded-lg font-medium transition-colors mt-5"
-          :class="
-            isValidEmail(email)
-              ? 'bg-[#1E1B4B] text-white  '
-              : 'bg-gray-200 text-white'
-          "
-        >
-          Verify email
-        </button>
-        <p class="text-mdtext mt-2 text-center">or</p>
-        <button
-          @click="openVerifygoogle = true"
-          class="bg-[#1A1442] text-white py-2 px-4 inline-flex items-center justify-center focus:outline-none focus:shadow-outline mt-4 w-full rounded-lg font-medium transition-colors"
-        >
-          <img
-            src="public/images/google-Photoroom.png"
-            alt="Google"
-            class="w-8 h-8 mx-3"
-          />
-          <span>Continue with Google</span>
-        </button>
-        </div></div>
+          <div class="sm:w-full sm:mx-auto">
+            <button
+              @click="handleDone(email)"
+              :disabled="!email"
+              class="w-full py-3 rounded-lg font-medium transition-colors mt-5"
+              :class="
+                isValidEmail(email)
+                  ? 'bg-[#1E1B4B] text-white  '
+                  : 'bg-gray-200 text-white'
+              "
+            >
+              Verify email
+            </button>
+            <p class="text-mdtext mt-2 text-center">or</p>
+            <button
+              @click="openVerifygoogle = true"
+              class="bg-[#1A1442] text-white py-2 px-4 inline-flex items-center justify-center focus:outline-none focus:shadow-outline mt-4 w-full rounded-lg font-medium transition-colors"
+            >
+              <img
+                src="public/images/google-Photoroom.png"
+                alt="Google"
+                class="w-8 h-8 mx-3"
+              />
+              <span>Continue with Google</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -267,21 +269,22 @@
         <a href="#" class="text-mdtext font-semibold">Terms of Use</a> and
         <a href="#" class="text-mdtext font-semibold">Privacy Policy</a>
       </p>
-<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
-        <div class="sm:w-full sm:mx-auto ">
-      <button
-        @click="handleContinue"
-        class="w-full bg-[#1E1B4B] text-white py-3 rounded-lg font-medium"
-        :disabled="!form.phoneNumber && form.phoneNumber.length != 10"
-        :class="
-          form.phoneNumber && form.phoneNumber.length == 10
-            ? 'bg-[#1E1B4B] text-white  '
-            : 'bg-gray-200 text-gray-500'
-        "
-      >
-        Continue
-      </button>
-        </div></div>
+      <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
+        <div class="sm:w-full sm:mx-auto">
+          <button
+            @click="handleContinue"
+            class="w-full bg-[#1E1B4B] text-white py-3 rounded-lg font-medium"
+            :disabled="!form.phoneNumber && form.phoneNumber.length != 10"
+            :class="
+              form.phoneNumber && form.phoneNumber.length == 10
+                ? 'bg-[#1E1B4B] text-white  '
+                : 'bg-gray-200 text-gray-500'
+            "
+          >
+            Continue
+          </button>
+        </div>
+      </div>
     </div>
   </div>
   <div
@@ -394,7 +397,9 @@ const closeBottomSheet = () => {
 };
 const validatePhoneNumber = () => {
   // Remove any non-digit characters
-  form.value.phoneNumber= form.value.phoneNumber.replace(/\D/g, "").slice(0, 10);
+  form.value.phoneNumber = form.value.phoneNumber
+    .replace(/\D/g, "")
+    .slice(0, 10);
 };
 function isValidEmail(email: string): boolean {
   // Regular expression for validating an email
