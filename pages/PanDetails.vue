@@ -149,7 +149,7 @@
                   <option value="DE">German</option>
                 
                 </select> -->
-                       <input    v-model="form.nationality[2]" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"/>
+                       <input    v-model="form.nationality" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"/>
               </div>
 
               <!-- Name Input -->
@@ -206,7 +206,7 @@
                       <option value="DE">German</option>
                      
                     </select> -->
-                         <input   v-model="form.state[0]"
+                         <input   v-model="form.state"
                       id="state"
                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#1E1B4B] focus:bg-blue-50 transition-colors uppercase"/>
                   </div>
@@ -368,7 +368,7 @@ const getAdhar = async (val) => {
       form.value.gender = response.data.result.gender;
       form.value.address = response.data.result.address;
       form.value.adhar = response.data.result.uid;
-      formforad.value.nationality=response.data.result.splitAddress.country
+      formforad.value.nationality=response.data.result.splitAddress.country[2]
       formforad.value.city=response.data.result.splitAddress.city
       formforad.value.state=response.data.result.splitAddress.state[0]
       formforad.value.pincode=response.data.result.splitAddress.pincode
@@ -377,7 +377,7 @@ const getAdhar = async (val) => {
       form.value.city = response.data.result.splitAddress.city;
       form.value.state = response.data.result.splitAddress.state[0];
       form.value.pincode =response.data.result.splitAddress.pincode;
-      form.value.nationality = response.data.result.splitAddress.country;
+      form.value.nationality = response.data.result.splitAddress.country[2];
     } else {
       console.error("API response format is not as expected");
     }
@@ -469,7 +469,7 @@ const isFormValid = computed(() => {
 });
 const isFormValidforAd = computed(() => {
   console.log(form, "form");
-  debugger;
+
   return (
     form.value.nationality &&
     form.value.addressLine &&
