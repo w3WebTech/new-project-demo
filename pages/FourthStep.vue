@@ -1,10 +1,6 @@
 <template>
   <div class="min-h-screen bg-[#ECE8FF] relative overflow-hidden font-inter">
-    <div
-      class="fixed inset-0 bg-primary z-40"
-      v-if="isOpen"
-      
-    >
+    <div class="fixed inset-0 bg-primary z-40" v-if="isOpen">
       <div class="flex justify-between">
         <div></div>
         <div class="p-7 text-xl text-white font-bold font-serif">goodwill</div>
@@ -51,7 +47,9 @@
                   <div class="mb-4">
                      
 
-                    <h3 class="text-md font-bold text-bigtext">Complete e-KYC</h3>
+                    <h3 class="text-md font-bold text-bigtext">
+                      Complete e-KYC
+                    </h3>
                     <p class="text-mdtext text-sm">
                       Keep your Aadhaar and PAN card handy
                     </p>
@@ -76,13 +74,17 @@
                   <div class="mb-3">
                      
 
-                    <div class="text-md font-bold text-bigtext">Setup Your Profile</div>
+                    <div class="text-md font-bold text-bigtext">
+                      Setup Your Profile
+                    </div>
                     <div class="text-mdtext text-sm">
                       Answer a few question about yourself
                     </div>
                   </div>
                 </div>
-                <div class="font-bold text-2xl py-3 px-1 text-bigtext">Next Up...</div>
+                <div class="font-bold text-2xl py-3 px-1 text-bigtext">
+                  Next Up...
+                </div>
                 <div class="flex items-center space-x-10">
                   <div class="bg-purple-200 rounded-full p-3">
                     <svg
@@ -103,7 +105,9 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold text-bigtext">Link your bank a/c</h3>
+                    <h3 class="text-md font-bold text-bigtext">
+                      Link your bank a/c
+                    </h3>
                     <p class="text-mdtext text-sm">
                       Set the primary account for your transaction
                     </p>
@@ -129,7 +133,9 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold text-bigtext">Confirm it's you</h3>
+                    <h3 class="text-md font-bold text-bigtext">
+                      Confirm it's you
+                    </h3>
                     <p class="text-mdtext text-sm">
                       Click a photo and submit your signature
                     </p>
@@ -154,180 +160,293 @@
                   <div class="mb-3">
                      
 
-                    <h3 class="text-md font-bold text-bigtext">eSign Ang Login</h3>
+                    <h3 class="text-md font-bold text-bigtext">
+                      eSign Ang Login
+                    </h3>
                     <p class="text-mdtext text-sm">
                       Sign your Application and start Investing
                     </p>
                   </div>
                 </div>
-<div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
-        <div class="sm:w-full sm:mx-auto ">
-                <button
-                type="submit"
-                class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B] 
-"
-                    @click="nextStep"
-              >
-                Continue
-              </button>
-        </div></div>
+                <div
+                  class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white"
+                >
+                  <div class="sm:w-full sm:mx-auto">
+                    <button
+                      type="submit"
+                      class="w-full text-white rounded-lg py-2 mt-6 font-medium transition-colors disabled:cursor-not-allowed bg-[#1E1B4B]"
+                      @click="nextStep"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div v-if="bankVerification">
-          <div class="max-w-2xl mx-auto md:p-14 sm:py-8 sm:px-3  ">
-            <h1 class="text-2xl font-semibold mb-2 text-bigtext">Add bank account</h1>
-            <p class="text-smtext mb-4">
-              This will be your primary account for all transactions.
-            </p>
-            <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
-              <i class="fas fa-lock"></i> Your bank details are secured and will
-              not be shared with anyone
+          <div class="md:pt-5 sm:pt-10 pb-5 p-6 relative max-w-md mx-auto">
+            <h1 class="text-2xl font-semibold text-bigtext mb-4">
+              Bank Details
+            </h1>
+            <div class="mb-4">
+              <label class="text-bigtext text-sm font-semibold py-2"
+                >BANK ACCOUNT TYPE</label
+              >
+             <div class="flex space-x-4 my-2">
+    <label class="flex items-center space-x-2">
+      <input
+        type="radio"
+        name="accountType"
+        value="Savings"  
+        v-model="form.acType" 
+        class="form-radio h-4 w-4 text-[#1E1B4B] focus:ring-white"
+      />
+      <span class="text-[#1E1B4B] font-semibold text-sm">SAVINGS</span>
+    </label>
+    <label class="flex items-center space-x-2">
+      <input
+        type="radio"
+        name="accountType"
+        value="Current" 
+        v-model="form.acType" 
+        class="form-radio h-4 w-4 text-[#1E1B4B] focus:ring-white"
+      />
+      <span class="text-[#1E1B4B] font-semibold text-sm">CURRENT</span>
+    </label>
+  </div>
             </div>
-            <div class="relative mb-6">
+            <div class="mb-4">
+              <label class="text-bigtext text-sm font-semibold"
+                >ACCOUNT NUMBER</label
+              >
               <input
-                v-model="searchQuery"
-                class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-[#1E1B4B]"
-                placeholder="Search your Bank"
+              maxlength="16"
                 type="text"
+               v-model="form.acNumber"
+               placeholder="11111111111111"
+                class="w-full px-4 py-2 my-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#1E1B4B]"
               />
-              <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div class="mb-4 grid grid-cols-2 gap-4">
               <div>
-                <h2 class="text-mdtext mb-2">POPULAR BANKS</h2>
-                <div class="bg-gray-100 px-1 rounded flex space-x-2">
-                  <div
-                    v-for="bank in filteredPopularBanks"
-                    :key="bank.name"
-                    class="flex flex-col items-center text-center rounded-md p-2 my-1 hover:bg-[#1E1B4B] hover:text-white"
-                    @click="setBankAccount(bank.name)"
-                    :class="{
-                      'bg-[#1E1B4B] text-white':
-                        selectedBankAccount === bank.name,
-                      'bg-gray-100 text-smtext': selectedBankAccount !== bank.name,
-                    }"
-                  >
-                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
-</svg>
-
-                    <span class="text-sm ">{{ bank.name }}</span>
-                  </div>
-                </div>
+                <label class="text-bigtext text-sm font-semibold py-2"
+                  >IFSC CODE
+                  <span class="text-gray-500">(Find my IFSC code)</span></label
+                >
+                <input
+                  type="text"
+                  v-model="form.ifsc"
+                  placeholder="IDIB000H003"
+                  :class='ifscError && form.ifsc.length >= 11 ? " focus:ring-2 focus:ring-red-500 focus:outline-none":" focus:ring-1 focus:ring-[#1E1B4B] focus:outline-none"'
+                  class="w-full px-4 py-2 my-2 border rounded-lg "
+                  maxlength="11"
+                />
+                <div v-if="ifscError && form.ifsc.length >= 11" class="text-red-500 text-sm fornt-semibold"> Invalid IFSC</div>
               </div>
               <div>
-                <h2 class="text-mdtext mb-2">ALL BANKS</h2>
-                <div class="h-[200px] overflow-y-auto mb-3">
-                  <ul class="bg-gray-100 p-4 rounded space-y-2">
-                    <li
-                      v-for="bank in filteredAllBanks"
-                      :key="bank.name"
-                      class="flex items-center space-x-2 py-1 px-1 rounded-md hover:bg-[#1E1B4B] hover:text-white"
-                      @click="setBankAccount(bank.name)"
-                      :class="{
-                        'bg-[#1E1B4B] text-white':
-                          selectedBankAccount === bank.name,
-                        'bg-gray-100 text-mdtext': selectedBankAccount !== bank.name,
-                      }"
-                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
-</svg>
-                      <span class=" text-sm">{{ bank.name }}</span>
-                    </li>
-                  </ul>
-                </div>
+                <label class="text-bigtext text-sm font-semibold py-2"
+                  >MICR CODE
+                  <span class="text-gray-500">(Find my MICR code)</span></label
+                >
+                <input
+                  type="text"
+                  placeholder="600019020"
+                  v-model="form.micr"
+                  class="w-full px-4 py-2 my-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#1E1B4B]"
+                />
+              </div>
+            </div>
+            <div class="mb-6">
+              <label class="text-bigtext text-sm font-semibold py-2"
+                >BANK NAME & FULL ADDRESS</label
+              >
+              <textarea
+                class="w-full px-4 py-2 my-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#1E1B4B]"
+                rows="2"
+                placeholder="INDIAN BANK,HARBOUR,HARBOUR,TAMIL NADU"
+                v-model="form.bAddress"
+              >
+</textarea
+              >
+            </div>
+            <div
+              class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white"
+            >
+              <div class="sm:w-full sm:mx-auto">
+                <button
+                  class="w-full bg-[#1E1B4B] text-white font-bold py-2 rounded-lg my-4"
+                  @click="setBankAccount()"
+                >
+                  Continue
+                </button>
               </div>
             </div>
           </div>
         </div>
         <div v-if="setBankDetails">
           <div class="py-20 px-10">
-              <AnimatedList
-               :is-open="animatedVal"
-              @close="animaSuccess"/>
-          </div>
-    
-          
-        </div>
-        <div v-if="bankDetailsSuccess"><div class="max-w-2xl mx-auto sm:p-3">
-    <div class="  pt-5">
-      <div class=" text-center">
-        <div class="mr-4">
-          <div class=" bg-green-100 rounded-full mx-auto flex items-center justify-center  w-20 h-20">
-          <div class="w-12 h-12 text-green-500">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
+            <AnimatedList :is-open="animatedVal" @close="animaSuccess" />
           </div>
         </div>
-        </div>
-        
-        <div class="text-2xl font-bold text-bigtext mt-4">Bank account added</div>
-        <p class="text-smtext my-2">Your bank details have been verified.</p>
-      </div>
+        <div v-if="bankDetailsSuccess">
+          <div class="max-w-2xl mx-auto sm:p-3">
+            <div class="pt-5">
+              <div class="text-center">
+                <div class="mr-4">
+                  <div
+                    class="bg-green-100 rounded-full mx-auto flex items-center justify-center w-20 h-20"
+                  >
+                    <div class="w-12 h-12 text-green-500">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
 
-      <div class="bg-gray-50 rounded-lg p-10 space-y-2  ">
-        <div class="">
-        <div class="flex  space-x-5  mr-10" >
-          <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
-            <span class="text-lg font-semibold">A</span>
-          </div>
-          <div class="">
-            <h3 class="font-semibold text-bigtext">Archana</h3>
-            <p class="text-sm text-mdtext">{{selectedBankAccount}}</p>
-          </div>
-        </div>
+                <div class="text-2xl font-bold text-bigtext mt-4">
+                  Bank account added
+                </div>
+                <p class="text-smtext my-2">
+                  Your bank details have been verified.
+                </p>
+              </div>
 
-        <div class="space-y-3 my-3">
-          <div class="flex justify-between">
-            <span class="text-smtext pr-20">Acc. No.</span>
-            <span class="font-medium text-bigtext">XXXX XXXX 6636</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-smtext pr-20">IFSC Code</span>
-            <span class="font-medium text-bigtext">1234567</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-smtext pr-20">Branch</span>
-            <span class="font-medium text-bigtext"> THANJAVUR</span>
+              <div class="bg-gray-50 rounded-lg p-10 space-y-2">
+                <div class="">
+                  <div class="flex space-x-5 mr-10">
+                    <div
+                      class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500"
+                    >
+                      <span class="text-lg font-semibold">A</span>
+                    </div>
+                    <div class="">
+                      <h3 class="font-semibold text-bigtext">Archana</h3>
+                      <p class="text-sm text-mdtext">
+                        {{ selectedBankAccount }}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="space-y-3 my-3">
+                    <div class="flex justify-between">
+                      <span class="text-smtext pr-20">Acc. No.</span>
+                      <span class="font-medium text-bigtext"
+                        >XXXX XXXX 6636</span
+                      >
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-smtext pr-20">IFSC Code</span>
+                      <span class="font-medium text-bigtext">1234567</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-smtext pr-20">Branch</span>
+                      <span class="font-medium text-bigtext"> THANJAVUR</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="md:py-5">
+                <div
+                  class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white"
+                >
+                  <div class="sm:w-full sm:mx-auto">
+                    <button
+                      class="w-full bg-[#1E1B4B] text-white py-3 rounded-lg font-semibold hover:bg-[#1E1B4B] transition-colors"
+                      @click="completeBankDetails"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-      </div>
-<div class="md:py-5">
-  <div class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white">
-        <div class="sm:w-full sm:mx-auto "><button class="w-full 
- bg-[#1E1B4B] text-white py-3   rounded-lg font-semibold hover:bg-[#1E1B4B] transition-colors"
-      @click="completeBankDetails">
-        Continue
-      </button></div>
-  </div></div>
-    </div>
-  </div></div>
-       
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted,watch,computed } from "vue";
 import { useRouter } from "vue-router";
-import { computed } from "vue";
-import AnimatedList from '@/components/AnimatedList.vue';
+
+import axios from "axios";
+import AnimatedList from "@/components/AnimatedList.vue";
 
 const searchQuery = ref("");
+enum AccountType {
+  Savings = "Savings",
+  Current = "Current",
+
+}
+interface FormData {
+  acType: AccountType; // Use the enum here
+  acNumber: string;
+  ifsc: string;
+  micr: string;
+  bAddress: string;
+}
+const form = ref<FormData>({
+  acType: AccountType.Current, // Set a default value from the enum
+  acNumber: "",
+  ifsc: "",
+  micr: "",
+  bAddress: "",
+});
+const ifscRegx = /^[A-Za-z]{4}[a-zA-Z0-9]{7}$/;
+const ifscError=ref(false)
+watch(
+  () => form.value.ifsc,
+  (newValue) => {
+    if (ifscRegx.test(newValue)) {
+        ifscError.value=false
+      console.log("Valid IFSC code", newValue);
+      getBankData(newValue);
+    } else {
+      ifscError.value=true
+      console.log("Invalid IFSC code", newValue);
+    }
+  }
+);
+const getBankData = async (val) => {
+  // Use template literals to correctly interpolate the val variable into the URL
+  const apiUrl = `https://ifsc.razorpay.com/${val}`;
+
+  try {
+    const response = await axios.get(apiUrl); // Send the GET request
+    if (response && response.data) {
+      console.log(response,response.data)
+      form.value.bAddress=response.data.ADDRESS
+      form.value.micr=response.data.MICR
+    } else {
+      console.error("API response format is not as expected");
+    }
+  } catch (error) {
+    console.error("Error calling API:", error); // Log any errors
+  }
+};
 
 const router = useRouter();
 const isOpen = ref(false);
 const verificationStep = ref(true);
 const bankVerification = ref(false);
 const selectedBankAccount = ref("");
-const setBankDetails=ref(false)
-const bankDetailsSuccess=ref(false)
+const setBankDetails = ref(false);
+const bankDetailsSuccess = ref(false);
 const openBottomSheet = () => {
   isOpen.value = true;
 };
@@ -400,20 +519,85 @@ onMounted(() => {
   setTimeout(openBottomSheet, 100);
 });
 const setBankAccount = (bankName: string) => {
-  selectedBankAccount.value = bankName;
-  
-  
+  // selectedBankAccount.value = bankName;
+
   // After 2 seconds, set setBankDetails to true
   setTimeout(() => {
     bankVerification.value = false;
     setBankDetails.value = true;
   }, 1000); // 2000 ms = 2 seconds
 };
-const animaSuccess=() =>{
+const animaSuccess = () => {
   setBankDetails.value = false;
-  bankDetailsSuccess.value=true
-}
-const completeBankDetails =()=>{
-    router.push('/UploadFile');
-}
+  bankDetailsSuccess.value = true;
+};
+const completeBankDetails = () => {
+  router.push("/UploadFile");
+};
 </script>
+  <!--<div class="max-w-2xl mx-auto md:p-14 sm:py-8 sm:px-3  ">
+            <h1 class="text-2xl font-semibold mb-2 text-bigtext">Add bank account</h1>
+            <p class="text-smtext mb-4">
+              This will be your primary account for all transactions.
+            </p>
+            <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
+              <i class="fas fa-lock"></i> Your bank details are secured and will
+              not be shared with anyone
+            </div>
+            <div class="relative mb-6">
+              <input
+                v-model="searchQuery"
+                class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-[#1E1B4B]"
+                placeholder="Search your Bank"
+                type="text"
+              />
+              <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div>
+                <h2 class="text-mdtext mb-2">POPULAR BANKS</h2>
+                <div class="bg-gray-100 px-1 rounded flex space-x-2">
+                  <div
+                    v-for="bank in filteredPopularBanks"
+                    :key="bank.name"
+                    class="flex flex-col items-center text-center rounded-md p-2 my-1 hover:bg-[#1E1B4B] hover:text-white"
+                    @click="setBankAccount(bank.name)"
+                    :class="{
+                      'bg-[#1E1B4B] text-white':
+                        selectedBankAccount === bank.name,
+                      'bg-gray-100 text-smtext': selectedBankAccount !== bank.name,
+                    }"
+                  >
+                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
+</svg>
+
+                    <span class="text-sm ">{{ bank.name }}</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h2 class="text-mdtext mb-2">ALL BANKS</h2>
+                <div class="h-[200px] overflow-y-auto mb-3">
+                  <ul class="bg-gray-100 p-4 rounded space-y-2">
+                    <li
+                      v-for="bank in filteredAllBanks"
+                      :key="bank.name"
+                      class="flex items-center space-x-2 py-1 px-1 rounded-md hover:bg-[#1E1B4B] hover:text-white"
+                      @click="setBankAccount(bank.name)"
+                      :class="{
+                        'bg-[#1E1B4B] text-white':
+                          selectedBankAccount === bank.name,
+                        'bg-gray-100 text-mdtext': selectedBankAccount !== bank.name,
+                      }"
+                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
+</svg>
+                      <span class=" text-sm">{{ bank.name }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>--->
