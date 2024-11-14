@@ -31,7 +31,7 @@
                 @dragover.prevent
                 @drop.prevent="handleDrop($event, 'aadhaar')"
               >
-                <div v-if="!aadhaarFile" class="text-center">
+                <div v-if="!aadhaarFile && !adharLoader" class="text-center">
                   <svg
                     class="mx-auto h-8 w-8 text-gray-400"
                     stroke="currentColor"
@@ -64,7 +64,9 @@
                     PDF or images up to 5MB
                   </p>
                 </div>
-
+<div v-else-if="!aadhaarFile && adharLoader" class="text-center">
+         <div class=" animate-charcter text-sm ">LOADING YOUR DATA ...</div>
+</div>
                 <div v-else class="flex items-center justify-between">
                   <div class="flex items-center space-x-3">
                     <div class="flex-shrink-0">
@@ -126,7 +128,7 @@
                 @dragover.prevent
                 @drop.prevent="handleDrop($event, 'pan')"
               >
-                <div v-if="!panFile" class="text-center">
+                <div v-if="!panFile && !PanLoader" class="text-center">
                   <svg
                     class="mx-auto h-8 w-8 text-gray-400"
                     stroke="currentColor"
@@ -158,7 +160,9 @@
                     PDF or images up to 5MB
                   </p>
                 </div>
-
+<div v-else-if="!panFile && PanLoader" class="text-center">
+         <div class=" animate-charcter text-sm ">LOADING YOUR DATA ...</div>
+</div>
                 <div v-else class="flex items-center justify-between">
                   <div class="flex items-center space-x-3">
                     <div class="flex-shrink-0">
@@ -216,7 +220,7 @@
                 @dragover.prevent
                 @drop.prevent="handleDrop($event, 'ep')"
               >
-                <div v-if="!epFile" class="text-center">
+                <div v-if="!epFile && !BankLoader" class="text-center">
                   <svg
                     class="mx-auto h-8 w-8 text-gray-400"
                     stroke="currentColor"
@@ -248,7 +252,9 @@
                     PDF or images up to 5MB
                   </p>
                 </div>
-
+<div v-else-if="!panFile && BankLoader" class="text-center">
+         <div class=" animate-charcter text-sm ">LOADING YOUR DATA ...</div>
+</div>
                 <div v-else class="flex items-center justify-between">
                   <div class="flex items-center space-x-3">
                     <div class="flex-shrink-0">
@@ -385,7 +391,36 @@
     </div>
   </div>
 </template>
+<style scoped lang="scss">
+.animate-charcter {
+  text-transform: uppercase;
+  background-image: linear-gradient(-225deg, #09031f 0%, #6b19c4 29%, #2445a1 67%, #13aac5 100%);
 
+  background-clip: border-box;
+
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 0.5s linear infinite;
+  display: inline-block;
+  animation: blinker 0.5s linear infinite;
+}
+@keyframes blinker {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+</style>
 <script setup lang ="ts">
 import { ref, computed, onUnmounted, onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -403,7 +438,9 @@ const panPreviewUrl = ref<string | null>(null);
 const epPreviewUrl = ref<string | null>(null);
 const isPreviewOpen = ref(false);
 const currentPreviewType = ref<"aadhaar" | "pan" | "ep" | null>(null);
-
+const adharLoader = ref(false)
+const PanLoader = ref(false)
+const BankLoader = ref(false)
 const isComplete = computed(
   () => aadhaarFile.value && panFile.value && epFile.value
 );
@@ -438,6 +475,8 @@ const uploadAdhar = async (file: File, url: string) => {
     );
 
   if (response && response.data && response.data.status === 'ok' && response.data.aadhaarData) {
+    adharLoader.value=false
+      
             const uid = response.data.aadhaarData.response.result.uid
             console.log(uid)
             if(uid){
@@ -450,10 +489,13 @@ const uploadAdhar = async (file: File, url: string) => {
              
     }
     else{
+         
       alert("Invalid Aadhar !")
+       adharLoader.value=false
     }
   } catch (error) {
     console.error("Error calling API:", error);
+     adharLoader.value=false
   }
 };
 const uploadBank = async (file: File, url: string) => {
@@ -475,7 +517,7 @@ const uploadBank = async (file: File, url: string) => {
       //   },
       // }
     );
-
+ BankLoader.value=false;
   if (response && response.data && response.data.status === 'ok'  && response.data.data.result ) {
     
         epFile.value = file;
@@ -485,6 +527,7 @@ const uploadBank = async (file: File, url: string) => {
       alert("Invalid bank proof !")
     }
   } catch (error) {
+     BankLoader.value=false;
     console.error("Error calling API:", error);
   }
 };
@@ -507,7 +550,7 @@ const uploadPan = async (file: File, url: string) => {
       //   },
       // }
     );
-
+ PanLoader.value=false;
   if (response && response.data && response.data.status === 'ok' && response.data.panOcrData) {
      const uid = response.data.panOcrData.error
        if (!uid) {
@@ -522,6 +565,7 @@ const uploadPan = async (file: File, url: string) => {
       alert("Invalid Pan !")
     }
   } catch (error) {
+     PanLoader.value=false;
     console.error("Error calling API:", error);
   }
 };
@@ -578,17 +622,20 @@ const processFile = async (file: File, type: "aadhaar" | "pan" | "ep") => {
     const base64String = await blobUrlToBase64(URL.createObjectURL(file));
     console.log("Base64 String:", base64String);
     const finalUrl = extractBase64FromDataUrl(base64String);
+    adharLoader.value=true
     await uploadAdhar(file, finalUrl);
   } else if (type === "ep") {
      const base64String = await blobUrlToBase64(URL.createObjectURL(file));
     console.log("Base64 String:", base64String);
     const finalUrl = extractBase64FromDataUrl(base64String);
+    BankLoader.value=true;
     await uploadBank(file, finalUrl);
   
   } else {
     const base64String = await blobUrlToBase64(URL.createObjectURL(file));
     console.log("Base64 String:", base64String);
     const finalUrl = extractBase64FromDataUrl(base64String);
+    PanLoader.value=true
     await uploadPan(file, finalUrl);
     
   }
