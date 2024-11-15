@@ -233,11 +233,11 @@
   :aria-invalid="isAccountError ? 'true' : 'false'"
   :aria-describedby="isAccountError ? 'accountnumber-error' : null"
   :class="{
-    'focus:ring-2 focus:ring-red-500 focus:outline-none border-red-500': isAccountError,
-    'focus:ring-1 focus:ring-[#1E1B4B] focus:outline-none': !isAccountError
+    'focus:ring-2 focus:ring-red-500 focus:outline-none border border-red-500': isAccountError,
+    'focus:ring-1 focus:ring-[#1E1B4B] focus:outline-none border': !isAccountError
   }"
   placeholder="11111111111111"
-  class="w-full px-4 py-2 my-2 border rounded-lg"
+  class="w-full px-4 py-2 my-2  rounded-lg focus:bg-blue-50"
   @input="validateAccountNumber"
 />
 
@@ -261,7 +261,7 @@
                       ? ' focus:ring-2 focus:ring-red-500 focus:outline-none'
                       : ' focus:ring-1 focus:ring-[#1E1B4B] focus:outline-none'
                   "
-                  class="w-full px-4 py-2 my-2 border rounded-lg"
+                  class="w-full px-4 py-2 my-2 border rounded-lg focus:bg-blue-50 "
                   maxlength="11"
                   id="ifsc"
                 />
@@ -282,7 +282,7 @@
                   placeholder="600019020"
                   v-model="form.micr"
                   id="micr"
-                  class="w-full px-4 py-2 my-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#1E1B4B]"
+                  class="w-full px-4 py-2 my-2 border rounded-lg focus:bg-blue-50 focus:outline-none focus:ring-1 focus:ring-[#1E1B4B]"
                 />
               </div>
             </div>
@@ -291,7 +291,7 @@
                 >BANK NAME & FULL ADDRESS</label
               >
               <textarea
-                class="w-full px-4 py-2 my-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#1E1B4B]"
+                class="w-full px-4 focus:bg-blue-50 py-2 my-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#1E1B4B]"
                 rows="2"
                 placeholder="INDIAN BANK,HARBOUR,HARBOUR,TAMIL NADU"
                 v-model="form.bAddress"
