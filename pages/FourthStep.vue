@@ -345,18 +345,18 @@
 
                   <div class="space-y-3 my-3">
                     <div class="flex justify-between">
-                      <span class="text-smtext pr-20">Acc. No.</span>
+                      <span class="text-smtext pr-10">Acc. No.</span>
                       <span class="font-medium text-bigtext"
-                        >XXXX XXXX 6636</span
+                        >{{form.accountnumber}}</span
                       >
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-smtext pr-20">IFSC Code</span>
-                      <span class="font-medium text-bigtext">1234567</span>
+                      <span class="text-smtext pr-10">IFSC Code</span>
+                      <span class="font-medium text-bigtext">{{form.micr}}</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-smtext pr-20">Branch</span>
-                      <span class="font-medium text-bigtext"> THANJAVUR</span>
+                      <span class="text-smtext pr-10">Branch</span>
+                      <span class="font-medium text-bigtext text-sm"> {{form.branch}}</span>
                     </div>
                   </div>
                 </div>
@@ -402,6 +402,7 @@ interface FormData {
   ifsc: string;
   micr: string;
   bAddress: string;
+  branch:string;
 }
 const form = ref<FormData>({
   acType: AccountType.Current, // Set a default value from the enum
@@ -409,11 +410,14 @@ const form = ref<FormData>({
   ifsc: "",
   micr: "",
   bAddress: "",
+  branch:""
 });
 const ifscRegx = /^[A-Za-z]{4}[a-zA-Z0-9]{7}$/;
 const ifscError=ref(false)
 watch(
+    
   () => form.value.ifsc,
+
   (newValue) => {
     if (ifscRegx.test(newValue)) {
         ifscError.value=false
@@ -435,10 +439,12 @@ const getBankData = async (val) => {
       console.log(response,response.data)
       form.value.bAddress=response.data.ADDRESS
       form.value.micr=response.data.MICR
+      form.value.branch=response.data.BRANCH
     } else {
       console.error("API response format is not as expected");
     }
   } catch (error) {
+    ifscError.value=true;
     console.error("Error calling API:", error); // Log any errors
   }
 };
