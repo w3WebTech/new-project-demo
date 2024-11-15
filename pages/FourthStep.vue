@@ -194,41 +194,57 @@
               <label class="text-bigtext text-sm font-semibold py-2"
                 >BANK ACCOUNT TYPE</label
               >
-             <div class="flex space-x-4 my-2">
-    <label class="flex items-center space-x-2">
-      <input
-        type="radio"
-        name="accountType"
-        value="Savings"  
-        v-model="form.acType" 
-        class="form-radio h-4 w-4 text-[#1E1B4B] focus:ring-white"
-      />
-      <span class="text-[#1E1B4B] font-semibold text-sm">SAVINGS</span>
-    </label>
-    <label class="flex items-center space-x-2">
-      <input
-        type="radio"
-        name="accountType"
-        value="Current" 
-        v-model="form.acType" 
-        class="form-radio h-4 w-4 text-[#1E1B4B] focus:ring-white"
-      />
-      <span class="text-[#1E1B4B] font-semibold text-sm">CURRENT</span>
-    </label>
-  </div>
+              <div class="flex space-x-4 my-2">
+                <label class="flex items-center space-x-2">
+                  <input
+                    type="radio"
+                    name="accountType"
+                    value="Savings"
+                    v-model="form.acType"
+                    class="form-radio h-4 w-4 text-[#1E1B4B] focus:ring-white"
+                  />
+                  <span class="text-[#1E1B4B] font-semibold text-sm"
+                    >SAVINGS</span
+                  >
+                </label>
+                <label class="flex items-center space-x-2">
+                  <input
+                    type="radio"
+                    name="accountType"
+                    value="Current"
+                    v-model="form.acType"
+                    class="form-radio h-4 w-4 text-[#1E1B4B] focus:ring-white"
+                  />
+                  <span class="text-[#1E1B4B] font-semibold text-sm"
+                    >CURRENT</span
+                  >
+                </label>
+              </div>
             </div>
             <div class="mb-4">
               <label class="text-bigtext text-sm font-semibold"
                 >ACCOUNT NUMBER</label
               >
               <input
-              maxlength="16"
-                type="text"
-               v-model="form.acNumber"
-               id="accountnumber"
-               placeholder="11111111111111"
-                class="w-full px-4 py-2 my-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#1E1B4B]"
-              />
+  maxlength="16"
+  type="text"
+  v-model="form.acNumber"
+  id="accountnumber"
+  :aria-invalid="isAccountError ? 'true' : 'false'"
+  :aria-describedby="isAccountError ? 'accountnumber-error' : null"
+  :class="{
+    'focus:ring-2 focus:ring-red-500 focus:outline-none border-red-500': isAccountError,
+    'focus:ring-1 focus:ring-[#1E1B4B] focus:outline-none': !isAccountError
+  }"
+  placeholder="11111111111111"
+  class="w-full px-4 py-2 my-2 border rounded-lg"
+  @input="validateAccountNumber"
+/>
+
+<!-- Error Message -->
+<span v-if="isAccountError" id="accountnumber-error" class="text-red-500 text-sm">
+  Please enter a valid account number.
+</span>
             </div>
             <div class="mb-4 grid grid-cols-2 gap-4">
               <div>
@@ -240,12 +256,21 @@
                   type="text"
                   v-model="form.ifsc"
                   placeholder="IDIB000H003"
-                  :class='ifscError && form.ifsc.length >= 11 ? " focus:ring-2 focus:ring-red-500 focus:outline-none":" focus:ring-1 focus:ring-[#1E1B4B] focus:outline-none"'
-                  class="w-full px-4 py-2 my-2 border rounded-lg "
+                  :class="
+                    ifscError && form.ifsc.length >= 11
+                      ? ' focus:ring-2 focus:ring-red-500 focus:outline-none'
+                      : ' focus:ring-1 focus:ring-[#1E1B4B] focus:outline-none'
+                  "
+                  class="w-full px-4 py-2 my-2 border rounded-lg"
                   maxlength="11"
                   id="ifsc"
                 />
-                <div v-if="ifscError && form.ifsc.length >= 11" class="text-red-500 text-sm fornt-semibold"> Invalid IFSC</div>
+                <div
+                  v-if="ifscError && form.ifsc.length >= 11"
+                  class="text-red-500 text-sm fornt-semibold"
+                >
+                  Invalid IFSC
+                </div>
               </div>
               <div>
                 <label class="text-bigtext text-sm font-semibold py-2"
@@ -270,9 +295,7 @@
                 rows="2"
                 placeholder="INDIAN BANK,HARBOUR,HARBOUR,TAMIL NADU"
                 v-model="form.bAddress"
-              >
-</textarea
-              >
+              ></textarea>
             </div>
             <div
               class="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4 bg-white"
@@ -333,10 +356,25 @@
                     <div
                       class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500"
                     >
-                      <span class="text-lg font-semibold">A</span>
+                      <span class="text-lg font-semibold"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          class="h-4 w-4"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
                     </div>
                     <div class="">
-                      <h3 class="font-semibold text-bigtext">Archana</h3>
+                      <h3 class="font-semibold text-bigtext mt-1">
+                        {{ form.holderName }}
+                      </h3>
                       <p class="text-sm text-mdtext">
                         {{ selectedBankAccount }}
                       </p>
@@ -346,17 +384,21 @@
                   <div class="space-y-3 my-3">
                     <div class="flex justify-between">
                       <span class="text-smtext pr-10">Acc. No.</span>
-                      <span class="font-medium text-bigtext"
-                        >{{form.accountnumber}}</span
-                      >
+                      <span class="font-medium text-bigtext">{{
+                        form.acNumber
+                      }}</span>
                     </div>
                     <div class="flex justify-between">
                       <span class="text-smtext pr-10">IFSC Code</span>
-                      <span class="font-medium text-bigtext">{{form.micr}}</span>
+                      <span class="font-medium text-bigtext">{{
+                        form.micr
+                      }}</span>
                     </div>
                     <div class="flex justify-between">
                       <span class="text-smtext pr-10">Branch</span>
-                      <span class="font-medium text-bigtext text-sm"> {{form.branch}}</span>
+                      <span class="font-medium text-bigtext text-sm">
+                        {{ form.branch }}</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -384,7 +426,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted,watch,computed } from "vue";
+import { ref, onMounted, watch, computed } from "vue";
 import { useRouter } from "vue-router";
 
 import axios from "axios";
@@ -394,7 +436,6 @@ const searchQuery = ref("");
 enum AccountType {
   Savings = "Savings",
   Current = "Current",
-
 }
 interface FormData {
   acType: AccountType; // Use the enum here
@@ -402,7 +443,8 @@ interface FormData {
   ifsc: string;
   micr: string;
   bAddress: string;
-  branch:string;
+  branch: string;
+  holderName: string;
 }
 const form = ref<FormData>({
   acType: AccountType.Current, // Set a default value from the enum
@@ -410,25 +452,49 @@ const form = ref<FormData>({
   ifsc: "",
   micr: "",
   bAddress: "",
-  branch:""
+  branch: "",
+  holderName: "",
 });
 const ifscRegx = /^[A-Za-z]{4}[a-zA-Z0-9]{7}$/;
-const ifscError=ref(false)
+const ifscError = ref(false);
+const isAccountError = ref(false);
 watch(
-    
   () => form.value.ifsc,
 
   (newValue) => {
     if (ifscRegx.test(newValue)) {
-        ifscError.value=false
+      ifscError.value = false;
       console.log("Valid IFSC code", newValue);
       getBankData(newValue);
     } else {
-      ifscError.value=true
+      ifscError.value = true;
       console.log("Invalid IFSC code", newValue);
     }
   }
 );
+watch(
+  () => form.value.acNumber,
+
+  (newValue) => {
+    if (newValue) {
+      isAccountError.value = false;
+      console.log("Valid account", newValue);
+    } else {
+      console.log("Invalid account", newValue);
+    }
+  }
+);
+const validateAccountNumber = () => {
+    const acNumber = form.value.acNumber;
+    if(acNumber.length >=16){
+
+    
+    if (acNumber.length < 16 || !/^\d+$/.test(acNumber)) {
+      isAccountError.value = true;
+    } else {
+      isAccountError.value = false;
+    }}
+  }
 const getBankData = async (val) => {
   // Use template literals to correctly interpolate the val variable into the URL
   const apiUrl = `https://ifsc.razorpay.com/${val}`;
@@ -436,15 +502,15 @@ const getBankData = async (val) => {
   try {
     const response = await axios.get(apiUrl); // Send the GET request
     if (response && response.data) {
-      console.log(response,response.data)
-      form.value.bAddress=response.data.ADDRESS
-      form.value.micr=response.data.MICR
-      form.value.branch=response.data.BRANCH
+      console.log(response, response.data);
+      form.value.bAddress = response.data.ADDRESS;
+      form.value.micr = response.data.MICR;
+      form.value.branch = response.data.BRANCH;
     } else {
       console.error("API response format is not as expected");
     }
   } catch (error) {
-    ifscError.value=true;
+    ifscError.value = true;
     console.error("Error calling API:", error); // Log any errors
   }
 };
@@ -528,13 +594,7 @@ onMounted(() => {
   setTimeout(openBottomSheet, 100);
 });
 const setBankAccount = (bankName: string) => {
-  // selectedBankAccount.value = bankName;
-
-  // After 2 seconds, set setBankDetails to true
-  setTimeout(() => {
-    bankVerification.value = false;
-    setBankDetails.value = true;
-  }, 1000); // 2000 ms = 2 seconds
+  VerifyAccount();
 };
 const animaSuccess = () => {
   setBankDetails.value = false;
@@ -542,6 +602,36 @@ const animaSuccess = () => {
 };
 const completeBankDetails = () => {
   router.push("/UploadFile");
+};
+const VerifyAccount = async () => {
+  const apiUrl =
+    "https://phpstack-529375-5021731.cloudwaysapps.com/api/bank-verification.php";
+  const formData = new URLSearchParams();
+  formData.append("bankAccNo", form.value.acNumber);
+  formData.append("ifsc", form.value.ifsc);
+debugger
+  try {
+    const response = await axios.post(apiUrl, formData);
+    if (
+      response &&
+      response.data &&
+      response.data.result &&
+      response.data.result.active
+    ) {
+      form.value.holderName = response.data.result.bankTransfer.beneName;
+
+      setTimeout(() => {
+        bankVerification.value = false;
+        setBankDetails.value = true;
+      }, 1000);
+      console.log(response, response.data, "response");
+    } else {
+      isAccountError.value = true;
+      console.error("API response format is not as expected");
+    }
+  } catch (error) {
+    console.error("Error calling API:", error);
+  }
 };
 </script>
   <!--<div class="max-w-2xl mx-auto md:p-14 sm:py-8 sm:px-3  ">
